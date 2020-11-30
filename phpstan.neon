@@ -1,0 +1,37 @@
+parameters:
+    level: 6
+
+    paths:
+        - config
+        - src
+        - templates
+        - tests
+
+    bootstrapFiles:
+        - tests/bootstrap.php
+
+    checkGenericClassInNonGenericObjectType: false
+    checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false
+
+    excludes_analyse:
+        - tests/test_app/
+
+    ignoreErrors:
+        - '#^Constant [\w\_]+ not found\.$#'
+        - '#^Call to an undefined method Cake\\(Controller\\(Controller|Component\\(Auth|Flash)Component)|Datasource\\RepositoryInterface|Core\\PluginApplicationInterface|Http\\ServerRequest|ORM\\Association\\BelongsToMany)#'
+        - '#^(Access|Call) to an undefined (method|property) (Cake\\ORM\\|MeCms\\Photos\\Model\\Table\\\w+)Table#'
+        - '#unknown class PHPUnit_Framework_MockObject_MockObject\.$#'
+
+        -
+            message: '#expects MeCms\\ORM\\Query, Cake\\ORM\\Query given\.$#'
+            path: src/Controller
+
+        -
+            message: '#^(Undefined variable: \$this|Variable \$\w+ might not be defined\.)$#'
+            path: templates
+
+        -
+            message: '#no (return )?typehint specified\.$#'
+            path: tests/TestCase
+
