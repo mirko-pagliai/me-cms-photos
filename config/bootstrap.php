@@ -13,7 +13,23 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 
+use Cake\Cache\Cache;
+use Cake\Core\Configure;
+
 //Sets the default photos directory
 if (!defined('PHOTOS')) {
     define('PHOTOS', WWW_ROOT . 'img' . DS . 'photos' . DS);
 }
+
+if (!Cache::getConfig('photos')) {
+    Cache::setConfig('photos', [
+        'className' => 'File',
+        'duration' => '+999 days',
+        'prefix' => '',
+        'mask' => 0777,
+        'path' => CACHE . 'me_cms_photos',
+    ]);
+}
+
+//Sets directories to be created and must be writable
+Configure::write('WRITABLE_DIRS', array_merge(Configure::read('WRITABLE_DIRS', []), [PHOTOS]));
