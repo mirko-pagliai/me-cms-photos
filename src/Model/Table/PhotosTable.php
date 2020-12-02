@@ -140,6 +140,11 @@ class PhotosTable extends AppTable
             $query->where(['album_id' => $data['album']]);
         }
 
+        //"Filename" field
+        if (!empty($data['filename']) && strlen($data['filename']) > 2) {
+            $query->where([sprintf('%s.%s LIKE', $this->getAlias(), 'filename') => '%' . $data['filename'] . '%']);
+        }
+
         return $query;
     }
 }
