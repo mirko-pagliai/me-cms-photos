@@ -21,6 +21,14 @@ if (!defined('PHOTOS')) {
     define('PHOTOS', WWW_ROOT . 'img' . DS . 'photos' . DS);
 }
 
+//Loads the MeCms/Photos configuration and merges with the configuration from
+//  application, if exists
+Configure::load('MeCms/Photos.me_cms_photos');
+if (is_readable(CONFIG . 'me_cms_photos.php')) {
+    Configure::load('me_cms_photos');
+}
+
+//Sets the cache
 if (!Cache::getConfig('photos')) {
     Cache::setConfig('photos', [
         'className' => 'File',
