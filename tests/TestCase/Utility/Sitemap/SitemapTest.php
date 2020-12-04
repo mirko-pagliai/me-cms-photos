@@ -61,11 +61,6 @@ class SitemapTest extends TestCase
         $this->loadFixtures('Photos', 'PhotosAlbums');
         $table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
 
-        //Photos are disabled for the sitemap
-        Configure::write('MeCms/Photos.sitemap.photos', false);
-        $this->assertEmpty(Sitemap::photos());
-        Configure::write('MeCms/Photos.sitemap.photos', true);
-
         $expected = [
             [
                 'loc' => 'http://localhost/albums',
@@ -101,7 +96,11 @@ class SitemapTest extends TestCase
         $this->assertEquals($expected, Sitemap::photos());
         $this->assertEquals($expected, Cache::read('sitemap', $table->getCacheName()));
 
+        Configure::write('MeCms/Photos.sitemap.photos', false);
+        $this->assertEmpty(Sitemap::photos());
+
         //Deletes all records
+        Configure::write('MeCms/Photos.sitemap.photos', true);
         $table->deleteAll(['id IS NOT' => null]);
         $this->assertEmpty(Sitemap::photos());
     }
