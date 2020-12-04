@@ -81,7 +81,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
         $this->assertEquals($this->viewVariable('album'), $cache->first());
 
         //Sets the cache name
-        $cache = sprintf('album_%s_limit_%s_page_%s', md5('test-album'), getConfigOrFail('default.photos'), 1);
+        $cache = sprintf('album_%s_limit_%s_page_%s', md5('test-album'), getConfigOrFail('MeCms/Photos.default.photos'), 1);
         [$photosFromCache, $pagingFromCache] = array_values(Cache::readMany(
             [$cache, sprintf('%s_paging', $cache)],
             $this->Table->getCacheName()
