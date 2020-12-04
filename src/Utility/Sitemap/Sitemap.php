@@ -13,12 +13,12 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 
-namespace MeCms\Photos\Utility;
+namespace MeCms\Photos\Utility\Sitemap;
 
 use Cake\Cache\Cache;
 use Cake\ORM\Query;
 use Cake\ORM\TableRegistry;
-use MeCms\Utility\SitemapBuilder;
+use MeCms\Utility\Sitemap\SitemapBase;
 
 /**
  * This class contains methods called by the `SitemapBuilder`.
@@ -27,16 +27,15 @@ use MeCms\Utility\SitemapBuilder;
  * This class contains methods that will be called automatically.
  * You do not need to call these methods manually.
  */
-class Sitemap extends SitemapBuilder
+class Sitemap extends SitemapBase
 {
     /**
      * Returns photos urls
      * @return array
-     * @uses \MeCms\Utility\SitemapBuilder::parse()
      */
     public static function photos(): array
     {
-        if (!getConfig('sitemap.photos')) {
+        if (!getConfig('MeCms/Photos.sitemap.photos')) {
             return [];
         }
 

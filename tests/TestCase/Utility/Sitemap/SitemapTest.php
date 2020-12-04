@@ -13,12 +13,12 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 
-namespace MeCms\Photos\Test\TestCase\Utility;
+namespace MeCms\Photos\Test\TestCase\Utility\Sitemap;
 
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\ORM\TableRegistry;
-use MeCms\Photos\Utility\Sitemap;
+use MeCms\Photos\Utility\Sitemap\Sitemap;
 use MeCms\TestSuite\TestCase;
 
 /**
@@ -62,9 +62,9 @@ class SitemapTest extends TestCase
         $table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
 
         //Photos are disabled for the sitemap
-        Configure::write('MeCms.sitemap.photos', false);
+        Configure::write('MeCms/Photos.sitemap.photos', false);
         $this->assertEmpty(Sitemap::photos());
-        Configure::write('MeCms.sitemap.photos', true);
+        Configure::write('MeCms/Photos.sitemap.photos', true);
 
         $expected = [
             [
