@@ -41,3 +41,5 @@ if (!Cache::getConfig('photos')) {
 
 //Sets directories to be created and must be writable
 Configure::write('WRITABLE_DIRS', array_merge(Configure::read('WRITABLE_DIRS', []), [PHOTOS]));
+
+define('I18N_PHOTOS', __d('me_cms', 'Photos'));
