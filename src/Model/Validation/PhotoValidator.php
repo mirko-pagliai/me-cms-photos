@@ -15,13 +15,18 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\Model\Validation;
 
-use MeCms\Validation\BannerAndPhotoValidator;
+use MeCms\Validation\AppValidator;
 
 /**
  * Photo validator class
  */
-class PhotoValidator extends BannerAndPhotoValidator
+class PhotoValidator extends AppValidator
 {
+    /**
+     * Valid extensions
+     */
+    protected const VALID_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png'];
+
     /**
      * Construct
      */
@@ -35,5 +40,12 @@ class PhotoValidator extends BannerAndPhotoValidator
                 'rule' => 'naturalNumber',
             ],
         ])->requirePresence('album_id', 'create');
+
+        $this->add('filename', [
+            'extension' => [
+                'message' => __d('me_cms', 'Valid extensions: {0}', implode(', ', self::VALID_EXTENSIONS)),
+                'rule' => ['extension', self::VALID_EXTENSIONS],
+            ],
+        ])->requirePresence('filename', 'create');
     }
 }
