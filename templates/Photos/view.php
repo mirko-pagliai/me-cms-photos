@@ -22,12 +22,12 @@ if (!$photo->get('active')) {
     $this->userbar($this->Html->span(I18N_NOT_PUBLISHED, ['class' => 'badge badge-warning']));
 }
 $this->userbar($this->Html->link(
-    __d('me_cms', 'Edit photo'),
+    __d('me_cms_photos', 'Edit photo'),
     ['action' => 'edit', $photo->get('id'), 'prefix' => ADMIN_PREFIX],
     ['class' => 'nav-link', 'icon' => 'pencil-alt', 'target' => '_blank']
 ));
 $this->userbar($this->Form->postLink(
-    __d('me_cms', 'Delete photo'),
+    __d('me_cms_photos', 'Delete photo'),
     ['action' => 'delete', $photo->get('id'), 'prefix' => ADMIN_PREFIX],
     [
         'class' => 'nav-link text-danger',

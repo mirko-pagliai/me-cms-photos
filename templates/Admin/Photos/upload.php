@@ -13,17 +13,17 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 $this->extend('MeCms./common/form');
-$this->assign('title', __d('me_cms', 'Upload photos'));
+$this->assign('title', __d('me_cms_photos', 'Upload photos'));
 ?>
 
 <div class="card card-body bg-light border-0 mb-4">
     <?= $this->Form->createInline(null, ['type' => 'get']) ?>
     <fieldset>
     <?php
-    echo $this->Form->label('album', __d('me_cms', 'Album to upload photos'));
+    echo $this->Form->label('album', __d('me_cms_photos', 'Album to upload photos'));
     echo $this->Form->control('album', [
         'default' => $this->getRequest()->getQuery('album'),
-        'label' => __d('me_cms', 'Album to upload photos'),
+        'label' => __d('me_cms_photos', 'Album to upload photos'),
         'onchange' => 'sendForm(this)',
         'options' => $albums,
     ]);

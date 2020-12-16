@@ -27,7 +27,7 @@ $this->Breadcrumbs->add(I18N_PHOTOS, ['_name' => 'albums']);
         echo $this->Html->div('col-sm-6 col-md-4 mb-4', $this->element('MeCms/Photos.views/photo-preview', [
             'link' => $album->get('url'),
             'path' => $album->get('preview'),
-            'text' => __d('me_cms', '{0} photos', $album->get('photo_count')),
+            'text' => __d('me_cms_photos', '{0} photos', $album->get('photo_count')),
             'title' => $album->get('title'),
         ]));
     }

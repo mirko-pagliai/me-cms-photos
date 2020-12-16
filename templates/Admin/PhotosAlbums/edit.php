@@ -13,7 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 $this->extend('MeCms./common/form');
-$this->assign('title', $title = __d('me_cms', 'Edit photos album'));
+$this->assign('title', $title = __d('me_cms_photos', 'Edit photos album'));
 $this->Library->slugify();
 ?>
 

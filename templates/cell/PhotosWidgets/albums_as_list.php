@@ -20,7 +20,7 @@ if (empty($albums) || $albums->count() < 2) {
 }
 
 $this->extend('MeCms./common/widget');
-$this->assign('title', __d('me_cms', 'Albums'));
+$this->assign('title', __d('me_cms_photos', 'Albums'));
 
 $albums = $albums->map(function (PhotosAlbum $album) {
     return $this->Html->link($album->get('title'), ['_name' => 'album', $album->get('slug')]);

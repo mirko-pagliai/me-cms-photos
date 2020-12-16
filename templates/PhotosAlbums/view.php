@@ -26,12 +26,12 @@ if (!$album->get('active')) {
     $this->userbar($this->Html->span(I18N_NOT_PUBLISHED, ['class' => 'badge badge-warning']));
 }
 $this->userbar($this->Html->link(
-    __d('me_cms', 'Edit album'),
+    __d('me_cms_photos', 'Edit album'),
     ['action' => 'edit', $album->get('id'), 'prefix' => ADMIN_PREFIX],
     ['class' => 'nav-link', 'icon' => 'pencil-alt', 'target' => '_blank']
 ));
 $this->userbar($this->Form->postLink(
-    __d('me_cms', 'Delete album'),
+    __d('me_cms_photos', 'Delete album'),
     ['action' => 'delete', $album->get('id'), 'prefix' => ADMIN_PREFIX],
     ['class' => 'nav-link text-danger', 'icon' => 'trash-alt', 'confirm' => I18N_SURE_TO_DELETE, 'target' => '_blank']
 ));

@@ -20,7 +20,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
         <tr>
             <th class="text-center"><?= $this->Paginator->sort('id', I18N_ID) ?></th>
             <th><?= $this->Paginator->sort('filename', I18N_FILENAME) ?></th>
-            <th class="text-center"><?= $this->Paginator->sort('Albums.title', __d('me_cms', 'Album')) ?></th>
+            <th class="text-center"><?= $this->Paginator->sort('Albums.title', __d('me_cms_photos', 'Album')) ?></th>
             <th class="text-center"><?= I18N_DESCRIPTION ?></th>
             <th class="text-center"><?= $this->Paginator->sort('Photos.created', I18N_DATE) ?></th>
         </tr>

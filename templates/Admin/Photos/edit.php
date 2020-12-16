@@ -13,7 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 $this->extend('MeCms./common/form');
-$this->assign('title', $title = __d('me_cms', 'Edit photo'));
+$this->assign('title', $title = __d('me_cms_photos', 'Edit photo'));
 ?>
 
 <?= $this->Form->create($photo); ?>
@@ -21,7 +21,7 @@ $this->assign('title', $title = __d('me_cms', 'Edit photo'));
     <div class="col-lg-3 order-12">
         <div class="float-form">
         <?php
-        echo $this->Form->control('album_id', ['label' => __d('me_cms', 'Album')]);
+        echo $this->Form->control('album_id', ['label' => __d('me_cms_photos', 'Album')]);
         echo $this->Form->control('active', ['label' => I18N_PUBLISHED]);
         ?>
         </div>
