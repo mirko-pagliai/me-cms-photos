@@ -43,5 +43,5 @@ if (!Cache::getConfig('photos')) {
 Configure::write('WRITABLE_DIRS', array_merge(Configure::read('WRITABLE_DIRS', []), [PHOTOS]));
 
 if (!defined('I18N_PHOTOS')) {
-    define('I18N_PHOTOS', __d('me_cms_photos', 'Photos'));
+    define('I18N_PHOTOS', __d('me_cms/photos', 'Photos'));
 }

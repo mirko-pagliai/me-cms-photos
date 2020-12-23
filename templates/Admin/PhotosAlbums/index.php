@@ -13,14 +13,14 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
 $this->extend('MeCms./Admin/common/index');
-$this->assign('title', __d('me_cms_photos', 'Albums'));
+$this->assign('title', __d('me_cms/photos', 'Albums'));
 $this->append('actions', $this->Html->button(
     I18N_ADD,
     ['action' => 'add'],
     ['class' => 'btn-success', 'icon' => 'plus']
 ));
 $this->append('actions', $this->Html->button(
-    __d('me_cms_photos', 'Upload photos'),
+    __d('me_cms/photos', 'Upload photos'),
     ['controller' => 'Photos', 'action' => 'upload'],
     ['class' => 'btn-success', 'icon' => 'plus']
 ));

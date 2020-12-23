@@ -21,7 +21,7 @@ $this->append('actions', $this->Html->button(
 ));
 
 $this->append('actions', $this->Html->button(
-    __d('me_cms_photos', 'Add album'),
+    __d('me_cms/photos', 'Add album'),
     ['controller' => 'PhotosAlbums', 'action' => 'add'],
     ['class' => 'btn-success', 'icon' => 'plus']
 ));

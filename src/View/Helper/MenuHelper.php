@@ -49,12 +49,12 @@ class MenuHelper extends Helper
     public function photos(): array
     {
         $params = ['controller' => 'Photos', 'plugin' => 'MeCms/Photos', 'prefix' => ADMIN_PREFIX];
-        $links[] = [__d('me_cms_photos', 'List photos'), ['action' => 'index'] + $params];
-        $links[] = [__d('me_cms_photos', 'Upload photos'), ['action' => 'upload'] + $params];
+        $links[] = [__d('me_cms/photos', 'List photos'), ['action' => 'index'] + $params];
+        $links[] = [__d('me_cms/photos', 'Upload photos'), ['action' => 'upload'] + $params];
 
         $params['controller'] = 'PhotosAlbums';
-        $links[] = [__d('me_cms_photos', 'List albums'), ['action' => 'index'] + $params];
-        $links[] = [__d('me_cms_photos', 'Add album'), ['action' => 'add'] + $params];
+        $links[] = [__d('me_cms/photos', 'List albums'), ['action' => 'index'] + $params];
+        $links[] = [__d('me_cms/photos', 'Add album'), ['action' => 'add'] + $params];
 
         return [$links, I18N_PHOTOS, ['icon' => 'camera-retro'], ['Photos', 'PhotosAlbums']];
     }

@@ -27,7 +27,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
                         <samp><?= I18N_ID ?> <?= $photo->get('id') ?></samp>
                     </li>
                     <li class="list-group-item p-1 small text-center">
-                        <?= __d('me_cms_photos', 'Album') ?>:
+                        <?= __d('me_cms/photos', 'Album') ?>:
                         <?= $this->Html->link(
                             $photo->get('album')->get('title'),
                             ['?' => ['album' => $photo->get('album')->get('id')]],
