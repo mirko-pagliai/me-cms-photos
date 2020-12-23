@@ -64,14 +64,12 @@ class PhotosAlbum extends Entity
      * Gets the album preview (virtual field)
      * @return string
      * @since 2.21.1
-     * @throws \Tools\Exception\PropertyNotExistsException
      */
     protected function _getPreview(): ?string
     {
-        Exceptionist::objectPropertyExists($this, 'photos');
-        $photo = array_value_first($this->get('photos'));
+        $photos = $this->get('photos');
 
-        return $photo->get('path');
+        return $photos ? array_value_first($photos)->get('path') : null;
     }
 
     /**
