@@ -18,7 +18,7 @@ if (empty($photos) || $photos->isEmpty()) {
 }
 
 $this->extend('MeCms./common/widget');
-$this->assign('title', __dn('me_cms_photos', 'Random photo', 'Random {0} photos', $photos->count(), $photos->count()));
+$this->assign('title', __dn('me_cms/photos', 'Random photo', 'Random {0} photos', $photos->count(), $photos->count()));
 
 foreach ($photos as $photo) {
     echo $this->Thumb->fit($photo->get('path'), ['width' => 253], ['class' => 'thumbnail', 'url' => ['_name' => 'albums']]);
