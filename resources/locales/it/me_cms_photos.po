@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-12-16 11:40+0000\n"
-"PO-Revision-Date: 2020-12-16 12:41+0100\n"
+"POT-Creation-Date: 2020-12-23 11:46+0000\n"
+"PO-Revision-Date: 2020-12-23 12:47+0100\n"
 "Last-Translator: Mirko Pagliai <mirko.pagliai@gmail.com>\n"
 "Language-Team: Italian <>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: it\n"
+
+#: ./bootstrap.php:46
+msgid "Photos"
+msgstr "Foto"
 
 #: ./Controller/Admin/PhotosController.php:50
 msgid "You must first create an album"
