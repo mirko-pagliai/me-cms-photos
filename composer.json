@@ -12,7 +12,7 @@
     ],
     "require": {
         "php": ">=7.2",
-        "mirko-pagliai/me-cms": "^2.29"
+        "mirko-pagliai/me-cms": "dev-develop-next-release as 2.30.0"
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^4.0",
