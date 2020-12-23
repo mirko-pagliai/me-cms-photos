@@ -15,7 +15,6 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\Test\TestCase;
 
-
 use Cake\I18n\I18n;
 use MeCms\TestSuite\TestCase;
 

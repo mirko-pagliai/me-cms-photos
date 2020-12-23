@@ -33,5 +33,4 @@ class TopbarTest extends TestCase
         $this->assertStringContainsString('<a href="/" class="nav-link" title="Home"><i class="fas fa-home"> </i> Home</a>', $result);
         $this->assertStringContainsString('<a href="/albums" class="nav-link" title="Photos">Photos</a>', $result);
     }
-
 }
