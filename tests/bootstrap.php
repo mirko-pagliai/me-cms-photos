@@ -46,7 +46,6 @@ define('SESSIONS', TMP . 'sessions' . DS);
 
 require dirname(__DIR__) . '/vendor/autoload.php';
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
-require ROOT . 'config' . DS . 'bootstrap.php';
 
 Configure::write('debug', true);
 Configure::write('App', [
