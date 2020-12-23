@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2020-12-23 13:21+0100\n"
+"POT-Creation-Date: 2020-12-23 15:27+0000\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,82 +14,86 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/Admin/PhotosController.php:50
+#: ./bootstrap.php:46
+msgid "Photos"
+msgstr ""
+
+#: ./Controller/Admin/PhotosController.php:50
 msgid "You must first create an album"
 msgstr ""
 
-#: View/Helper/MenuHelper.php:52
+#: ./View/Helper/MenuHelper.php:52
 msgid "List photos"
 msgstr ""
 
-#: View/Helper/MenuHelper.php:53
-#: Admin/Photos/upload.php:16
-#: Admin/PhotosAlbums/index.php:23
+#: ./View/Helper/MenuHelper.php:53
+#: ./Admin/Photos/upload.php:16
+#: ./Admin/PhotosAlbums/index.php:23
 msgid "Upload photos"
 msgstr ""
 
-#: View/Helper/MenuHelper.php:56
+#: ./View/Helper/MenuHelper.php:56
 msgid "List albums"
 msgstr ""
 
-#: View/Helper/MenuHelper.php:57
-#: Admin/common/Photos/index.php:24
+#: ./View/Helper/MenuHelper.php:57
+#: ./Admin/common/Photos/index.php:24
 msgid "Add album"
 msgstr ""
 
-#: Admin/Photos/edit.php:16
-#: Photos/view.php:25
+#: ./Admin/Photos/edit.php:16
+#: ./Photos/view.php:25
 msgid "Edit photo"
 msgstr ""
 
-#: Admin/Photos/edit.php:24
-#: Admin/Photos/index.php:23
-#: Admin/Photos/index_as_grid.php:30
+#: ./Admin/Photos/edit.php:24
+#: ./Admin/Photos/index.php:23
+#: ./Admin/Photos/index_as_grid.php:30
 msgid "Album"
 msgstr ""
 
-#: Admin/Photos/upload.php:23
-#: Admin/Photos/upload.php:26
+#: ./Admin/Photos/upload.php:23
+#: ./Admin/Photos/upload.php:26
 msgid "Album to upload photos"
 msgstr ""
 
-#: Admin/PhotosAlbums/add.php:16
+#: ./Admin/PhotosAlbums/add.php:16
 msgid "Add photos album"
 msgstr ""
 
-#: Admin/PhotosAlbums/edit.php:16
+#: ./Admin/PhotosAlbums/edit.php:16
 msgid "Edit photos album"
 msgstr ""
 
-#: Admin/PhotosAlbums/index.php:16
-#: cell/PhotosWidgets/albums_as_form.php:23
-#: cell/PhotosWidgets/albums_as_list.php:23
+#: ./Admin/PhotosAlbums/index.php:16
+#: ./cell/PhotosWidgets/albums_as_form.php:23
+#: ./cell/PhotosWidgets/albums_as_list.php:23
 msgid "Albums"
 msgstr ""
 
-#: Photos/view.php:30
+#: ./Photos/view.php:30
 msgid "Delete photo"
 msgstr ""
 
-#: PhotosAlbums/index.php:30
+#: ./PhotosAlbums/index.php:30
 msgid "{0} photos"
 msgstr ""
 
-#: PhotosAlbums/view.php:29
+#: ./PhotosAlbums/view.php:29
 msgid "Edit album"
 msgstr ""
 
-#: PhotosAlbums/view.php:34
+#: ./PhotosAlbums/view.php:34
 msgid "Delete album"
 msgstr ""
 
-#: cell/PhotosWidgets/latest.php:21
+#: ./cell/PhotosWidgets/latest.php:21
 msgid "Latest photo"
 msgid_plural "Latest {0} photos"
 msgstr[0] ""
 msgstr[1] ""
 
-#: cell/PhotosWidgets/random.php:21
+#: ./cell/PhotosWidgets/random.php:21
 msgid "Random photo"
 msgid_plural "Random {0} photos"
 msgstr[0] ""

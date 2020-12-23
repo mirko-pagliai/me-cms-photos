@@ -19,6 +19,7 @@ use Cake\Http\BaseApplication;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use MeCms\Plugin as MeCms;
+use MeCms\Photos\Plugin as MeCmsPhotos;
 use RecaptchaMailhide\Plugin as RecaptchaMailhide;
 use Thumber\Cake\Plugin as Thumber;
 
