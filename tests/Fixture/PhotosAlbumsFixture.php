@@ -19,7 +19,7 @@ use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
 use Tools\Filesystem;
 
-require_once ROOT . 'config'. DS . 'bootstrap.php';
+require_once ROOT . 'config' . DS . 'bootstrap.php';
 
 /**
  * PhotosAlbumsFixture
