@@ -16,26 +16,8 @@
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^4.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.3.2"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "ctlabvn/recaptcha",
-                "version": "3.0.0",
-                "source": {
-                    "url": "https://github.com/ctlabvn/recaptcha.git",
-                    "type": "git",
-                    "reference": "3.0.0"
-                }
-            }
-        }
-    ],
     "autoload": {
         "psr-4": {
             "MeCms\\Photos\\": "src"
@@ -44,7 +26,6 @@
     "autoload-dev": {
         "psr-4": {
             "MeCms\\Photos\\Test\\": "tests",
-            "Recaptcha\\": "vendor/ctlabvn/recaptcha/src/",
             "App\\": "tests/test_app/TestApp"
         }
     },
@@ -61,7 +42,7 @@
         "cs-check": "phpcs --standard=phpcs.xml.dist",
         "cs-fix": "phpcbf --standard=phpcs.xml.dist",
         "test": "phpunit",
-        "test-coverage": "phpunit --coverage-html coverage",
+        "coverage": "XDEBUG_MODE=coverage phpunit --coverage-html=coverage",
         "phpstan": "phpstan.phar analyse",
         "psalm": "psalm.phar",
         "stan": [
