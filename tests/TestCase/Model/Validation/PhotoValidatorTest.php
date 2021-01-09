@@ -51,6 +51,12 @@ class PhotoValidatorTest extends ValidationTestCase
      */
     public function testValidationForFilename()
     {
+        $errors = $this->Table->newEntity(['filename' => str_repeat('a', 252) . '.gif'] + $this->example)->getErrors();
+        $this->assertEquals(['filename' => ['maxLength' => 'Must be at most 255 chars']], $errors);
+
+        $errors = $this->Table->newEntity(['filename' => str_repeat('a', 251) . '.gif'] + $this->example)->getErrors();
+        $this->assertEmpty($errors);
+
         foreach (['pic', 'text.txt'] as $filename) {
             $errors = $this->Table->newEntity(compact('filename') + $this->example)->getErrors();
             $this->assertEquals(['filename' => ['extension' => 'Valid extensions: gif, jpg, jpeg, png']], $errors);

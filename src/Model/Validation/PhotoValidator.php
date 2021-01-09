@@ -42,6 +42,10 @@ class PhotoValidator extends AppValidator
         ])->requirePresence('album_id', 'create');
 
         $this->add('filename', [
+            'maxLength' => [
+                'message' => __d('me_cms', 'Must be at most {0} chars', 255),
+                'rule' => ['maxLength', 255],
+            ],
             'extension' => [
                 'message' => __d('me_cms', 'Valid extensions: {0}', implode(', ', self::VALID_EXTENSIONS)),
                 'rule' => ['extension', self::VALID_EXTENSIONS],
