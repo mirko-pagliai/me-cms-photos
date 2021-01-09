@@ -29,11 +29,11 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
         <?php foreach ($photos as $photo) : ?>
             <tr>
                 <td class="text-nowrap text-center">
-                    <code><?= $photo->id ?></code>
+                    <code><?= $photo->get('id') ?></code>
                 </td>
                 <td>
                     <strong>
-                        <?= $this->Html->link($photo->get('filename'), ['action' => 'edit', $photo->id]) ?>
+                        <?= $this->Html->link($photo->get('filename'), ['action' => 'edit', $photo->get('id')]) ?>
                     </strong>
                     <?php
                     //If the photo is not active (not published)
