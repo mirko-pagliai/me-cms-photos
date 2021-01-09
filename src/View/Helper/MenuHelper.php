@@ -37,12 +37,6 @@ use Cake\View\Helper;
 class MenuHelper extends Helper
 {
     /**
-     * Helpers
-     * @var array
-     */
-    public $helpers = ['MeCms.Auth'];
-
-    /**
      * Internal function to generate the menu for "photos" actions
      * @return array Array with links, title, title options and handled controllers
      */
