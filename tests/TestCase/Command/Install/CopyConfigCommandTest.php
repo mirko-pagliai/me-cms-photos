@@ -16,6 +16,7 @@ namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 
 use MeTools\TestSuite\ConsoleIntegrationTestTrait;
 use MeTools\TestSuite\TestCase;
+use Tools\Filesystem;
 
 /**
  * SetPermissionsCommandTest class
@@ -31,6 +32,6 @@ class CopyConfigCommandTest extends TestCase
     public function testExecute()
     {
         $this->exec('me_cms.copy_config -v');
-        $this->assertOutputContains('File or directory `tests/test_app/TestApp/config/me_cms_photos.php` already exists');
+        $this->assertOutputContains('File or directory `' . (new Filesystem())->rtr(TEST_APP . 'TestApp' . DS . 'config' . DS . 'me_cms_photos.php') . '` already exists');
     }
 }
