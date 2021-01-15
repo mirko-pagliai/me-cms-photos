@@ -12,7 +12,6 @@ declare(strict_types=1);
  * @link        https://github.com/mirko-pagliai/me-cms-photos
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
-
 namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 namespace MeCms\Banners\Test\TestCase\Command\Install;
 
