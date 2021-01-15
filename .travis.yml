@@ -23,6 +23,9 @@ install:
   - composer install --prefer-dist --no-interaction
   - if [ "$dependencies" = "lowest" ]; then composer update --prefer-lowest -n; fi;
 
+before_script:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+
 script:
   - if [[ $PHPCS != '1' && $COVERAGE != '1' ]]; then vendor/bin/phpunit; fi
   - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs --standard=phpcs.xml.dist; fi
