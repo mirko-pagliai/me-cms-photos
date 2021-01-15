@@ -81,7 +81,7 @@ class PhotosTableTest extends TableTestCase
         $this->assertEquals(['width' => 400, 'height' => 400], $entity->get('size'));
         $this->assertFileExists($entity->get('path'));
         $this->assertTrue($this->Table->delete($entity));
-        $this->assertFileNotExists($entity->get('path'));
+        $this->assertFileDoesNotExist($entity->get('path'));
     }
 
     /**

@@ -86,7 +86,7 @@ class PhotoTest extends EntityTestCase
     {
         copy(WWW_ROOT . 'img' . DS . 'image.jpg', $this->Entity->get('path'));
         $this->assertInstanceof(Entity::class, $this->Entity->get('preview'));
-        $this->assertRegExp('/\/thumb\/[\w\d]+/', $this->Entity->get('preview')->get('url'));
+        $this->assertMatchesRegularExpression('/\/thumb\/[\w\d]+/', $this->Entity->get('preview')->get('url'));
         $this->assertSame(400, $this->Entity->get('preview')->get('width'));
         $this->assertSame(400, $this->Entity->get('preview')->get('height'));
         @unlink($this->Entity->get('path'));

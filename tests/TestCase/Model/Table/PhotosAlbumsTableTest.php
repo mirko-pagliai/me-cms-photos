@@ -60,7 +60,7 @@ class PhotosAlbumsTableTest extends TableTestCase
         $this->assertFileExists($entity->get('path'));
         $this->assertIsWritable($entity->get('path'));
         $this->assertTrue($this->Table->delete($entity));
-        $this->assertFileNotExists($entity->get('path'));
+        $this->assertFileDoesNotExist($entity->get('path'));
     }
 
     /**

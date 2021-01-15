@@ -225,7 +225,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertFlashMessage(I18N_OPERATION_OK);
         $this->assertTrue($this->Table->findById(1)->isEmpty());
         $this->skipIf(IS_WIN);
-        $this->assertFileNotExists($record->get('path'));
+        $this->assertFileDoesNotExist($record->get('path'));
     }
 
     /**
