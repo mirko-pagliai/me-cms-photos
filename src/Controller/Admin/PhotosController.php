@@ -17,10 +17,8 @@ namespace MeCms\Photos\Controller\Admin;
 
 use Cake\Event\EventInterface;
 use Cake\Http\Cookie\Cookie;
-use Cake\Http\Exception\InternalErrorException;
 use Cake\Http\Response;
 use MeCms\Controller\Admin\AppController;
-use Tools\Exceptionist;
 
 /**
  * Photos controller
@@ -104,24 +102,25 @@ class PhotosController extends AppController
 
     /**
      * Uploads photos
-     * @return void
-     * @throws \Cake\Http\Exception\InternalErrorException
+     * @return \Cake\Http\Response|null
      * @uses \MeCms\Controller\Admin\AppController::setUploadError()
-     * @uses \MeTools\Controller\Component\UploaderComponent
      */
-    public function upload(): void
+    public function upload(): ?Response
     {
         $album = $this->getRequest()->getQuery('album');
         $albums = $this->viewBuilder()->getVar('albums')->toArray();
 
         //If there's only one available album
         if (!$album && count($albums) < 2) {
-            $album = array_key_first($albums);
-            $this->setRequest($this->getRequest()->withQueryParams(compact('album')));
+            return $this->redirect(['?' => ['album' => array_key_first($albums)]]);
         }
 
         if ($this->getRequest()->getData('file')) {
-            Exceptionist::isTrue($album, __d('me_cms', 'Missing ID'), InternalErrorException::class);
+            if (!$album) {
+                $this->setUploadError(I18N_MISSING_ID);
+
+                return null;
+            }
 
             $uploaded = $this->Uploader->set($this->getRequest()->getData('file'))
                 ->mimetype('image')
@@ -130,7 +129,7 @@ class PhotosController extends AppController
             if (!$uploaded) {
                 $this->setUploadError($this->Uploader->getError());
 
-                return;
+                return null;
             }
 
             $entity = $this->Photos->newEntity([
@@ -141,13 +140,15 @@ class PhotosController extends AppController
             if ($entity->getErrors()) {
                 $this->setUploadError(array_value_first_recursive($entity->getErrors()));
 
-                return;
+                return null;
             }
 
             if (!$this->Photos->save($entity)) {
                 $this->setUploadError(I18N_OPERATION_NOT_OK);
             }
         }
+
+        return null;
     }
 
     /**

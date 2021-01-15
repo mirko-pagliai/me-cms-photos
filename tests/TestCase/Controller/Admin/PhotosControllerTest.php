@@ -114,9 +114,14 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertResponseOkAndNotEmpty();
         $this->assertTemplate('Admin' . DS . $this->Controller->getName() . DS . 'upload.php');
 
+        $url += ['?' => ['album' => 1]];
+        $this->get($url);
+        $this->assertResponseOkAndNotEmpty();
+        $this->assertTemplate('Admin' . DS . $this->Controller->getName() . DS . 'upload.php');
+
         //POST request. This works
         $file = $this->createImageToUpload();
-        $this->post($url + ['_ext' => 'json', '?' => [substr('album_id', 0, -3) => 1]], compact('file'));
+        $this->post($url + ['_ext' => 'json'], compact('file'));
         $this->assertResponseOkAndNotEmpty();
         $record = $this->Table->find()->last();
         $this->assertEquals(1, $record->get('album_id'));
@@ -127,13 +132,8 @@ class PhotosControllerTest extends ControllerTestCase
         //POST request. This works without the parent ID on the query string,
         //  beacuse there is only one record from the associated table
         $this->Table->Albums->deleteAll(['id >' => 1]);
-        $file = $this->createImageToUpload();
         $this->post($this->url + ['action' => 'upload', '_ext' => 'json'], compact('file'));
-        $this->assertResponseOkAndNotEmpty();
-        $record = $this->Table->find()->last();
-        $this->assertEquals(1, $record->get('album_id'));
-        $this->assertEquals($file['name'], $record->get('filename'));
-        $this->assertFileExists($record->get('path'));
+        $this->assertRedirect($url);
     }
 
     /**
@@ -151,7 +151,7 @@ class PhotosControllerTest extends ControllerTestCase
         //Missing ID on the query string
         $this->post($url, ['file' => true]);
         $this->assertResponseFailure();
-        $this->assertResponseContains('Missing ID');
+        $this->assertResponseContains(I18N_MISSING_ID);
 
         $url += ['?' => [substr('album_id', 0, -3) => 1]];
 
