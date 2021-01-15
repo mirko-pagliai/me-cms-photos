@@ -13,6 +13,7 @@
         <directory name="templates" />
         <directory name="tests" />
         <ignoreFiles>
+            <directory name="config/Migrations" />
             <directory name="tests/test_app" />
             <directory name="vendor" />
         </ignoreFiles>
@@ -24,7 +25,7 @@
                 <directory name="src/Model/Table" />
             </errorLevel>
         </ImplementedReturnTypeMismatch>
-        
+
         <InternalMethod>
             <errorLevel type="suppress">
                 <directory name="tests/TestCase" />

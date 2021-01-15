@@ -4,6 +4,7 @@
     <file>.</file>
 
     <exclude-pattern>*/bin/cake*</exclude-pattern>
+    <exclude-pattern>*/config/Migrations*</exclude-pattern>
 
     <rule ref="./vendor/mirko-pagliai/php-tools/sniffer-ruleset.xml"/>
 

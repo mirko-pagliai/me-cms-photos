@@ -15,6 +15,7 @@ parameters:
     treatPhpDocTypesAsCertain: false
 
     excludes_analyse:
+        - config/Migrations/
         - tests/test_app/
 
     ignoreErrors:
