@@ -3,12 +3,20 @@ clone_folder: C:\projects\me-cms-photos
 platform: x86
 
 environment:
+  db_dsn: 'mysql://root:Password12!@localhost/test'
   THUMBER_DRIVER: "gd"
   global:
     PHP: "C:/PHP"
 
+services:
+  - mysql
+
 init:
   - SET PATH=C:\php\;%PATH%
+  - SET PATH=C:\Program Files\MySQL\MySQL Server 5.7\bin;%PATH%
+
+before_test:
+  - mysqladmin --host=localhost --user=root --password=Password12! create test
 
 install:
   - cd c:\
