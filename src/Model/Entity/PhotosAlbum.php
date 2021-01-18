@@ -17,7 +17,6 @@ namespace MeCms\Photos\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\Routing\Router;
-use Tools\Exceptionist;
 
 /**
  * PhotosAlbum entity
@@ -51,13 +50,10 @@ class PhotosAlbum extends Entity
     /**
      * Gets the album full path (virtual field)
      * @return string
-     * @throws \Tools\Exception\PropertyNotExistsException
      */
-    protected function _getPath(): ?string
+    protected function _getPath(): string
     {
-        Exceptionist::objectPropertyExists($this, 'id');
-
-        return PHOTOS . $this->get('id');
+        return $this->has('id') ? PHOTOS . $this->get('id') : '';
     }
 
     /**
@@ -65,23 +61,20 @@ class PhotosAlbum extends Entity
      * @return string
      * @since 2.21.1
      */
-    protected function _getPreview(): ?string
+    protected function _getPreview(): string
     {
         $photos = $this->get('photos');
 
-        return $photos ? array_value_first($photos)->get('path') : null;
+        return $photos ? array_value_first($photos)->get('path') : '';
     }
 
     /**
      * Gets the url (virtual field)
      * @return string
      * @since 2.27.2
-     * @throws \Tools\Exception\PropertyNotExistsException
      */
     protected function _getUrl(): string
     {
-        Exceptionist::objectPropertyExists($this, 'slug');
-
-        return Router::url(['_name' => 'album', $this->get('slug')], true);
+        return $this->has('slug') ? Router::url(['_name' => 'album', $this->get('slug')], true) : '';
     }
 }

@@ -56,7 +56,7 @@ class Photo extends Entity
      * @return string
      * @throws \Tools\Exception\PropertyNotExistsException
      */
-    protected function _getPath(): ?string
+    protected function _getPath(): string
     {
         Exceptionist::objectPropertyExists($this, ['album_id', 'filename']);
 
@@ -77,18 +77,18 @@ class Photo extends Entity
      * Gets description as plain text (virtual field)
      * @return string
      */
-    protected function _getPlainDescription(): ?string
+    protected function _getPlainDescription(): string
     {
         return $this->has('description') ? trim(strip_tags((new BBCode())->remove($this->get('description')))) : '';
     }
 
     /**
      * Gets the photo preview (virtual field)
-     * @return \Cake\ORM\Entity|null Entity with `preview`, `width` and `height`
+     * @return \Cake\ORM\Entity Entity with `preview`, `width` and `height`
      *  properties
      * @uses _getPath()
      */
-    protected function _getPreview(): ?Entity
+    protected function _getPreview(): Entity
     {
         $path = $this->_getPath();
         [$width, $height] = getimagesize($path);
@@ -102,12 +102,14 @@ class Photo extends Entity
      * Gets the url (virtual field)
      * @return string
      * @since 2.27.2
-     * @throws \Tools\Exception\PropertyNotExistsException
      */
     protected function _getUrl(): string
     {
-        Exceptionist::objectPropertyExists($this, ['id', 'album']);
+        $album = $this->get('album');
+        if (!$this->has('id') || !$album || !$album->has('slug')) {
+            return '';
+        }
 
-        return Router::url(['_name' => 'photo', 'slug' => $this->get('album')->get('slug'), 'id' => (string)$this->get('id')], true);
+        return Router::url(['_name' => 'photo', 'slug' => $album->get('slug'), 'id' => (string)$this->get('id')], true);
     }
 }
