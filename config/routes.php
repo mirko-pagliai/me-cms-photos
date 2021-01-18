@@ -55,7 +55,9 @@ $routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes
     $routes->connect('/photo/:id', ['controller' => 'Photos', 'action' => 'view', 'slug' => ''])
         ->setPatterns(['id' => '\d+'])
         ->setPass(['slug', 'id']);
+});
 
+$routes->plugin('MeCms/Photos', ['path' => '/me-cms-photos'], function (RouteBuilder $routes) {
     //Admin routes
     $routes->prefix(ADMIN_PREFIX, function (RouteBuilder $routes) {
         $routes->setExtensions(['json']);
