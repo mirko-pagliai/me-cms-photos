@@ -48,7 +48,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
                         $actions[] = $this->Html->link(I18N_PREVIEW, ['action' => 'edit', $photo->get('id')], [
                             'class' => 'fancybox',
                             'icon' => 'search',
-                            'data-fancybox-href' => $this->Thumb->resizeUrl($photo->get('path'), ['height' => 1280]),
+                            'data-fancybox-href' => $this->Thumb->resizeUrl($photo->get('path'), ['width' => 1280]),
                         ]);
                     }
 

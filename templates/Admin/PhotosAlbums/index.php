@@ -93,12 +93,12 @@ $this->append('actions', $this->Html->button(
                     <?php
                     if ($album->get('photo_count')) {
                         echo $this->Html->link(
-                            $album->get('photo_count'),
+                            (string)$album->get('photo_count'),
                             ['controller' => 'Photos', 'action' => 'index', '?' => ['album' => $album->get('id')]],
                             ['title' => I18N_BELONG_ELEMENT]
                         );
                     } else {
-                        echo $album->get('photo_count');
+                        echo (string)$album->get('photo_count');
                     }
                     ?>
                 </td>

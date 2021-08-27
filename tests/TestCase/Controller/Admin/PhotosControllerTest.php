@@ -122,7 +122,7 @@ class PhotosControllerTest extends ControllerTestCase
         //POST request. This works
         $file = $this->createImageToUpload();
         $this->post($url + ['_ext' => 'json'], compact('file'));
-        $this->assertResponseOkAndNotEmpty();
+        $this->assertResponseOk();
         $record = $this->Table->find()->last();
         $this->assertEquals(1, $record->get('album_id'));
         $this->assertEquals($file['name'], $record->get('filename'));

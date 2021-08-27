@@ -42,7 +42,3 @@ parameters:
         -
             message: '#no (return )?typehint specified\.$#'
             path: tests/TestCase
-
-        -
-            message: '#Call to an undefined method Cake\\View\\Helper\|PHPUnit\\Framework\\MockObject\\MockObject::photos\(\)\.$#'
-            path: tests/TestCase/View/Helper/MenuHelperTest.php

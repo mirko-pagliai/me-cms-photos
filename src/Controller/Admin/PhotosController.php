@@ -122,7 +122,7 @@ class PhotosController extends AppController
                 return null;
             }
 
-            $uploaded = $this->Uploader->set($this->getRequest()->getData('file'))
+            $uploaded = $this->Uploader->setFile($this->getRequest()->getData('file'))
                 ->mimetype('image')
                 ->save(PHOTOS . $album);
 

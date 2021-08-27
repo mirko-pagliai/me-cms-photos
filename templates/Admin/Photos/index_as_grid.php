@@ -46,20 +46,20 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
 
                 //If Fancybox is enabled, adds the preview action
                 if (getConfig('default.fancybox')) {
-                    $actions[] = $this->Html->button(null, ['action' => 'edit', $photo->get('id')], [
+                    $actions[] = $this->Html->button('', ['action' => 'edit', $photo->get('id')], [
                         'class' => 'btn-link fancybox',
                         'icon' => 'search',
                         'title' => I18N_PREVIEW,
-                        'data-fancybox-href' => $this->Thumb->resizeUrl($photo->get('path'), ['height' => 1280]),
+                        'data-fancybox-href' => $this->Thumb->resizeUrl($photo->get('path'), ['width' => 1280]),
                     ]);
                 }
 
-                $actions[] = $this->Html->button(null, ['action' => 'edit', $photo->get('id')], [
+                $actions[] = $this->Html->button('', ['action' => 'edit', $photo->get('id')], [
                     'class' => 'btn-link',
                     'icon' => 'pencil-alt',
                     'title' => I18N_EDIT,
                 ]);
-                $actions[] = $this->Html->button(null, ['action' => 'download', $photo->get('id')], [
+                $actions[] = $this->Html->button('', ['action' => 'download', $photo->get('id')], [
                     'class' => 'btn-link',
                     'icon' => 'download',
                     'title' => I18N_DOWNLOAD,
@@ -67,7 +67,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
 
                 //Only admins and managers can delete photos
                 if ($this->Auth->isGroup(['admin', 'manager'])) {
-                    $actions[] = $this->Form->postButton(null, ['action' => 'delete', (string)$photo->get('id')], [
+                    $actions[] = $this->Form->postButton('', ['action' => 'delete', (string)$photo->get('id')], [
                         'class' => 'btn-link text-danger',
                         'icon' => 'trash-alt',
                         'title' => I18N_DELETE,
@@ -77,7 +77,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
 
                 //If the photo is active
                 if ($photo->get('active')) {
-                    $actions[] = $this->Html->button(null, [
+                    $actions[] = $this->Html->button('', [
                         '_name' => 'photo',
                         'slug' => $photo->get('album')->get('slug'),
                         'id' => (string)$photo->get('id'),
@@ -88,7 +88,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
                         'title' => I18N_OPEN,
                     ]);
                 } else {
-                    $actions[] = $this->Html->button(null, ['_name' => 'photosPreview', $photo->get('id')], [
+                    $actions[] = $this->Html->button('', ['_name' => 'photosPreview', $photo->get('id')], [
                         'class' => 'btn-link',
                         'icon' => 'external-link-alt',
                         'target' => '_blank',
