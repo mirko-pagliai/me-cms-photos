@@ -29,7 +29,7 @@ class SetPermissionsCommandTest extends TestCase
      * Tests for `execute()` method
      * @test
      */
-    public function testExecute()
+    public function testExecute(): void
     {
         $this->exec('me_tools.set_permissions -v');
         $this->assertOutputContains('Setted permissions on `' . (new Filesystem())->rtr(TEST_APP . 'TestApp' . DS . 'webroot' . DS . 'img' . DS . 'photos') . '`');

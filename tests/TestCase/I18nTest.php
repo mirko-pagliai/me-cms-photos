@@ -27,7 +27,7 @@ class I18nTest extends TestCase
      * Tests that string are translated correctly
      * @test
      */
-    public function testI18nConstant()
+    public function testI18nConstant(): void
     {
         $translator = I18n::getTranslator('me_cms/photos', 'it');
         $this->assertEquals('Devi prima creare un album', $translator->translate('You must first create an album'));

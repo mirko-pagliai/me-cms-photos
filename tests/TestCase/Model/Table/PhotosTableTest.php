@@ -74,7 +74,7 @@ class PhotosTableTest extends TableTestCase
      * Test for event methods
      * @test
      */
-    public function testEventMethods()
+    public function testEventMethods(): void
     {
         $entity = $this->Table->newEntity(self::$example);
         $this->assertNotEmpty($this->Table->save($entity));
@@ -88,7 +88,7 @@ class PhotosTableTest extends TableTestCase
      * Test for `buildRules()` method
      * @test
      */
-    public function testBuildRules()
+    public function testBuildRules(): void
     {
         $entity = $this->Table->newEntity(self::$example);
         $this->assertNotEmpty($this->Table->save($entity));
@@ -107,7 +107,7 @@ class PhotosTableTest extends TableTestCase
      * Test for `initialize()` method
      * @test
      */
-    public function testInitialize()
+    public function testInitialize(): void
     {
         $this->assertEquals('photos', $this->Table->getTable());
         $this->assertEquals('filename', $this->Table->getDisplayField());
@@ -126,7 +126,7 @@ class PhotosTableTest extends TableTestCase
      * Test for `find()` methods
      * @test
      */
-    public function testFindMethods()
+    public function testFindMethods(): void
     {
         $query = $this->Table->find('active');
         $this->assertStringEndsWith('FROM photos Photos WHERE Photos.active = :c0', $query->sql());
@@ -141,7 +141,7 @@ class PhotosTableTest extends TableTestCase
      * Test for `queryFromFilter()` method
      * @test
      */
-    public function testQueryFromFilter()
+    public function testQueryFromFilter(): void
     {
         $query = $this->Table->queryFromFilter($this->Table->find(), ['album' => 2]);
         $this->assertStringEndsWith('FROM photos Photos WHERE album_id = :c0', $query->sql());

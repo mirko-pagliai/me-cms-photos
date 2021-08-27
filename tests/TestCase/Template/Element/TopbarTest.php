@@ -27,7 +27,7 @@ class TopbarTest extends TestCase
      * Test for `topbar` element
      * @test
      */
-    public function testTopbar()
+    public function testTopbar(): void
     {
         $result = (new AppView())->element('MeCms.topbar');
         $this->assertStringContainsString('<a href="/" class="nav-link" title="Home"><i class="fas fa-home"> </i> Home</a>', $result);

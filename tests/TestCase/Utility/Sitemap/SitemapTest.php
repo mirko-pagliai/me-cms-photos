@@ -56,7 +56,7 @@ class SitemapTest extends TestCase
      * Test for `photos()` method
      * @test
      */
-    public function testPhotos()
+    public function testPhotos(): void
     {
         $this->loadFixtures('Photos', 'PhotosAlbums');
         $table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');

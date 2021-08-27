@@ -27,7 +27,7 @@ class MenuHelperTest extends MenuHelperTestCase
      * Tests for `photos()` method
      * @test
      */
-    public function testPhotos()
+    public function testPhotos(): void
     {
         [$links,,, $handledControllers] = $this->Helper->photos();
         $this->assertNotEmpty($links);

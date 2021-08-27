@@ -38,7 +38,7 @@ class PhotosWidgetsCellTest extends CellTestCase
      * Test for `albums()` method
      * @test
      */
-    public function testAlbums()
+    public function testAlbums(): void
     {
         $widget = 'MeCms/Photos.Photos::albums';
 
@@ -116,7 +116,7 @@ class PhotosWidgetsCellTest extends CellTestCase
      * Test for `latest()` method
      * @test
      */
-    public function testLatest()
+    public function testLatest(): void
     {
         $widget = 'MeCms/Photos.Photos::latest';
 
@@ -173,7 +173,7 @@ class PhotosWidgetsCellTest extends CellTestCase
      * Test for `random()` method
      * @test
      */
-    public function testRandom()
+    public function testRandom(): void
     {
         $widget = 'MeCms/Photos.Photos::random';
 

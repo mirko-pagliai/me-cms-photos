@@ -29,7 +29,7 @@ class CopyConfigCommandTest extends TestCase
      * Tests for `execute()` method
      * @test
      */
-    public function testExecute()
+    public function testExecute(): void
     {
         $this->exec('me_cms.copy_config -v');
         $this->assertOutputContains('File or directory `' . (new Filesystem())->rtr(TEST_APP . 'TestApp' . DS . 'config' . DS . 'me_cms_photos.php') . '` already exists');

@@ -37,7 +37,7 @@ class PhotosControllerTest extends ControllerTestCase
      * Tests for `view()` method
      * @test
      */
-    public function testView()
+    public function testView(): void
     {
         $url = ['_name' => 'photo', 'test-album', '1'];
 
@@ -61,7 +61,7 @@ class PhotosControllerTest extends ControllerTestCase
      * Tests for `preview()` method
      * @test
      */
-    public function testPreview()
+    public function testPreview(): void
     {
         $this->get(['_name' => 'photosPreview', 4]);
         $this->assertResponseOkAndNotEmpty();
