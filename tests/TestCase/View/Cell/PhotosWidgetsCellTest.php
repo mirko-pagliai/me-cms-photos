@@ -22,6 +22,7 @@ use MeCms\TestSuite\CellTestCase;
 
 /**
  * PhotosWidgetsCellTest class
+ * @property \MeCms\Photos\Model\Table\PhotosTable $Table
  */
 class PhotosWidgetsCellTest extends CellTestCase
 {

@@ -33,6 +33,10 @@ use MeCms\Photos\Model\Validation\PhotoValidator;
  * @method \MeCms\Photos\Model\Entity\Photo patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
  * @method \MeCms\Photos\Model\Entity\Photo[] patchEntities($entities, array $data, array $options = [])
  * @method \MeCms\Photos\Model\Entity\Photo findOrCreate($search, callable $callback = null, $options = [])
+ * @method findActiveByAlbumId($albumId)
+ * @method findActiveById($id)
+ * @method findById($id)
+ * @method findPendingById($id)
  * @mixin \Cake\ORM\Behavior\TimestampBehavior
  * @mixin \Cake\ORM\Behavior\CounterCacheBehavior
  */

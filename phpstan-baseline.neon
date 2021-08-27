@@ -1,0 +1,162 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$query of method MeCms\\\\Photos\\\\Model\\\\Table\\\\PhotosTable\\:\\:queryFromFilter\\(\\) expects MeCms\\\\ORM\\\\Query, Cake\\\\ORM\\\\Query given\\.$#"
+			count: 1
+			path: src/Controller/Admin/PhotosController.php
+
+		-
+			message: "#^Variable \\$photo might not be defined\\.$#"
+			count: 2
+			path: templates/Admin/Photos/edit.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 10
+			path: templates/Admin/Photos/edit.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 17
+			path: templates/Admin/Photos/index.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/index_as_grid.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 12
+			path: templates/Admin/Photos/index_as_grid.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/upload.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 10
+			path: templates/Admin/Photos/upload.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/add.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 9
+			path: templates/Admin/PhotosAlbums/add.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/edit.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 9
+			path: templates/Admin/PhotosAlbums/edit.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 19
+			path: templates/Admin/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 24
+			path: templates/Admin/common/Photos/index.php
+
+		-
+			message: "#^Variable \\$photo might not be defined\\.$#"
+			count: 17
+			path: templates/Photos/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 20
+			path: templates/Photos/view.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 5
+			path: templates/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 6
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 15
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 5
+			path: templates/cell/PhotosWidgets/albums_as_form.php
+
+		-
+			message: "#^Undefined variable\\: \\$this$#"
+			count: 1
+			path: templates/cell/PhotosWidgets/albums_as_list.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/albums_as_list.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/latest.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/random.php
+
+		-
+			message: "#^Variable \\$link might not be defined\\.$#"
+			count: 1
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Variable \\$path might not be defined\\.$#"
+			count: 1
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Parameter \\#1 \\$query of method MeCms\\\\Photos\\\\Model\\\\Table\\\\PhotosTable\\:\\:queryFromFilter\\(\\) expects MeCms\\\\ORM\\\\Query, Cake\\\\ORM\\\\Query given\\.$#"
+			count: 3
+			path: tests/TestCase/Model/Table/PhotosTableTest.php
+

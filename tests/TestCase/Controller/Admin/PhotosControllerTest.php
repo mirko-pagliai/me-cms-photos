@@ -22,6 +22,7 @@ use MeCms\TestSuite\ControllerTestCase;
 
 /**
  * PhotosControllerTest class
+ * @property \MeCms\Photos\Model\Table\PhotosTable $Table
  */
 class PhotosControllerTest extends ControllerTestCase
 {

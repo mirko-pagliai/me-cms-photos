@@ -20,6 +20,7 @@ use MeCms\Controller\Admin\AppController;
 
 /**
  * PhotosAlbums controller
+ * @property \MeCms\Controller\Component\AuthComponent $Auth
  * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $PhotosAlbums
  */
 class PhotosAlbumsController extends AppController
@@ -34,7 +35,7 @@ class PhotosAlbumsController extends AppController
     public function isAuthorized($user = null): bool
     {
         //Only admins and managers can delete albums
-        return !$this->getRequest()->isDelete() ?: $this->Auth->isGroup(['admin', 'manager']);
+        return !$this->getRequest()->is('delete') ?: $this->Auth->isGroup(['admin', 'manager']);
     }
 
     /**

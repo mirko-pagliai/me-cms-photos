@@ -25,6 +25,9 @@ use MeCms\Photos\Model\Validation\PhotosAlbumValidator;
 
 /**
  * PhotosAlbums model
+ * @method findActiveBySlug($slug)
+ * @method findById($id)
+ * @property \Cake\ORM\Association\HasMany $Photos
  */
 class PhotosAlbumsTable extends AppTable
 {

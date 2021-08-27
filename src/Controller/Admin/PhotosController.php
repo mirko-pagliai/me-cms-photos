@@ -22,6 +22,8 @@ use MeCms\Controller\Admin\AppController;
 
 /**
  * Photos controller
+ * @property \MeCms\Controller\Component\AuthComponent $Auth
+ * @property \MeTools\Controller\Component\FlashComponent $Flash
  * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Albums
  * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  * @property \MeTools\Controller\Component\UploaderComponent $Uploader
@@ -65,7 +67,7 @@ class PhotosController extends AppController
     public function isAuthorized($user = null): bool
     {
         //Only admins and managers can delete photos
-        return $this->getRequest()->isDelete() ? $this->Auth->isGroup(['admin', 'manager']) : true;
+        return $this->getRequest()->is('delete') ? $this->Auth->isGroup(['admin', 'manager']) : true;
     }
 
     /**

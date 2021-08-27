@@ -1,3 +1,6 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     level: 6
 
@@ -9,6 +12,9 @@ parameters:
 
     bootstrapFiles:
         - tests/bootstrap.php
+        - config/bootstrap.php
+        - vendor/mirko-pagliai/cakephp-thumber/config/bootstrap.php
+        - vendor/mirko-pagliai/me-cms/config/bootstrap.php
 
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
@@ -17,28 +23,3 @@ parameters:
     excludes_analyse:
         - config/Migrations/
         - tests/test_app/
-
-    ignoreErrors:
-        - '#^Constant [\w\_]+ not found\.$#'
-        - '#^Call to an undefined method Cake\\(Controller\\(Controller|Component\\(Auth|Flash)Component)|Datasource\\RepositoryInterface|Core\\PluginApplicationInterface|Http\\ServerRequest|ORM\\Association\\BelongsToMany)#'
-        - '#^(Access|Call) to an undefined (method|property) (Cake\\ORM\\|MeCms\\Photos\\Model\\Table\\\w+)Table#'
-
-        -
-            message: '#expects MeCms\\ORM\\Query, Cake\\ORM\\Query given\.$#'
-            path: src/Controller
-
-        -
-            message: '#^Access to an undefined property MeCms\\Photos\\View\\Cell\\PhotosWidgetsCell::\$Photos\.$#'
-            path: src/View/Cell/PhotosWidgetsCell.php
-
-        -
-            message: '#^Access to an undefined property MeCms\\Photos\\View\\Helper\\TopbarHelper::\$Html\.$#'
-            path: src/View/Helper/TopbarHelper.php
-
-        -
-            message: '#^(Undefined variable: \$this|Variable \$\w+ might not be defined\.)$#'
-            path: templates
-
-        -
-            message: '#no (return )?typehint specified\.$#'
-            path: tests/TestCase

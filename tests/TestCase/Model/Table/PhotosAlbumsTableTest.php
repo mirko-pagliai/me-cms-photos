@@ -21,6 +21,7 @@ use Tools\Filesystem;
 
 /**
  * PhotosAlbumsTableTest class
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
  */
 class PhotosAlbumsTableTest extends TableTestCase
 {

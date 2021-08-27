@@ -20,6 +20,7 @@ use MeCms\TestSuite\ControllerTestCase;
 
 /**
  * PhotosAlbumsControllerTest class
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
  */
 class PhotosAlbumsControllerTest extends ControllerTestCase
 {

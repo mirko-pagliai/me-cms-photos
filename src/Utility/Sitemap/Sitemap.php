@@ -39,25 +39,26 @@ class Sitemap extends SitemapBase
             return [];
         }
 
-        $table = TableRegistry::get('MeCms/Photos.PhotosAlbums');
-        $url = Cache::read('sitemap', $table->getCacheName());
+        /** @var \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table */
+        $Table = TableRegistry::get('MeCms/Photos.PhotosAlbums');
+        $url = Cache::read('sitemap', $Table->getCacheName());
 
         if (!$url) {
-            $albums = $table->find('active')
+            $albums = $Table->find('active')
                 ->select(['id', 'slug', 'created'])
-                ->contain($table->Photos->getAlias(), function (Query $query) {
+                ->contain($Table->Photos->getAlias(), function (Query $query) {
                     return $query->find('active')
                         ->select(['id', 'album_id', 'modified'])
                         ->orderDesc('modified');
                 })
-                ->orderDesc(sprintf('%s.created', $table->getAlias()));
+                ->orderDesc(sprintf('%s.created', $Table->getAlias()));
 
             if ($albums->isEmpty()) {
                 return [];
             }
 
             //Adds albums index
-            $latest = $table->Photos->find('active')
+            $latest = $Table->Photos->find('active')
                 ->select(['modified'])
                 ->orderDesc('modified')
                 ->firstOrFail();
@@ -79,7 +80,7 @@ class Sitemap extends SitemapBase
                 }
             }
 
-            Cache::write('sitemap', $url, $table->getCacheName());
+            Cache::write('sitemap', $url, $Table->getCacheName());
         }
 
         return $url;
