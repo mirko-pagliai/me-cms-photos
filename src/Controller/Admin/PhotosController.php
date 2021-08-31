@@ -35,10 +35,10 @@ class PhotosController extends AppController
      * You can use this method to perform logic that needs to happen before
      *   each controller action
      * @param \Cake\Event\EventInterface $event An Event instance
-     * @return \Cake\Http\Response|null
+     * @return \Cake\Http\Response|null|void
      * @uses \MeCms\Photos\Model\Table\PhotosAlbums::getList()
      */
-    public function beforeFilter(EventInterface $event): ?Response
+    public function beforeFilter(EventInterface $event)
     {
         $result = parent::beforeFilter($event);
         if ($result) {
@@ -109,6 +109,7 @@ class PhotosController extends AppController
      */
     public function upload(): ?Response
     {
+        /** @var string $album */
         $album = $this->getRequest()->getQuery('album');
         $albums = $this->viewBuilder()->getVar('albums')->toArray();
 

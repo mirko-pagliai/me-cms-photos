@@ -43,7 +43,10 @@ class PhotosAlbumsController extends AppController
 
         //If there is only one record, redirects
         if ($albums->count() === 1) {
-            return $this->redirect(['_name' => 'album', $albums->first()->get('slug')]);
+            /** @var \MeCms\Photos\Model\Entity\PhotosAlbum $album */
+            $album = $albums->first();
+
+            return $this->redirect(['_name' => 'album', $album->get('slug')]);
         }
 
         //Album photos are randomly ordered

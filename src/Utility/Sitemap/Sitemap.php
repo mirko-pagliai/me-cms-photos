@@ -58,11 +58,12 @@ class Sitemap extends SitemapBase
             }
 
             //Adds albums index
+            /** @var \MeCms\Photos\Model\Entity\Photo $latest */
             $latest = $Table->Photos->find('active')
                 ->select(['modified'])
                 ->orderDesc('modified')
                 ->firstOrFail();
-            $url[] = self::parse(['_name' => 'albums'], ['lastmod' => $latest->get('modified')]);
+            $url = [self::parse(['_name' => 'albums'], ['lastmod' => $latest->get('modified')])];
 
             foreach ($albums as $album) {
                 //Adds album
