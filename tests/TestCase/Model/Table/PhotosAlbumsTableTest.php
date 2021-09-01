@@ -21,6 +21,7 @@ use Tools\Filesystem;
 
 /**
  * PhotosAlbumsTableTest class
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
  */
 class PhotosAlbumsTableTest extends TableTestCase
 {
@@ -53,7 +54,7 @@ class PhotosAlbumsTableTest extends TableTestCase
      * Test for event methods
      * @test
      */
-    public function testEventMethods()
+    public function testEventMethods(): void
     {
         $entity = $this->Table->newEntity(['title' => 'new album', 'slug' => 'new-album']);
         $this->assertNotEmpty($this->Table->save($entity));
@@ -67,7 +68,7 @@ class PhotosAlbumsTableTest extends TableTestCase
      * Test for `buildRules()` method
      * @test
      */
-    public function testBuildRules()
+    public function testBuildRules(): void
     {
         $example = ['title' => 'My title', 'slug' => 'my-slug'];
 
@@ -87,7 +88,7 @@ class PhotosAlbumsTableTest extends TableTestCase
      * Test for `initialize()` method
      * @test
      */
-    public function testInitialize()
+    public function testInitialize(): void
     {
         $this->assertEquals('photos_albums', $this->Table->getTable());
         $this->assertEquals('title', $this->Table->getDisplayField());
@@ -105,7 +106,7 @@ class PhotosAlbumsTableTest extends TableTestCase
      * Test for `find()` methods
      * @test
      */
-    public function testFindMethods()
+    public function testFindMethods(): void
     {
         $query = $this->Table->find('active');
         $this->assertStringEndsWith('FROM photos_albums PhotosAlbums INNER JOIN photos Photos ON (Photos.active = :c0 AND PhotosAlbums.id = (Photos.album_id))', $query->sql());

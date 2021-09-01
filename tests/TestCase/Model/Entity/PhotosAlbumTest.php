@@ -38,7 +38,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for fields that cannot be mass assigned
      * @test
      */
-    public function testNoAccessibleProperties()
+    public function testNoAccessibleProperties(): void
     {
         $this->assertHasNoAccessibleProperty(['id', 'photo_count', 'modified']);
     }
@@ -47,7 +47,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getPath()` method
      * @test
      */
-    public function testPathGetMutator()
+    public function testPathGetMutator(): void
     {
         $this->assertNotEmpty($this->Entity->get('path'));
     }
@@ -56,7 +56,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getPreview()` method
      * @test
      */
-    public function testPreviewGetMutator()
+    public function testPreviewGetMutator(): void
     {
         $path = WWW_ROOT . 'img' . DS . 'photos' . DS . '1' . DS . 'photo.jpg';
         copy(WWW_ROOT . 'img' . DS . 'image.jpg', $path);
@@ -69,7 +69,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getUrl()` method
      * @test
      */
-    public function testUrl()
+    public function testUrl(): void
     {
         $this->assertStringEndsWith('/album/a-slug', $this->Entity->get('url'));
     }

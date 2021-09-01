@@ -1,0 +1,212 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
+			count: 1
+			path: src/Controller/PhotosAlbumsController.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:readMany\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/PhotosAlbumsController.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:writeMany\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/PhotosAlbumsController.php
+
+		-
+			message: "#^Parameter \\#4 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Controller/PhotosAlbumsController.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Utility/Sitemap/Sitemap.php
+
+		-
+			message: "#^Parameter \\#3 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:write\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Utility/Sitemap/Sitemap.php
+
+		-
+			message: "#^Variable \\$photo might not be defined\\.$#"
+			count: 2
+			path: templates/Admin/Photos/edit.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 10
+			path: templates/Admin/Photos/edit.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 17
+			path: templates/Admin/Photos/index.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/index_as_grid.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 12
+			path: templates/Admin/Photos/index_as_grid.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/Photos/upload.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 10
+			path: templates/Admin/Photos/upload.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/add.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 9
+			path: templates/Admin/PhotosAlbums/add.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/edit.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 9
+			path: templates/Admin/PhotosAlbums/edit.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/Admin/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 19
+			path: templates/Admin/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 24
+			path: templates/Admin/common/Photos/index.php
+
+		-
+			message: "#^Variable \\$photo might not be defined\\.$#"
+			count: 17
+			path: templates/Photos/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 20
+			path: templates/Photos/view.php
+
+		-
+			message: "#^Variable \\$albums might not be defined\\.$#"
+			count: 1
+			path: templates/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 5
+			path: templates/PhotosAlbums/index.php
+
+		-
+			message: "#^Variable \\$album might not be defined\\.$#"
+			count: 6
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$photos might not be defined\\.$#"
+			count: 1
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 15
+			path: templates/PhotosAlbums/view.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 5
+			path: templates/cell/PhotosWidgets/albums_as_form.php
+
+		-
+			message: "#^Undefined variable\\: \\$this$#"
+			count: 1
+			path: templates/cell/PhotosWidgets/albums_as_list.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/albums_as_list.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/latest.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/cell/PhotosWidgets/random.php
+
+		-
+			message: "#^Variable \\$link might not be defined\\.$#"
+			count: 1
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Variable \\$path might not be defined\\.$#"
+			count: 1
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Variable \\$this might not be defined\\.$#"
+			count: 3
+			path: templates/element/views/photo-preview.php
+
+		-
+			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
+			count: 1
+			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 2
+			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:readMany\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: tests/TestCase/Controller/PhotosControllerTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
+			path: tests/TestCase/Utility/Sitemap/SitemapTest.php
+
+		-
+			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 5
+			path: tests/TestCase/View/Cell/PhotosWidgetsCellTest.php
+

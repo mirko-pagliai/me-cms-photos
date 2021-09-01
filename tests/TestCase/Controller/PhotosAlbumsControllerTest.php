@@ -22,6 +22,8 @@ use MeCms\TestSuite\ControllerTestCase;
 
 /**
  * PhotosAlbumsControllerTest class
+ * @property \MeCms\Photos\Controller\PhotosAlbumsController $_controller
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
  */
 class PhotosAlbumsControllerTest extends ControllerTestCase
 {
@@ -38,7 +40,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `index()` method
      * @test
      */
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get(['_name' => 'albums']);
         $this->assertResponseOkAndNotEmpty();
@@ -68,7 +70,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `view()` method
      * @test
      */
-    public function testView()
+    public function testView(): void
     {
         $url = ['_name' => 'album', 'test-album'];
 

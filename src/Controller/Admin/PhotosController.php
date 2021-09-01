@@ -22,6 +22,8 @@ use MeCms\Controller\Admin\AppController;
 
 /**
  * Photos controller
+ * @property \MeCms\Controller\Component\AuthComponent $Auth
+ * @property \MeTools\Controller\Component\FlashComponent $Flash
  * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Albums
  * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  * @property \MeTools\Controller\Component\UploaderComponent $Uploader
@@ -33,10 +35,10 @@ class PhotosController extends AppController
      * You can use this method to perform logic that needs to happen before
      *   each controller action
      * @param \Cake\Event\EventInterface $event An Event instance
-     * @return \Cake\Http\Response|null
+     * @return \Cake\Http\Response|null|void
      * @uses \MeCms\Photos\Model\Table\PhotosAlbums::getList()
      */
-    public function beforeFilter(EventInterface $event): ?Response
+    public function beforeFilter(EventInterface $event)
     {
         $result = parent::beforeFilter($event);
         if ($result) {
@@ -65,7 +67,7 @@ class PhotosController extends AppController
     public function isAuthorized($user = null): bool
     {
         //Only admins and managers can delete photos
-        return $this->getRequest()->isDelete() ? $this->Auth->isGroup(['admin', 'manager']) : true;
+        return $this->getRequest()->is('delete') ? $this->Auth->isGroup(['admin', 'manager']) : true;
     }
 
     /**
@@ -107,6 +109,7 @@ class PhotosController extends AppController
      */
     public function upload(): ?Response
     {
+        /** @var string $album */
         $album = $this->getRequest()->getQuery('album');
         $albums = $this->viewBuilder()->getVar('albums')->toArray();
 
@@ -122,7 +125,7 @@ class PhotosController extends AppController
                 return null;
             }
 
-            $uploaded = $this->Uploader->set($this->getRequest()->getData('file'))
+            $uploaded = $this->Uploader->setFile($this->getRequest()->getData('file'))
                 ->mimetype('image')
                 ->save(PHOTOS . $album);
 

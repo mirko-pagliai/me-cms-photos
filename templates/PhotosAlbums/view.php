@@ -62,7 +62,7 @@ if (getConfig('default.fancybox')) {
         if (getConfig('default.fancybox')) {
             $linkOptions += [
                 'data-caption' => $photo->get('description'),
-                'data-src' => $this->Thumb->resizeUrl($photo->get('path'), ['height' => 1280]),
+                'data-src' => $this->Thumb->resizeUrl($photo->get('path'), ['width' => 1280]),
             ];
         }
 

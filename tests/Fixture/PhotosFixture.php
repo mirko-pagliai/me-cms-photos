@@ -112,7 +112,7 @@ class PhotosFixture extends TestFixture
         foreach ($this->records as $record) {
             $file = PHOTOS . $record['album_id'] . DS . $record['filename'];
             if (!file_exists($file)) {
-                @mkdir(dirname($file));
+                @mkdir(dirname($file), 0777, true);
                 copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
             }
         }

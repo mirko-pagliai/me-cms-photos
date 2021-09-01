@@ -20,6 +20,7 @@ use Cake\View\Cell;
 
 /**
  * PhotosWidgets cell
+ * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  */
 class PhotosWidgetsCell extends Cell
 {
@@ -42,7 +43,7 @@ class PhotosWidgetsCell extends Cell
         $this->viewBuilder()->setTemplate(sprintf('albums_as_%s', $render));
 
         //Returns on albums index
-        if ($this->request->isUrl(['_name' => 'albums'])) {
+        if ($this->request->is('url', ['_name' => 'albums'])) {
             return;
         }
 
@@ -65,7 +66,7 @@ class PhotosWidgetsCell extends Cell
     public function latest(int $limit = 1): void
     {
         //Returns on the same controllers
-        if ($this->request->isController(['Photos', 'PhotosAlbums'])) {
+        if ($this->request->is('controller', ['Photos', 'PhotosAlbums'])) {
             return;
         }
 
@@ -87,7 +88,7 @@ class PhotosWidgetsCell extends Cell
     public function random(int $limit = 1): void
     {
         //Returns on the same controllers
-        if ($this->request->isController(['Photos', 'PhotosAlbums'])) {
+        if ($this->request->is('controller', ['Photos', 'PhotosAlbums'])) {
             return;
         }
 

@@ -19,6 +19,7 @@ use MeCms\TestSuite\MenuHelperTestCase;
 
 /**
  * MenuHelperTest class
+ * @property \MeCms\Photos\View\Helper\MenuHelper $Helper
  */
 class MenuHelperTest extends MenuHelperTestCase
 {
@@ -26,7 +27,7 @@ class MenuHelperTest extends MenuHelperTestCase
      * Tests for `photos()` method
      * @test
      */
-    public function testPhotos()
+    public function testPhotos(): void
     {
         [$links,,, $handledControllers] = $this->Helper->photos();
         $this->assertNotEmpty($links);

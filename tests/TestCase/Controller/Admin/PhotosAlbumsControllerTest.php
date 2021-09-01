@@ -20,6 +20,7 @@ use MeCms\TestSuite\ControllerTestCase;
 
 /**
  * PhotosAlbumsControllerTest class
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
  */
 class PhotosAlbumsControllerTest extends ControllerTestCase
 {
@@ -35,7 +36,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `isAuthorized()` method
      * @test
      */
-    public function testIsAuthorized()
+    public function testIsAuthorized(): void
     {
         $this->assertGroupsAreAuthorized([
             'admin' => true,
@@ -55,7 +56,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `index()` method
      * @test
      */
-    public function testIndex()
+    public function testIndex(): void
     {
         $this->get($this->url + ['action' => 'index']);
         $this->assertResponseOkAndNotEmpty();
@@ -67,7 +68,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `add()` method
      * @test
      */
-    public function testAdd()
+    public function testAdd(): void
     {
         $url = $this->url + ['action' => 'add'];
 
@@ -92,7 +93,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `edit()` method
      * @test
      */
-    public function testEdit()
+    public function testEdit(): void
     {
         $url = $this->url + ['action' => 'edit', 1];
 
@@ -117,7 +118,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
      * Tests for `delete()` method
      * @test
      */
-    public function testDelete()
+    public function testDelete(): void
     {
         //POST request. This album has no photos
         $this->post($this->url + ['action' => 'delete', 3]);

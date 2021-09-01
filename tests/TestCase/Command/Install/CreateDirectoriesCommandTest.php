@@ -29,7 +29,7 @@ class CreateDirectoriesCommandTest extends TestCase
      * Tests for `execute()` method
      * @test
      */
-    public function testExecute()
+    public function testExecute(): void
     {
         @mkdir(PHOTOS, 0755, true);
         $this->exec('me_tools.create_directories -v');

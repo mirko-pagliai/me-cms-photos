@@ -56,10 +56,11 @@ class SitemapTest extends TestCase
      * Test for `photos()` method
      * @test
      */
-    public function testPhotos()
+    public function testPhotos(): void
     {
         $this->loadFixtures('Photos', 'PhotosAlbums');
-        $table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
+        /** @var \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table */
+        $Table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
 
         $expected = [
             [
@@ -94,14 +95,14 @@ class SitemapTest extends TestCase
             ],
         ];
         $this->assertEquals($expected, Sitemap::photos());
-        $this->assertEquals($expected, Cache::read('sitemap', $table->getCacheName()));
+        $this->assertEquals($expected, Cache::read('sitemap', $Table->getCacheName()));
 
         Configure::write('MeCms/Photos.sitemap.photos', false);
         $this->assertEmpty(Sitemap::photos());
 
         //Deletes all records
         Configure::write('MeCms/Photos.sitemap.photos', true);
-        $table->deleteAll(['id IS NOT' => null]);
+        $Table->deleteAll(['id IS NOT' => null]);
         $this->assertEmpty(Sitemap::photos());
     }
 }

@@ -39,7 +39,7 @@ class PhotoValidatorTest extends ValidationTestCase
      * Test validation for `album_id` property
      * @test
      */
-    public function testValidationForAlbumId()
+    public function testValidationForAlbumId(): void
     {
         $errors = $this->Table->newEntity(['album_id' => 'str'] + $this->example)->getErrors();
         $this->assertEquals(['album_id' => ['naturalNumber' => I18N_SELECT_VALID_OPTION]], $errors);
@@ -49,7 +49,7 @@ class PhotoValidatorTest extends ValidationTestCase
      * Test validation for `filename` property
      * @test
      */
-    public function testValidationForFilename()
+    public function testValidationForFilename(): void
     {
         $errors = $this->Table->newEntity(['filename' => str_repeat('a', 252) . '.gif'] + $this->example)->getErrors();
         $this->assertEquals(['filename' => ['maxLength' => 'Must be at most 255 chars']], $errors);
