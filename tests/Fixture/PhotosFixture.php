@@ -87,27 +87,27 @@ class PhotosFixture extends TestFixture
     ];
 
     /**
-     * Run after all tests executed, should remove the table/collection from
-     *  the connection
-     * @param ConnectionInterface $db An instance of the connection the fixture
-     *  should be removed from
-     * @return bool
+     * Run after all tests executed, should remove the table/collection from the connection
+     * @param \Cake\Datasource\ConnectionInterface $connection An instance of the
+     *  connection the fixture should be removed from
+     * @return bool True on success, false on failure
      */
-    public function drop(ConnectionInterface $db): bool
+    public function drop(ConnectionInterface $connection): bool
     {
         (new Filesystem())->unlinkRecursive(PHOTOS, 'empty', true);
 
-        return parent::drop($db);
+        return parent::drop($connection);
     }
 
     /**
-     * Run before each test is executed
-     * @param ConnectionInterface $db An instance of the connection into which
-     *  the records will be inserted
+     * Run before each test is executed.
+     * Should insert all the records into the test database.
+     * @param \Cake\Datasource\ConnectionInterface $connection An instance of
+     *  the connection into which the records will be inserted
      * @return \Cake\Database\StatementInterface|bool on success or if there are
-     *  no records to insert, or `false` on failure
+     *  no records to insert, or false on failure
      */
-    public function insert(ConnectionInterface $db)
+    public function insert(ConnectionInterface $connection)
     {
         foreach ($this->records as $record) {
             $file = PHOTOS . $record['album_id'] . DS . $record['filename'];
@@ -117,6 +117,6 @@ class PhotosFixture extends TestFixture
             }
         }
 
-        return parent::insert($db);
+        return parent::insert($connection);
     }
 }

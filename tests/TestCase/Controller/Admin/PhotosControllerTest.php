@@ -154,7 +154,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertResponseFailure();
         $this->assertResponseContains(I18N_MISSING_ID);
 
-        $url += ['?' => [substr('album_id', 0, -3) => 1]];
+        $url += ['?' => [substr('album_id', 0, -3) ?: '' => 1]];
 
         $this->post($url, ['file' => $this->createImageToUpload()]);
         $this->assertResponseFailure();
