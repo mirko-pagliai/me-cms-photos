@@ -65,7 +65,7 @@ Configure::write('App', [
 Configure::write('Session', ['defaults' => 'php']);
 Configure::write('Assets.target', TMP . 'assets');
 Configure::write('DatabaseBackup.target', TMP . 'backups');
-Configure::write('pluginsToLoad', ['MeCms', 'MeCms/Photos']);
+Configure::write('pluginsToLoad', ['Thumber/Cake', 'MeCms', 'MeCms/Photos']);
 
 Cache::setConfig([
     '_cake_core_' => [
