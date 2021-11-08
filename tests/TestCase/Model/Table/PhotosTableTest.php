@@ -63,7 +63,7 @@ class PhotosTableTest extends TableTestCase
     {
         parent::tearDown();
 
-        (new Filesystem())->unlinkRecursive(PHOTOS, 'empty', true);
+        Filesystem::instance()->unlinkRecursive(PHOTOS, 'empty', true);
     }
 
     /**

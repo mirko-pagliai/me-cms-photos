@@ -82,7 +82,7 @@ class PhotosAlbumsFixture extends TestFixture
      */
     public function drop(ConnectionInterface $connection): bool
     {
-        (new Filesystem())->unlinkRecursive(PHOTOS, 'empty');
+        Filesystem::instance()->unlinkRecursive(PHOTOS, 'empty');
 
         return parent::drop($connection);
     }
