@@ -109,7 +109,7 @@ class PhotosAlbumsTableTest extends TableTestCase
     public function testFindMethods(): void
     {
         $query = $this->Table->find('active');
-        $this->assertStringEndsWith('FROM photos_albums PhotosAlbums INNER JOIN photos Photos ON (Photos.active = :c0 AND PhotosAlbums.id = (Photos.album_id))', $query->sql());
+        $this->assertStringEndsWith('FROM `photos_albums` `PhotosAlbums` INNER JOIN `photos` `Photos` ON (`Photos`.`active` = :c0 AND `PhotosAlbums`.`id` = `Photos`.`album_id`)', $query->sql());
         $this->assertTrue($query->getValueBinder()->bindings()[':c0']['value']);
     }
 }

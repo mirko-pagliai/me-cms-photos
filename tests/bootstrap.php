@@ -76,7 +76,7 @@ Cache::setConfig([
 ]);
 
 if (!getenv('db_dsn')) {
-    putenv('db_dsn=mysql://travis@localhost/test');
+    putenv('db_dsn=mysql://travis@localhost/test?encoding=utf8&quoteIdentifiers=true');
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 
