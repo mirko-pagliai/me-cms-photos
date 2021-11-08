@@ -26,11 +26,6 @@ use Tools\Filesystem;
 class PhotosAlbumsTableTest extends TableTestCase
 {
     /**
-     * @var bool
-     */
-    public $autoFixtures = false;
-
-    /**
      * Fixtures
      * @var array
      */
@@ -109,7 +104,7 @@ class PhotosAlbumsTableTest extends TableTestCase
     public function testFindMethods(): void
     {
         $query = $this->Table->find('active');
-        $this->assertStringEndsWith('FROM `photos_albums` `PhotosAlbums` INNER JOIN `photos` `Photos` ON (`Photos`.`active` = :c0 AND `PhotosAlbums`.`id` = `Photos`.`album_id`)', $query->sql());
+        $this->assertSqlEndsWith('FROM `photos_albums` `PhotosAlbums` INNER JOIN `photos` `Photos` ON (`Photos`.`active` = :c0 AND `PhotosAlbums`.`id` = `Photos`.`album_id`)', $query->sql());
         $this->assertTrue($query->getValueBinder()->bindings()[':c0']['value']);
     }
 }

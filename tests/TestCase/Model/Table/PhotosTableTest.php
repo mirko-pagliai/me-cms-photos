@@ -26,11 +26,6 @@ use Tools\Filesystem;
 class PhotosTableTest extends TableTestCase
 {
     /**
-     * @var bool
-     */
-    public $autoFixtures = false;
-
-    /**
      * @var array
      */
     protected static $example = [
@@ -130,11 +125,11 @@ class PhotosTableTest extends TableTestCase
     public function testFindMethods(): void
     {
         $query = $this->Table->find('active');
-        $this->assertStringEndsWith('FROM `photos` `Photos` WHERE `Photos`.`active` = :c0', $query->sql());
+        $this->assertSqlEndsWith('FROM `photos` `Photos` WHERE `Photos`.`active` = :c0', $query->sql());
         $this->assertTrue($query->getValueBinder()->bindings()[':c0']['value']);
 
         $query = $this->Table->find('pending');
-        $this->assertStringEndsWith('FROM `photos` `Photos` WHERE `Photos`.`active` = :c0', $query->sql());
+        $this->assertSqlEndsWith('FROM `photos` `Photos` WHERE `Photos`.`active` = :c0', $query->sql());
         $this->assertFalse($query->getValueBinder()->bindings()[':c0']['value']);
     }
 
@@ -145,11 +140,11 @@ class PhotosTableTest extends TableTestCase
     public function testQueryFromFilter(): void
     {
         $query = $this->Table->queryFromFilter($this->Table->find(), ['album' => 2]);
-        $this->assertStringEndsWith('FROM `photos` `Photos` WHERE `album_id` = :c0', $query->sql());
+        $this->assertSqlEndsWith('FROM `photos` `Photos` WHERE `album_id` = :c0', $query->sql());
         $this->assertEquals(2, $query->getValueBinder()->bindings()[':c0']['value']);
 
         $query = $this->Table->queryFromFilter($this->Table->find(), ['filename' => 'image.jpg']);
-        $this->assertStringEndsWith('FROM `photos` `Photos` WHERE `Photos`.`filename` like :c0', $query->sql());
+        $this->assertSqlEndsWith('FROM `photos` `Photos` WHERE `Photos`.`filename` like :c0', $query->sql());
         $this->assertEquals('%image.jpg%', $query->getValueBinder()->bindings()[':c0']['value']);
 
         //With some invalid datas

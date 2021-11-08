@@ -124,7 +124,7 @@ class PhotosControllerTest extends ControllerTestCase
         $file = $this->createImageToUpload();
         $this->post($url + ['_ext' => 'json'], compact('file'));
         $this->assertResponseOk();
-        $record = $this->Table->find()->last();
+        $record = $this->Table->find()->all()->last();
         $this->assertEquals(1, $record->get('album_id'));
         $this->assertEquals($file['name'], $record->get('filename'));
         $this->assertFileExists($record->get('path'));
@@ -224,7 +224,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->post($this->url + ['action' => 'delete', 1]);
         $this->assertRedirect(['action' => 'index']);
         $this->assertFlashMessage(I18N_OPERATION_OK);
-        $this->assertTrue($this->Table->findById(1)->isEmpty());
+        $this->assertTrue($this->Table->findById(1)->all()->isEmpty());
         $this->skipIf(IS_WIN);
         $this->assertFileDoesNotExist($record->get('path'));
     }

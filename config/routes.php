@@ -27,21 +27,21 @@ $routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes
 
     //Album
     if (!$routes->nameExists('album')) {
-        $routes->connect('/album/:slug', ['controller' => 'PhotosAlbums', 'action' => 'view'], ['_name' => 'album'])
+        $routes->connect('/album/{slug}', ['controller' => 'PhotosAlbums', 'action' => 'view'], ['_name' => 'album'])
             ->setPatterns(['slug' => '[\d\w\-]+'])
             ->setPass(['slug']);
     }
 
     //Photo
     if (!$routes->nameExists('photo')) {
-        $routes->connect('/photo/:slug/:id', ['controller' => 'Photos', 'action' => 'view'], ['_name' => 'photo'])
+        $routes->connect('/photo/{slug}/{id}', ['controller' => 'Photos', 'action' => 'view'], ['_name' => 'photo'])
             ->setPatterns(['id' => '\d+', 'slug' => '[\d\w\-]+'])
             ->setPass(['slug', 'id']);
     }
 
     //Photo preview
     if (!$routes->nameExists('photosPreview')) {
-        $routes->connect('/photo/preview/:id', ['controller' => 'Photos', 'action' => 'preview'], ['_name' => 'photosPreview'])
+        $routes->connect('/photo/preview/{id}', ['controller' => 'Photos', 'action' => 'preview'], ['_name' => 'photosPreview'])
             ->setPatterns(['slug' => '[\d\w\-]+'])
             ->setPass(['id']);
     }
@@ -52,7 +52,7 @@ $routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes
      * These URLs will become:
      * <pre>/photo/album-name/1</pre>
      */
-    $routes->connect('/photo/:id', ['controller' => 'Photos', 'action' => 'view', 'slug' => ''])
+    $routes->connect('/photo/{id}', ['controller' => 'Photos', 'action' => 'view', 'slug' => ''])
         ->setPatterns(['id' => '\d+'])
         ->setPass(['slug', 'id']);
 });
