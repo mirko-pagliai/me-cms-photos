@@ -17,7 +17,6 @@ namespace MeCms\Photos\Test\Fixture;
 
 use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
-use Tools\Filesystem;
 
 require_once ROOT . 'config' . DS . 'bootstrap.php';
 
@@ -85,19 +84,6 @@ class PhotosFixture extends TestFixture
             'modified' => '2016-12-28 10:41:42',
         ],
     ];
-
-    /**
-     * Run after all tests executed, should remove the table/collection from the connection
-     * @param \Cake\Datasource\ConnectionInterface $connection An instance of the
-     *  connection the fixture should be removed from
-     * @return bool True on success, false on failure
-     */
-    public function drop(ConnectionInterface $connection): bool
-    {
-        Filesystem::instance()->unlinkRecursive(PHOTOS, 'empty', true);
-
-        return parent::drop($connection);
-    }
 
     /**
      * Run before each test is executed.
