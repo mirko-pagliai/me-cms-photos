@@ -6,4 +6,5 @@
 bin/
 composer.lock
 coverage/
+tests/test_app/TestApp/webroot/img/photos/*
 vendor/
