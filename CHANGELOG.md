@@ -1,6 +1,7 @@
 # 1.x branch
 ## 1.0 branch
 ### 1.0.2
+* fixed a small bug in the resolution of the paths;
 * fixed a large number of deprecations introduced by CakePHP 4.3.
 
 ### 1.0.1

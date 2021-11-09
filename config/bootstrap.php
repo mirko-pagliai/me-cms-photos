@@ -18,7 +18,7 @@ use Cake\Core\Configure;
 
 //Sets the default photos directory
 if (!defined('PHOTOS')) {
-    define('PHOTOS', WWW_ROOT . 'img' . DS . 'photos' . DS);
+    define('PHOTOS', WWW_ROOT . 'img' . DS . 'photos');
 }
 
 //Loads the MeCms/Photos configuration and merges with the configuration from

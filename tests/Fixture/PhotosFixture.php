@@ -17,6 +17,7 @@ namespace MeCms\Photos\Test\Fixture;
 
 use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
+use Tools\Filesystem;
 
 require_once ROOT . 'config' . DS . 'bootstrap.php';
 
@@ -96,7 +97,7 @@ class PhotosFixture extends TestFixture
     public function insert(ConnectionInterface $connection)
     {
         foreach ($this->records as $record) {
-            $file = PHOTOS . $record['album_id'] . DS . $record['filename'];
+            $file = Filesystem::instance()->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']);
             if (!file_exists($file)) {
                 @mkdir(dirname($file), 0777, true);
                 copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
