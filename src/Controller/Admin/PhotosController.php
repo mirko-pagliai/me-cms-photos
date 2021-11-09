@@ -130,7 +130,7 @@ class PhotosController extends AppController
                 ->save(PHOTOS . $album);
 
             if (!$uploaded) {
-                $this->setUploadError($this->Uploader->getError());
+                $this->setUploadError($this->Uploader->getError() ?: '');
 
                 return null;
             }
