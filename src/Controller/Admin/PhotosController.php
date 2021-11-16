@@ -127,7 +127,7 @@ class PhotosController extends AppController
 
             $uploaded = $this->Uploader->setFile($this->getRequest()->getData('file'))
                 ->mimetype('image')
-                ->save(PHOTOS . $album);
+                ->save(PHOTOS . DS . $album);
 
             if (!$uploaded) {
                 $this->setUploadError($this->Uploader->getError() ?: '');

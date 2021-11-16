@@ -50,7 +50,7 @@ class PhotosTableTest extends TableTestCase
     {
         parent::setUp();
 
-        $file = PHOTOS . self::$example['album_id'] . DS . self::$example['filename'];
+        $file = Filesystem::instance()->concatenate(PHOTOS, (string)self::$example['album_id'], self::$example['filename']);
         @mkdir(dirname($file));
         @copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
     }

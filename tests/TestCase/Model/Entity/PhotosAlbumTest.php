@@ -17,6 +17,7 @@ namespace MeCms\Photos\Test\TestCase\Model\Entity;
 
 use MeCms\Photos\Model\Entity\Photo;
 use MeCms\TestSuite\EntityTestCase;
+use Tools\Filesystem;
 
 /**
  * PhotosAlbumTest class
@@ -58,7 +59,7 @@ class PhotosAlbumTest extends EntityTestCase
      */
     public function testPreviewGetMutator(): void
     {
-        $path = WWW_ROOT . 'img' . DS . 'photos' . DS . '1' . DS . 'photo.jpg';
+        $path = Filesystem::instance()->concatenate(PHOTOS, '1', 'photo.jpg');
         copy(WWW_ROOT . 'img' . DS . 'image.jpg', $path);
         $this->Entity->set('photos', [new Photo(['album_id' => 1, 'filename' => basename($path)])]);
         $this->assertEquals($this->Entity->get('preview'), $path);
