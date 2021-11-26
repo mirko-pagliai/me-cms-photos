@@ -45,7 +45,7 @@ class PhotosController extends AppController
             return $result;
         }
 
-        $albums = $this->Albums->getList();
+        $albums = $this->Albums->getList()->all();
         if ($albums->isEmpty()) {
             $this->Flash->alert(__d('me_cms/photos', 'You must first create an album'));
 
@@ -127,10 +127,10 @@ class PhotosController extends AppController
 
             $uploaded = $this->Uploader->setFile($this->getRequest()->getData('file'))
                 ->mimetype('image')
-                ->save(PHOTOS . $album);
+                ->save(PHOTOS . DS . $album);
 
             if (!$uploaded) {
-                $this->setUploadError($this->Uploader->getError());
+                $this->setUploadError($this->Uploader->getError() ?: '');
 
                 return null;
             }

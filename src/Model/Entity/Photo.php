@@ -20,6 +20,7 @@ use Cake\Routing\Router;
 use MeTools\Utility\BBCode;
 use Thumber\Cake\Utility\ThumbCreator;
 use Tools\Exceptionist;
+use Tools\Filesystem;
 
 /**
  * Photo entity
@@ -60,7 +61,7 @@ class Photo extends Entity
     {
         Exceptionist::objectPropertyExists($this, ['album_id', 'filename']);
 
-        return PHOTOS . $this->get('album_id') . DS . $this->get('filename');
+        return Filesystem::instance()->concatenate(PHOTOS, (string)$this->get('album_id'), $this->get('filename'));
     }
 
     /**

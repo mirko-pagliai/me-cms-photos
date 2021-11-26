@@ -62,10 +62,11 @@ Configure::write('App', [
     'cssBaseUrl' => 'css/',
     'paths' => ['templates' => [APP . 'templates' . DS]],
 ]);
+Configure::write('Error.ignoredDeprecationPaths', ['*/cakephp/cakephp/src/TestSuite/Fixture/FixtureInjector.php']);
 Configure::write('Session', ['defaults' => 'php']);
 Configure::write('Assets.target', TMP . 'assets');
 Configure::write('DatabaseBackup.target', TMP . 'backups');
-Configure::write('pluginsToLoad', ['MeCms', 'MeCms/Photos']);
+Configure::write('pluginsToLoad', ['Thumber/Cake', 'MeCms', 'MeCms/Photos']);
 
 Cache::setConfig([
     '_cake_core_' => [
@@ -76,7 +77,10 @@ Cache::setConfig([
 ]);
 
 if (!getenv('db_dsn')) {
-    putenv('db_dsn=mysql://travis@localhost/test');
+    putenv('db_dsn=mysql://travis@localhost/test?encoding=utf8&quoteIdentifiers=true');
+    if (getenv('driver_test') == 'postgres') {
+        putenv('db_dsn=postgres://postgres@localhost/travis_ci_test');
+    }
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
 

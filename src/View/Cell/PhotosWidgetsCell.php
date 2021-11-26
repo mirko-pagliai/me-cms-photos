@@ -95,6 +95,7 @@ class PhotosWidgetsCell extends Cell
         $photos = $this->Photos->find('active')
             ->select(['album_id', 'filename'])
             ->cache('widget_random_' . $limit)
+            ->all()
             ->sample($limit);
 
         $this->set(compact('photos'));

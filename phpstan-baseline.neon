@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
 			count: 1
 			path: src/Controller/PhotosAlbumsController.php
 
@@ -181,7 +181,7 @@ parameters:
 			path: templates/element/views/photo-preview.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
 			count: 1
 			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
 

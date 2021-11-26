@@ -18,6 +18,7 @@ namespace MeCms\Photos\Test\TestCase\Model\Entity;
 use Cake\ORM\Entity;
 use MeCms\Photos\Model\Entity\PhotosAlbum;
 use MeCms\TestSuite\EntityTestCase;
+use Tools\Filesystem;
 
 /**
  * PhotoTest class
@@ -55,7 +56,7 @@ class PhotoTest extends EntityTestCase
      */
     public function testPathGetMutator(): void
     {
-        $expected = PHOTOS . $this->Entity->get('album_id') . DS . $this->Entity->get('filename');
+        $expected = Filesystem::instance()->concatenate(PHOTOS, (string)$this->Entity->get('album_id'), $this->Entity->get('filename'));
         $this->assertEquals($expected, $this->Entity->get('path'));
     }
 

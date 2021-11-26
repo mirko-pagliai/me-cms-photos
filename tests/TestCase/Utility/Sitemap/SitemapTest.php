@@ -27,12 +27,6 @@ use MeCms\TestSuite\TestCase;
 class SitemapTest extends TestCase
 {
     /**
-     * Does not automatically load fixtures
-     * @var bool
-     */
-    public $autoFixtures = false;
-
-    /**
      * Fixtures
      * @var array
      */
@@ -58,7 +52,6 @@ class SitemapTest extends TestCase
      */
     public function testPhotos(): void
     {
-        $this->loadFixtures('Photos', 'PhotosAlbums');
         /** @var \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table */
         $Table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
 

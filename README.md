@@ -19,8 +19,23 @@ $ bin/cake plugin load MeCms/Photos
 $ bin/cake migrations migrate -p MeCms/Photos
 ```
 
-
 Please, refer to the CookBook for [more information on loading plugins](https://book.cakephp.org/4/en/plugins.html#loading-a-plugin).
+
+## Testing
+Tests are run for only one driver at a time, by default `mysql`.
+To choose another driver to use, you can set the `driver_test` environment variable before running `phpunit`.
+
+For example:
+```
+driver_test=postgres vendor/bin/phpunit
+```
+
+Alternatively, you can set the `db_dsn` environment variable, indicating the connection parameters. In this case, the driver type will still be detected automatically.
+
+For example:
+```bash
+db_dsn=sqlite:///' . TMP . 'example.sq3 vendor/bin/phpunit
+```
 
 ## Versioning
 For transparency and insight into our release cycle and to maintain backward compatibility, *MeCms/Photos* will be maintained under the [Semantic Versioning guidelines](http://semver.org).

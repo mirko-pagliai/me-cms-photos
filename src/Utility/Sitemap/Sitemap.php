@@ -51,7 +51,8 @@ class Sitemap extends SitemapBase
                         ->select(['id', 'album_id', 'modified'])
                         ->orderDesc('modified');
                 })
-                ->orderDesc(sprintf('%s.created', $Table->getAlias()));
+                ->orderDesc(sprintf('%s.created', $Table->getAlias()))
+                ->all();
 
             if ($albums->isEmpty()) {
                 return [];
