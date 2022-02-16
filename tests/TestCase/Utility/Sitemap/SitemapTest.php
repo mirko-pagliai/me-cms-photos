@@ -17,7 +17,6 @@ namespace MeCms\Photos\Test\TestCase\Utility\Sitemap;
 
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
-use Cake\ORM\TableRegistry;
 use MeCms\Photos\Utility\Sitemap\Sitemap;
 use MeCms\TestSuite\TestCase;
 
@@ -53,7 +52,7 @@ class SitemapTest extends TestCase
     public function testPhotos(): void
     {
         /** @var \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table */
-        $Table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
+        $Table = $this->getTable('MeCms/Photos.PhotosAlbums');
 
         $expected = [
             [

@@ -40,7 +40,7 @@ class Sitemap extends SitemapBase
         }
 
         /** @var \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table */
-        $Table = TableRegistry::get('MeCms/Photos.PhotosAlbums');
+        $Table = TableRegistry::getTableLocator()->get('MeCms/Photos.PhotosAlbums');
         $url = Cache::read('sitemap', $Table->getCacheName());
 
         if (!$url) {
