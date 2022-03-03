@@ -33,9 +33,9 @@ if (!Cache::getConfig('photos')) {
     Cache::setConfig('photos', [
         'className' => 'File',
         'duration' => '+999 days',
-        'prefix' => '',
+        'prefix' => 'me_cms_photos',
         'mask' => 0777,
-        'path' => CACHE . 'me_cms_photos',
+        'path' => CACHE . 'me_cms',
     ]);
 }
 

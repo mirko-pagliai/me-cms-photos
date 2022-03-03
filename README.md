@@ -2,8 +2,8 @@
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.txt)
 [![Build Status](https://api.travis-ci.com/mirko-pagliai/me-cms-photos.svg?branch=master)](https://travis-ci.com/mirko-pagliai/me-cms-photos)
-[![Build status](https://ci.appveyor.com/api/projects/status/rje19tp04vf7ep9g?svg=true)](https://ci.appveyor.com/project/mirko-pagliai/me-cms-photos)
 [![codecov](https://codecov.io/gh/mirko-pagliai/me-cms-photos/branch/master/graph/badge.svg?token=PQXH0Y07E6)](https://codecov.io/gh/mirko-pagliai/me-cms-photos)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/f26430c611aa43c8a08278040b5d86cc)](https://www.codacy.com/gh/mirko-pagliai/me-cms-photos/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mirko-pagliai/me-cms-photos&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/mirko-pagliai/me-cms-photos/badge)](https://www.codefactor.io/repository/github/mirko-pagliai/me-cms-photos)
 
 *MeCms/Photos* plugin allows you to handle photos with [MeCms platform](//github.com/mirko-pagliai/cakephp-for-mecms).

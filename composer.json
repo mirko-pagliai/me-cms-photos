@@ -12,11 +12,11 @@
     ],
     "require": {
         "php": ">=7.2",
-        "mirko-pagliai/me-cms": "2.30.4-RC1"
+        "mirko-pagliai/me-cms": "^2.30.6-RC3"
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^4.0",
-        "phpunit/phpunit": "^8.5.12|^9.0|^9.5"
+        "phpunit/phpunit": "^8.5.14|^9.0|^9.5"
     },
     "autoload": {
         "psr-4": {
