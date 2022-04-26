@@ -48,7 +48,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getPath()` method
      * @test
      */
-    public function testPathGetMutator(): void
+    public function testGetPathVirtualField(): void
     {
         $this->assertNotEmpty($this->Entity->get('path'));
     }
@@ -57,7 +57,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getPreview()` method
      * @test
      */
-    public function testPreviewGetMutator(): void
+    public function testGetPreviewVirtualField(): void
     {
         $path = Filesystem::instance()->concatenate(PHOTOS, '1', 'photo.jpg');
         copy(WWW_ROOT . 'img' . DS . 'image.jpg', $path);
@@ -70,7 +70,7 @@ class PhotosAlbumTest extends EntityTestCase
      * Test for `_getUrl()` method
      * @test
      */
-    public function testUrl(): void
+    public function testGetUrlVirtualField(): void
     {
         $this->assertStringEndsWith('/album/a-slug', $this->Entity->get('url'));
     }

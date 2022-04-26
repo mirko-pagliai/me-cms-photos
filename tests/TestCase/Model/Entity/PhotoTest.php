@@ -54,7 +54,7 @@ class PhotoTest extends EntityTestCase
      * Test for `_getPath()` method
      * @test
      */
-    public function testPathGetMutator(): void
+    public function testGetPathVirtualField(): void
     {
         $expected = Filesystem::instance()->concatenate(PHOTOS, (string)$this->Entity->get('album_id'), $this->Entity->get('filename'));
         $this->assertEquals($expected, $this->Entity->get('path'));
@@ -64,7 +64,7 @@ class PhotoTest extends EntityTestCase
      * Test for `_getDescription()` method
      * @test
      */
-    public function testDescriptionAccessors(): void
+    public function testGetDescriptionAccessor(): void
     {
         $this->assertNotNull($this->Entity->get('description'));
         $this->assertSame('', $this->Entity->set('description', null)->get('description'));
@@ -74,7 +74,7 @@ class PhotoTest extends EntityTestCase
      * Test for `_getPlainDescription()` method
      * @test
      */
-    public function testPlainTextGetMutator(): void
+    public function testGetPlainTextVirtualField(): void
     {
         $this->assertEquals('This is a text', $this->Entity->get('plain_description'));
     }
@@ -83,7 +83,7 @@ class PhotoTest extends EntityTestCase
      * Test for `_getPreview()` method
      * @test
      */
-    public function testPreviewGetMutator(): void
+    public function testGetPreviewVirtualField(): void
     {
         copy(WWW_ROOT . 'img' . DS . 'image.jpg', $this->Entity->get('path'));
         $this->assertInstanceof(Entity::class, $this->Entity->get('preview'));
@@ -97,7 +97,7 @@ class PhotoTest extends EntityTestCase
      * Test for `_getUrl()` method
      * @test
      */
-    public function testUrl(): void
+    public function testGetUrlVirtualField(): void
     {
         $this->assertStringEndsWith('/photo/album-slug/1', $this->Entity->get('url'));
         $this->assertEmpty($this->Entity->set('album', null)->get('url'));
