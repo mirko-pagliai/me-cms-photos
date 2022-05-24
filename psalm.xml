@@ -6,6 +6,7 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     autoloader="tests/bootstrap.php"
+    errorBaseline="psalm-baseline.xml"
 >
     <projectFiles>
         <directory name="config" />
@@ -20,24 +21,7 @@
     </projectFiles>
 
     <issueHandlers>
-        <ImplementedReturnTypeMismatch>
-            <errorLevel type="suppress">
-                <directory name="src/Model/Table" />
-            </errorLevel>
-        </ImplementedReturnTypeMismatch>
-
-        <InternalMethod>
-            <errorLevel type="suppress">
-                <directory name="tests/TestCase" />
-            </errorLevel>
-        </InternalMethod>
-
-        <InvalidArgument>
-            <errorLevel type="suppress">
-                <directory name="src/Controller" />
-                <directory name="tests/TestCase/Controller" />
-            </errorLevel>
-        </InvalidArgument>
+        <InternalMethod errorLevel="suppress" />
 
         <InvalidScope>
             <errorLevel type="suppress">
@@ -52,8 +36,5 @@
         </UndefinedGlobalVariable>
 
         <UndefinedConstant errorLevel="suppress" />
-        <UndefinedMagicMethod errorLevel="suppress" />
-        <UndefinedMethod errorLevel="suppress" />
-        <UndefinedThisPropertyFetch errorLevel="suppress" />
     </issueHandlers>
 </psalm>

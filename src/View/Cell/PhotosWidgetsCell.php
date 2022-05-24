@@ -18,13 +18,18 @@ namespace MeCms\Photos\View\Cell;
 use Cake\Collection\CollectionInterface;
 use Cake\ORM\ResultSet;
 use Cake\View\Cell;
+use MeCms\Photos\Model\Table\PhotosTable;
 
 /**
  * PhotosWidgets cell
- * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  */
 class PhotosWidgetsCell extends Cell
 {
+    /**
+     * @var \MeCms\Photos\Model\Table\PhotosTable
+     */
+    protected PhotosTable $Photos;
+
     /**
      * Initialization hook method
      * @return void
