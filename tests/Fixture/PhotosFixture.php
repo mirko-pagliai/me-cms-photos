@@ -101,7 +101,8 @@ class PhotosFixture extends TestFixture
         foreach ($this->records as $record) {
             $file = $Filesystem->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']);
             if (!file_exists($file)) {
-                $Filesystem->copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
+                @mkdir(dirname($file), 0777, true);
+                @copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
             }
         }
 
