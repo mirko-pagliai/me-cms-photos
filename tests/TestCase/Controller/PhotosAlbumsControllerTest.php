@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace MeCms\Photos\Test\TestCase\Controller;
 
 use Cake\Cache\Cache;
+use Cake\Collection\CollectionInterface;
 use MeCms\Photos\Model\Entity\Photo;
 use MeCms\Photos\Model\Entity\PhotosAlbum;
 use MeCms\TestSuite\ControllerTestCase;
@@ -38,6 +39,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
 
     /**
      * Tests for `index()` method
+     * @requires OS Linux
      * @test
      */
     public function testIndex(): void
@@ -53,11 +55,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
         //Comparison between cached variable and view variable occurs after
         //  removing album photos, because they are randomly ordered
         $cache = Cache::read('albums_index', $this->Table->getCacheName());
-        [$cache, $fromView] = array_map(function ($result) {
-            return $result->map(function (PhotosAlbum $album) {
-                return $album->set('photos', null);
-            });
-        }, [$cache, $this->viewVariable('albums')]);
+        [$cache, $fromView] = array_map(fn(CollectionInterface $result): CollectionInterface => $result->map(fn(PhotosAlbum $album): PhotosAlbum => $album->set('photos', null)), [$cache, $this->viewVariable('albums')]);
         $this->assertEquals($fromView->toArray(), $cache->toArray());
 
         //Deletes all albums, except the first one. Now it redirects to the first album
@@ -68,6 +66,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
 
     /**
      * Tests for `view()` method
+     * @requires OS Linux
      * @test
      */
     public function testView(): void

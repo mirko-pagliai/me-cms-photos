@@ -42,13 +42,13 @@ if (!Cache::getConfig('photos')) {
 //Sets directories to be created and must be writable
 $writableDirs = Configure::read('WRITABLE_DIRS', []);
 if (!in_array(PHOTOS, $writableDirs)) {
-    Configure::write('WRITABLE_DIRS', array_merge($writableDirs, [PHOTOS]));
+    Configure::write('WRITABLE_DIRS', [...$writableDirs, PHOTOS]);
 }
 
 //Sets files to be copied
 $configFiles = Configure::read('CONFIG_FILES', []);
 if (!in_array('MeCms/Photos.me_cms_photos', $configFiles)) {
-    Configure::write('CONFIG_FILES', array_merge($configFiles, ['MeCms/Photos.me_cms_photos']));
+    Configure::write('CONFIG_FILES', [...$configFiles, 'MeCms/Photos.me_cms_photos']);
 }
 
 if (!defined('I18N_PHOTOS')) {

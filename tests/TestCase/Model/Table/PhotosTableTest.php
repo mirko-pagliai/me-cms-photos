@@ -28,7 +28,7 @@ class PhotosTableTest extends TableTestCase
     /**
      * @var array
      */
-    protected static $example = [
+    protected static array $example = [
         'album_id' => 1,
         'filename' => 'pic.jpg',
     ];

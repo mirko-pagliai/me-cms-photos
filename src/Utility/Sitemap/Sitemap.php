@@ -46,11 +46,7 @@ class Sitemap extends SitemapBase
         if (!$url) {
             $albums = $Table->find('active')
                 ->select(['id', 'slug', 'created'])
-                ->contain($Table->Photos->getAlias(), function (Query $query) {
-                    return $query->find('active')
-                        ->select(['id', 'album_id', 'modified'])
-                        ->orderDesc('modified');
-                })
+                ->contain($Table->Photos->getAlias(), fn(Query $query): Query => $query->find('active')->select(['id', 'album_id', 'modified'])->orderDesc('modified'))
                 ->orderDesc(sprintf('%s.created', $Table->getAlias()))
                 ->all();
 
