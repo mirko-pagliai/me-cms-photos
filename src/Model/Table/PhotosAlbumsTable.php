@@ -35,7 +35,7 @@ class PhotosAlbumsTable extends AppTable
      * Cache configuration name
      * @var string
      */
-    protected $cache = 'photos';
+    protected string $cache = 'photos';
 
     /**
      * Called after an entity has been deleted
@@ -82,9 +82,7 @@ class PhotosAlbumsTable extends AppTable
      */
     public function findActive(Query $query): Query
     {
-        return $query->innerJoinWith($this->Photos->getAlias(), function (Query $query) {
-            return $query->find('active');
-        })->distinct();
+        return $query->innerJoinWith($this->Photos->getAlias(), fn(Query $query): Query => $query->find('active'))->distinct();
     }
 
     /**

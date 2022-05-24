@@ -25,7 +25,7 @@ class PhotoValidatorTest extends ValidationTestCase
     /**
      * @var array
      */
-    protected $example = ['album_id' => 1, 'filename' => 'pic.jpg'];
+    protected array $example = ['album_id' => 1, 'filename' => 'pic.jpg'];
 
     /**
      * Fixtures

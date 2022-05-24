@@ -47,7 +47,7 @@ class PhotosTable extends AppTable
      * Cache configuration name
      * @var string
      */
-    protected $cache = 'photos';
+    protected string $cache = 'photos';
 
     /**
      * Called after an entity has been deleted
@@ -141,12 +141,12 @@ class PhotosTable extends AppTable
         $query = parent::queryFromFilter($query, $data);
 
         //"Album" field
-        if (!empty($data['album']) && is_positive($data['album'])) {
+        if (is_positive($data['album'] ?? 0)) {
             $query->where(['album_id' => $data['album']]);
         }
 
         //"Filename" field
-        if (!empty($data['filename']) && strlen($data['filename']) > 2) {
+        if (strlen($data['filename'] ?? '') > 2) {
             $query->where([sprintf('%s.%s LIKE', $this->getAlias(), 'filename') => '%' . $data['filename'] . '%']);
         }
 

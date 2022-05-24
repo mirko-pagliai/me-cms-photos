@@ -35,9 +35,7 @@ class PhotosAlbumsController extends AppController
     {
         $albums = $this->PhotosAlbums->find('active')
             ->select(['id', 'title', 'slug', 'photo_count', 'created'])
-            ->contain($this->Photos->getAlias(), function (Query $query) {
-                return $query->find('active')->select(['id', 'album_id', 'filename']);
-            })
+            ->contain($this->Photos->getAlias(), fn(Query $query): Query => $query->find('active')->select(['id', 'album_id', 'filename']))
             ->orderDesc(sprintf('%s.created', $this->PhotosAlbums->getAlias()))
             ->cache('albums_index');
 
@@ -50,7 +48,7 @@ class PhotosAlbumsController extends AppController
         }
 
         //Album photos are randomly ordered
-        $albums = $albums->all()->map(function (PhotosAlbum $album) {
+        $albums = $albums->all()->map(function (PhotosAlbum $album): PhotosAlbum {
             $photos = $album->get('photos');
             shuffle($photos);
 

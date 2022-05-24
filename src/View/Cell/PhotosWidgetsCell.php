@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\View\Cell;
 
+use Cake\Collection\CollectionInterface;
 use Cake\ORM\ResultSet;
 use Cake\View\Cell;
 
@@ -49,9 +50,7 @@ class PhotosWidgetsCell extends Cell
 
         $albums = $this->Photos->Albums->find('active')
             ->orderAsc(sprintf('%s.title', $this->Photos->Albums->getAlias()))
-            ->formatResults(function (ResultSet $results) {
-                return $results->indexBy('slug');
-            })
+            ->formatResults(fn(ResultSet $results): CollectionInterface => $results->indexBy('slug'))
             ->cache('widget_albums')
             ->all();
 

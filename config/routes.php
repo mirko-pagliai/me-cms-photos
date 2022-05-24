@@ -19,7 +19,7 @@ use Cake\Routing\RouteBuilder;
 /** @var \Cake\Routing\RouteBuilder $routes */
 $routes->setRouteClass(DashedRoute::class);
 
-$routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes) {
+$routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes): void {
     //Albums
     if (!$routes->nameExists('albums')) {
         $routes->connect('/albums', ['controller' => 'PhotosAlbums', 'action' => 'index'], ['_name' => 'albums']);
@@ -57,9 +57,9 @@ $routes->scope('/', ['plugin' => 'MeCms/Photos'], function (RouteBuilder $routes
         ->setPass(['slug', 'id']);
 });
 
-$routes->plugin('MeCms/Photos', ['path' => '/me-cms-photos'], function (RouteBuilder $routes) {
+$routes->plugin('MeCms/Photos', ['path' => '/me-cms-photos'], function (RouteBuilder $routes): void {
     //Admin routes
-    $routes->prefix(ADMIN_PREFIX, function (RouteBuilder $routes) {
+    $routes->prefix(ADMIN_PREFIX, function (RouteBuilder $routes): void {
         $routes->setExtensions(['json']);
 
         $routes->fallbacks('DashedRoute');
