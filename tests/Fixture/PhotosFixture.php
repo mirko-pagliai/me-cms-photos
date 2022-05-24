@@ -99,7 +99,7 @@ class PhotosFixture extends TestFixture
         $Filesystem = new Filesystem();
 
         foreach ($this->records as $record) {
-            $Filesystem->copy(WWW_ROOT . 'img' . DS . 'image.jpg', $Filesystem->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']));
+            @$Filesystem->copy(WWW_ROOT . 'img' . DS . 'image.jpg', $Filesystem->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']));
         }
 
         return parent::insert($connection);
