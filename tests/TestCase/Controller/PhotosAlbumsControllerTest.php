@@ -39,6 +39,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
 
     /**
      * Tests for `index()` method
+     * @requires OS Linux
      * @test
      */
     public function testIndex(): void
