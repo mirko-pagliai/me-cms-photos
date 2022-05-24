@@ -66,6 +66,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
 
     /**
      * Tests for `view()` method
+     * @requires OS Linux
      * @test
      */
     public function testView(): void
