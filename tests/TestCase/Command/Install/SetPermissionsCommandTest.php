@@ -32,6 +32,6 @@ class SetPermissionsCommandTest extends TestCase
     public function testExecute(): void
     {
         $this->exec('me_tools.set_permissions -v');
-        $this->assertOutputContains('Setted permissions on `' . Filesystem::instance()->rtr(PHOTOS) . '`');
+        $this->assertOutputContains('Set permissions on `' . Filesystem::instance()->rtr(PHOTOS) . '`');
     }
 }

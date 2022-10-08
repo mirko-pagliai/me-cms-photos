@@ -28,7 +28,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 {
     /**
      * Fixtures
-     * @var array
+     * @var array<string>
      */
     public $fixtures = [
         'plugin.MeCms/Photos.Photos',
@@ -37,6 +37,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
     /**
      * Test for `albums()` method
+     * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::albums()
      * @test
      */
     public function testAlbums(): void
@@ -50,8 +51,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/h4',
             ['div' => ['class' => 'widget-content']],
             'form' => ['method' => 'get', 'accept-charset' => 'utf-8', 'action' => '/album/album'],
-            ['div' => ['class' => 'form-group input select']],
-            'select' => ['name' => 'q', 'onchange' => 'sendForm(this)', 'class' => 'form-control'],
+            ['div' => ['class' => 'input mb-3 select']],
+            'select' => ['name' => 'q', 'class' => 'form-control form-select', 'onchange' => 'sendForm(this)'],
             ['option' => ['value' => '']],
             '/option',
             ['option' => ['value' => 'another-album-test']],
@@ -66,7 +67,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget)->render());
+        $result = $this->Widget->widget($widget)->render();
+        $this->assertHtml($expected, $result);
 
         //Renders as list
         $expected = [
@@ -96,7 +98,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget, ['render' => 'list'])->render());
+        $result = $this->Widget->widget($widget, ['render' => 'list'])->render();
+        $this->assertHtml($expected, $result);
 
         //Empty on albums index
         $request = $this->Widget->getView()->getRequest()->withEnv('REQUEST_URI', Router::url(['_name' => 'albums']));
@@ -115,6 +118,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
     /**
      * Test for `latest()` method
+     * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::latest()
      * @test
      */
     public function testLatest(): void
@@ -133,7 +137,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget)->render());
+        $result = $this->Widget->widget($widget)->render();
+        $this->assertHtml($expected, $result);
 
         //Tries another limit
         $expected = [
@@ -151,7 +156,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget, ['limit' => 2])->render());
+        $result = $this->Widget->widget($widget, ['limit' => 2])->render();
+        $this->assertHtml($expected, $result);
 
         //Empty on same controllers
         foreach (['Photos', 'PhotosAlbums'] as $controller) {
@@ -172,6 +178,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
     /**
      * Test for `random()` method
+     * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::random()
      * @test
      */
     public function testRandom(): void
@@ -190,7 +197,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget)->render());
+        $result = $this->Widget->widget($widget)->render();
+        $this->assertHtml($expected, $result);
 
         //Tries another limit
         $expected = [
@@ -208,7 +216,8 @@ class PhotosWidgetsCellTest extends CellTestCase
             '/div',
             '/div',
         ];
-        $this->assertHtml($expected, $this->Widget->widget($widget, ['limit' => 2])->render());
+        $result = $this->Widget->widget($widget, ['limit' => 2])->render();
+        $this->assertHtml($expected, $result);
 
         //Empty on same controllers
         foreach (['Photos', 'PhotosAlbums'] as $controller) {

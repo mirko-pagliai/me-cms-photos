@@ -31,7 +31,7 @@ class TopbarHelper extends Helper
      * @var array
      */
     public $helpers = [
-        'Html' => ['className' => 'MeTools.Html'],
+        'Html' => ['className' => 'MeTools.BootstrapHtml'],
     ];
 
     /**
