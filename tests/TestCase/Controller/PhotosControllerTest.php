@@ -27,7 +27,7 @@ class PhotosControllerTest extends ControllerTestCase
 {
     /**
      * Fixtures
-     * @var array
+     * @var array<string>
      */
     public $fixtures = [
         'plugin.MeCms/Photos.Photos',
@@ -37,6 +37,7 @@ class PhotosControllerTest extends ControllerTestCase
     /**
      * Tests for `view()` method
      * @requires OS Linux
+     * @uses \MeCms\Photos\Controller\PhotosController::view()
      * @test
      */
     public function testView(): void
@@ -61,6 +62,7 @@ class PhotosControllerTest extends ControllerTestCase
 
     /**
      * Tests for `preview()` method
+     * @uses \MeCms\Photos\Controller\PhotosController::preview()
      * @test
      */
     public function testPreview(): void
