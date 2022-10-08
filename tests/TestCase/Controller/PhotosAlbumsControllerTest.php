@@ -55,7 +55,7 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
         //Comparison between cached variable and view variable occurs after
         //  removing album photos, because they are randomly ordered
         $cache = Cache::read('albums_index', $this->Table->getCacheName());
-        [$cache, $fromView] = array_map(fn(CollectionInterface $result): CollectionInterface => $result->map(fn(PhotosAlbum $album): PhotosAlbum => $album->set('photos', null)), [$cache, $this->viewVariable('albums')]);
+        [$cache, $fromView] = array_map(fn(CollectionInterface $result): CollectionInterface => $result->map(fn(PhotosAlbum $album): PhotosAlbum => $album->set('photos')), [$cache, $this->viewVariable('albums')]);
         $this->assertEquals($fromView->toArray(), $cache->toArray());
 
         //Deletes all albums, except the first one. Now it redirects to the first album

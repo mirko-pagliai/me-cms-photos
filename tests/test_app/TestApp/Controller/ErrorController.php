@@ -14,6 +14,7 @@ class ErrorController extends AppController
     /**
      * Initialization hook method
      * @return void
+     * @throws \Exception
      */
     public function initialize(): void
     {
@@ -23,9 +24,9 @@ class ErrorController extends AppController
     /**
      * beforeRender callback
      * @param \Cake\Event\EventInterface $event Event
-     * @return \Cake\Http\Response|null|void
+     * @return void
      */
-    public function beforeRender(EventInterface $event)
+    public function beforeRender(EventInterface $event): void
     {
         parent::beforeRender($event);
 

@@ -1,6 +1,6 @@
 <?php $this->loadHelper('Html'); ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <?= $this->Html->charset(); ?>
     <title><?= $this->fetch('title'); ?></title>

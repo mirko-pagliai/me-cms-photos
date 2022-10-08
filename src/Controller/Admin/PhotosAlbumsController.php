@@ -35,7 +35,7 @@ class PhotosAlbumsController extends AppController
     public function isAuthorized($user = null): bool
     {
         //Only admins and managers can delete albums
-        return !$this->getRequest()->is('delete') ?: $this->Auth->isGroup(['admin', 'manager']);
+        return !$this->getRequest()->is('delete') || $this->Auth->isGroup(['admin', 'manager']);
     }
 
     /**

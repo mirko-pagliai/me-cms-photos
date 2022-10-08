@@ -21,7 +21,6 @@ use Cake\ORM\Query as CakeQuery;
 use Cake\ORM\RulesChecker;
 use MeCms\Model\Table\AppTable;
 use MeCms\ORM\Query;
-use MeCms\Photos\Model\Table\PhotosAlbumsTable;
 use MeCms\Photos\Model\Validation\PhotoValidator;
 
 /**

@@ -36,7 +36,9 @@ class PhotosWidgetsCell extends Cell
      */
     public function initialize(): void
     {
-        $this->loadModel('MeCms/Photos.Photos');
+        /** @var \MeCms\Photos\Model\Table\PhotosTable $Photos */
+        $Photos = $this->fetchTable('MeCms/Photos.Photos');
+        $this->Photos = $Photos;
     }
 
     /**

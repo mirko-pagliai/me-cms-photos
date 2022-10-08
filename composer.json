@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": ">=7.4",
+        "ext-json": "*",
         "mirko-pagliai/me-cms": "^2.30.8-RC5"
     },
     "require-dev": {

@@ -131,7 +131,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->Table->delete($record);
 
         //POST request. This works without the parent ID on the query string,
-        //  beacuse there is only one record from the associated table
+        //  because there is only one record from the associated table
         $this->Table->Albums->deleteAll(['id >' => 1]);
         $this->post($this->url + ['action' => 'upload', '_ext' => 'json'], compact('file'));
         $this->assertRedirect($url);

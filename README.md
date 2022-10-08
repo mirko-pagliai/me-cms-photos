@@ -6,7 +6,7 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f26430c611aa43c8a08278040b5d86cc)](https://www.codacy.com/gh/mirko-pagliai/me-cms-photos/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mirko-pagliai/me-cms-photos&amp;utm_campaign=Badge_Grade)
 [![CodeFactor](https://www.codefactor.io/repository/github/mirko-pagliai/me-cms-photos/badge)](https://www.codefactor.io/repository/github/mirko-pagliai/me-cms-photos)
 
-*MeCms/Photos* plugin allows you to handle photos with [MeCms platform](//github.com/mirko-pagliai/cakephp-for-mecms).
+*MeCms/Photos* plugin allows you to handle photos with [MeCms platform](https://github.com/mirko-pagliai/cakephp-for-mecms).
 
 To install:
 ```bash

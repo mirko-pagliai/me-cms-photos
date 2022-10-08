@@ -20,7 +20,6 @@ use Cake\Event\Event;
 use Cake\ORM\RulesChecker;
 use MeCms\Model\Table\AppTable;
 use MeCms\ORM\Query;
-use MeCms\Photos\Model\Table\PhotosTable;
 use MeCms\Photos\Model\Validation\PhotosAlbumValidator;
 
 /**

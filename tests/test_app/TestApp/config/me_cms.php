@@ -76,7 +76,7 @@ return ['MeCms' => [
         ],
         //Forces debug on localhost (enabled or disabled)
         'debug_on_localhost' => true,
-        //Sitemap expiration. Must be a valid strtotime string
+        //Sitemap expiration. Must be a valid `strtotime()` string
         'sitemap_expiration' => '+24 hours',
         //Time formats
         //See: http://php.net/manual/it/datetime.formats.php
@@ -173,7 +173,7 @@ return ['MeCms' => [
     ],
     //Users
     'users' => [
-        //How to activating accounts:
+        //How to activate accounts:
         //  `0` - No activation required, the account is immediately active;
         //  `1` - The account will be enabled by the user via email (default);
         //  `2` - The account will be enabled by an administrator.

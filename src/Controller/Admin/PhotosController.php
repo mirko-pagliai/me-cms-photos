@@ -67,7 +67,7 @@ class PhotosController extends AppController
     public function isAuthorized($user = null): bool
     {
         //Only admins and managers can delete photos
-        return $this->getRequest()->is('delete') ? $this->Auth->isGroup(['admin', 'manager']) : true;
+        return !$this->getRequest()->is('delete') || $this->Auth->isGroup(['admin', 'manager']);
     }
 
     /**
@@ -105,6 +105,7 @@ class PhotosController extends AppController
     /**
      * Uploads photos
      * @return \Cake\Http\Response|null
+     * @throws \Tools\Exception\ObjectWrongInstanceException|\Throwable
      * @uses \MeCms\Controller\Admin\AppController::setUploadError()
      */
     public function upload(): ?Response

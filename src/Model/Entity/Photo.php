@@ -88,7 +88,7 @@ class Photo extends Entity
      * @return \Cake\ORM\Entity Entity with `preview`, `width` and `height`
      *  properties
      * @throws \Tools\Exception\PropertyNotExistsException
-     * @uses _getPath()
+     * @throws \Tools\Exception\NotWritableException
      */
     protected function _getPreview(): Entity
     {

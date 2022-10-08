@@ -147,7 +147,7 @@ class PhotosTableTest extends TableTestCase
         $this->assertSqlEndsWith('FROM `photos` `Photos` WHERE `Photos`.`filename` like :c0', $query->sql());
         $this->assertEquals('%image.jpg%', $query->getValueBinder()->bindings()[':c0']['value']);
 
-        //With some invalid datas
+        //With some invalid data
         $query = $this->Table->queryFromFilter($this->Table->find(), ['filename' => 'ab']);
         $this->assertEmpty($query->getValueBinder()->bindings());
     }

@@ -67,7 +67,7 @@ class PhotoTest extends EntityTestCase
     public function testGetDescriptionAccessor(): void
     {
         $this->assertNotNull($this->Entity->get('description'));
-        $this->assertSame('', $this->Entity->set('description', null)->get('description'));
+        $this->assertSame('', $this->Entity->set('description')->get('description'));
     }
 
     /**
@@ -100,6 +100,6 @@ class PhotoTest extends EntityTestCase
     public function testGetUrlVirtualField(): void
     {
         $this->assertStringEndsWith('/photo/album-slug/1', $this->Entity->get('url'));
-        $this->assertEmpty($this->Entity->set('album', null)->get('url'));
+        $this->assertEmpty($this->Entity->set('album')->get('url'));
     }
 }

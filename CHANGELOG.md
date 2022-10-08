@@ -1,7 +1,9 @@
 # 1.x branch
 ## 1.1 branch
 ### 1.1.1-RC2
-* updated for me-cms 2.30.8-RC5 and me-tools 2.21.4.
+* updated for me-cms 2.30.8-RC5 and me-tools 2.21.4;
+* small and numerous improvements of descriptions, tags and code suggested
+  by PhpStorm.
 * numerous fixed suggested by phpstan.
 
 ### 1.1.0-RC1

@@ -11,6 +11,8 @@ declare(strict_types=1);
  * @copyright   Copyright (c) Mirko Pagliai
  * @link        https://github.com/mirko-pagliai/me-cms-photos
  * @license     https://opensource.org/licenses/mit-license.php MIT License
+ *
+ * @var \MeCms\Photos\Model\Entity\PhotosAlbum[] $albums
  */
 $this->extend('MeCms./Admin/common/index');
 $this->assign('title', __d('me_cms/photos', 'Albums'));
@@ -98,7 +100,7 @@ $this->append('actions', $this->Html->button(
                             ['title' => I18N_BELONG_ELEMENT]
                         );
                     } else {
-                        echo (string)$album->get('photo_count');
+                        echo $album->get('photo_count');
                     }
                     ?>
                 </td>
