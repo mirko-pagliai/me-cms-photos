@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link        https://github.com/mirko-pagliai/me-cms-photos
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace MeCms\Photos\Test\TestCase\Controller\Admin;
+namespace MeCms\Photos\Test\TestCase\Command\Install;
 
 use MeTools\TestSuite\ConsoleIntegrationTestTrait;
 use MeTools\TestSuite\TestCase;
