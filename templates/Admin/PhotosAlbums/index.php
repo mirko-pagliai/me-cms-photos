@@ -91,7 +91,7 @@ $this->append('actions', $this->Html->button(
                 </td>
                 <td class="text-nowrap text-center">
                     <?php
-                    if ($album->get('photo_count')) {
+                    if ($album->hasValue('photo_count')) {
                         echo $this->Html->link(
                             (string)$album->get('photo_count'),
                             ['controller' => 'Photos', 'action' => 'index', '?' => ['album' => $album->get('id')]],

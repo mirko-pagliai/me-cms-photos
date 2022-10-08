@@ -27,7 +27,7 @@ class SitemapTest extends TestCase
 {
     /**
      * Fixtures
-     * @var array
+     * @var array<string>
      */
     public $fixtures = [
         'plugin.MeCms/Photos.Photos',

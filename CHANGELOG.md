@@ -2,7 +2,8 @@
 ## 1.1 branch
 ### 1.1.1-RC2
 * updated for me-cms 2.30.8-RC5 and me-tools 2.21.4.
-* 
+* numerous fixed suggested by phpstan.
+
 ### 1.1.0-RC1
 * numerous code adjustments for improvement and adaptation to PHP 7.4 new features;
 * updated for PHP 8.1 Requires at least PHP 7.4.

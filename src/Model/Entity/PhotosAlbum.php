@@ -32,7 +32,7 @@ class PhotosAlbum extends Entity
 {
     /**
      * Fields that can be mass assigned
-     * @var array
+     * @var array<string, bool>
      */
     protected $_accessible = [
         '*' => true,
@@ -43,7 +43,7 @@ class PhotosAlbum extends Entity
 
     /**
      * Virtual fields that should be exposed
-     * @var array
+     * @var array<string>
      */
     protected $_virtual = ['path', 'preview', 'url'];
 

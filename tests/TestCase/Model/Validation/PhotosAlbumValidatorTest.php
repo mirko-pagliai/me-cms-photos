@@ -29,7 +29,7 @@ class PhotosAlbumValidatorTest extends ValidationTestCase
 
     /**
      * Fixtures
-     * @var array
+     * @var array<string>
      */
     public $fixtures = [
         'plugin.MeCms/Photos.PhotosAlbums',

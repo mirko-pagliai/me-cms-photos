@@ -38,7 +38,7 @@ class Photo extends Entity
 {
     /**
      * Fields that can be mass assigned
-     * @var array
+     * @var array<string, bool>
      */
     protected $_accessible = [
         '*' => true,
@@ -48,7 +48,7 @@ class Photo extends Entity
 
     /**
      * Virtual fields that should be exposed
-     * @var array
+     * @var array<string>
      */
     protected $_virtual = ['path', 'plain_description', 'preview', 'url'];
 
@@ -87,12 +87,13 @@ class Photo extends Entity
      * Gets the photo preview (virtual field)
      * @return \Cake\ORM\Entity Entity with `preview`, `width` and `height`
      *  properties
+     * @throws \Tools\Exception\PropertyNotExistsException
      * @uses _getPath()
      */
     protected function _getPreview(): Entity
     {
         $path = $this->_getPath();
-        [$width, $height] = getimagesize($path);
+        [$width, $height] = getimagesize($path) ?: [];
         $thumber = new ThumbCreator($path);
         $thumber->resize(1200, 1200)->save(['format' => 'jpg']);
 

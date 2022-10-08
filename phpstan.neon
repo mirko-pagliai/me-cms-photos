@@ -13,6 +13,7 @@ parameters:
     bootstrapFiles:
         - tests/bootstrap.php
         - config/bootstrap.php
+        - vendor/mirko-pagliai/me-tools/config/i18n_constants.php
         - vendor/mirko-pagliai/cakephp-thumber/config/bootstrap.php
         - vendor/mirko-pagliai/me-cms/config/bootstrap.php
 
@@ -20,6 +21,6 @@ parameters:
     checkMissingIterableValueType: false
     treatPhpDocTypesAsCertain: false
 
-    excludes_analyse:
+    excludePaths:
         - config/Migrations/
         - tests/test_app/

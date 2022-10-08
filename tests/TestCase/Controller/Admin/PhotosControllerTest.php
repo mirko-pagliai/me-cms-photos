@@ -28,7 +28,7 @@ class PhotosControllerTest extends ControllerTestCase
 {
     /**
      * Fixtures
-     * @var array
+     * @var array<string>
      */
     public $fixtures = [
         'plugin.MeCms/Photos.Photos',
@@ -143,6 +143,7 @@ class PhotosControllerTest extends ControllerTestCase
      * The table `save()` method returns `false` for this test.
      * See the `controllerSpy()` method.
      * @return void
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::upload()
      * @test
      */
     public function testUploadErrors(): void
@@ -154,7 +155,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertResponseFailure();
         $this->assertResponseContains(I18N_MISSING_ID);
 
-        $url += ['?' => [substr('album_id', 0, -3) ?: '' => 1]];
+        $url += ['?' => [(string)substr('album_id', 0, -3) => 1]];
 
         $this->post($url, ['file' => $this->createImageToUpload()]);
         $this->assertResponseFailure();

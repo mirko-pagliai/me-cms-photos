@@ -71,7 +71,7 @@ class PhotosTable extends AppTable
      */
     public function beforeSave(Event $event, EntityInterface $entity): void
     {
-        [$width, $height] = getimagesize($entity->get('path'));
+        [$width, $height] = getimagesize($entity->get('path')) ?: [0, 0];
         $entity->set('size', compact('width', 'height'));
     }
 
