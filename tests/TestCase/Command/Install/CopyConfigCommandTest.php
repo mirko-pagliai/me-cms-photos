@@ -19,7 +19,7 @@ use MeTools\TestSuite\TestCase;
 use Tools\Filesystem;
 
 /**
- * SetPermissionsCommandTest class
+ * CopyConfigCommandTest class
  */
 class CopyConfigCommandTest extends TestCase
 {
