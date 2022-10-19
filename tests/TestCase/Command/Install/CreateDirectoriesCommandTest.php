@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnhandledExceptionInspection */
 declare(strict_types=1);
 
 /**
@@ -27,11 +28,14 @@ class CreateDirectoriesCommandTest extends TestCase
 
     /**
      * Tests for `execute()` method
+     * @uses \MeTools\Command\Install\CreateDirectoriesCommand::execute()
      * @test
      */
     public function testExecute(): void
     {
-        @mkdir(PHOTOS, 0755, true);
+        if (!file_exists(PHOTOS)) {
+            mkdir(PHOTOS, 0755, true);
+        }
         $this->exec('me_tools.create_directories -v');
         $this->assertOutputContains('File or directory `' . Filesystem::instance()->rtr(PHOTOS) . '` already exists');
     }

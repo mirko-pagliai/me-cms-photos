@@ -18,7 +18,6 @@ namespace MeCms\Photos\Controller;
 use Cake\Cache\Cache;
 use MeCms\Controller\AppController;
 use MeCms\ORM\Query;
-use MeCms\Photos\Model\Entity\PhotosAlbum;
 
 /**
  * PhotosAlbums controller

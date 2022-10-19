@@ -1,4 +1,5 @@
 <?php
+/** @noinspection PhpUnhandledExceptionInspection */
 declare(strict_types=1);
 
 /**
@@ -27,6 +28,7 @@ class CopyConfigCommandTest extends TestCase
 
     /**
      * Tests for `execute()` method
+     * @uses \MeCms\Command\Install\CopyConfigCommand::execute()
      * @test
      */
     public function testExecute(): void

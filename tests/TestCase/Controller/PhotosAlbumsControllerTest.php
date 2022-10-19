@@ -16,7 +16,6 @@ declare(strict_types=1);
 namespace MeCms\Photos\Test\TestCase\Controller;
 
 use Cake\Cache\Cache;
-use Cake\Collection\CollectionInterface;
 use MeCms\Photos\Model\Entity\Photo;
 use MeCms\Photos\Model\Entity\PhotosAlbum;
 use MeCms\TestSuite\ControllerTestCase;

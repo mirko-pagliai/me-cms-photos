@@ -84,6 +84,7 @@ class PhotosAlbumsFixture extends TestFixture
      * @param \Cake\Datasource\ConnectionInterface $connection An instance of the connection into which the records will be inserted
      * @return \Cake\Database\StatementInterface|bool on success or if there are no records to insert, or false on failure
      * @throws \Tools\Exception\NotWritableException
+     * @noinspection PhpMissingReturnTypeInspection
      */
     public function insert(ConnectionInterface $connection)
     {

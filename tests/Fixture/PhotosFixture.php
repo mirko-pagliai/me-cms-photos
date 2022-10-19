@@ -94,6 +94,7 @@ class PhotosFixture extends TestFixture
      * @return \Cake\Database\StatementInterface|bool on success or if there are no records to insert, or false on failure
      * @throws \Tools\Exception\NotWritableException
      * @throws \Tools\Exception\NotReadableException
+     * @noinspection PhpMissingReturnTypeInspection
      */
     public function insert(ConnectionInterface $connection)
     {
