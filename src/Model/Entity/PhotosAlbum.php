@@ -17,6 +17,7 @@ namespace MeCms\Photos\Model\Entity;
 
 use Cake\ORM\Entity;
 use Cake\Routing\Router;
+use Tools\Filesystem;
 
 /**
  * PhotosAlbum entity
@@ -53,7 +54,7 @@ class PhotosAlbum extends Entity
      */
     protected function _getPath(): string
     {
-        return $this->has('id') ? PHOTOS . $this->get('id') : '';
+        return $this->hasValue('id') ? Filesystem::instance()->concatenate(PHOTOS, (string)$this->get('id')) : '';
     }
 
     /**
@@ -75,6 +76,6 @@ class PhotosAlbum extends Entity
      */
     protected function _getUrl(): string
     {
-        return $this->has('slug') ? Router::url(['_name' => 'album', $this->get('slug')], true) : '';
+        return $this->hasValue('slug') ? Router::url(['_name' => 'album', $this->get('slug')], true) : '';
     }
 }

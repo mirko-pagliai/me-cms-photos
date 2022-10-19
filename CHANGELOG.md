@@ -2,6 +2,7 @@
 ## 1.1 branch
 ### 1.1.1-RC2
 * `PhotosAlbumsController::index()` now uses the pagination. Added the `MeCms/Photos.default.albums` config value;
+* fixed bug for `PhotosAlbum::_getUrl()` method;
 * on an album index, the photo shown as the album preview is no longer random, but the first one. This avoids the
   constant need to generate new thumbnails;
 * updated for me-cms 2.30.8-RC5 and me-tools 2.21.4;
