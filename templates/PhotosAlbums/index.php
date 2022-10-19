@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\PhotosAlbum[] $albums
+ * @var \MeCms\View\View\AppView $this
  */
 $this->extend('MeCms./common/index');
 $this->assign('title', I18N_PHOTOS);
@@ -24,14 +25,14 @@ $this->Breadcrumbs->add(I18N_PHOTOS, ['_name' => 'albums']);
 ?>
 
 <div class="row">
-    <?php
-    foreach ($albums as $album) {
-        echo $this->Html->div('col-sm-6 col-md-4 mb-4', $this->element('MeCms/Photos.views/photo-preview', [
+    <?php foreach ($albums as $album) : ?>
+        <?= $this->Html->div('col-sm-6 col-md-4 mb-4', $this->element('MeCms/Photos.views/photo-preview', [
             'link' => $album->get('url'),
             'path' => $album->get('preview'),
             'text' => __d('me_cms/photos', '{0} photos', $album->get('photo_count')),
             'title' => $album->get('title'),
-        ]));
-    }
-    ?>
+        ])) ?>
+    <?php endforeach; ?>
 </div>
+
+<?= $this->element('MeTools.paginator') ?>

@@ -39,7 +39,6 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
 
     /**
      * Tests for `index()` method
-     * @requires OS Linux
      * @test
      */
     public function testIndex(): void
@@ -52,13 +51,21 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
             $this->assertContainsOnlyInstancesOf(Photo::class, $album->get('photos'));
         }
 
-        //Comparison between cached variable and view variable occurs after
-        //  removing album photos, because they are randomly ordered
-        $cache = Cache::read('albums_index', $this->Table->getCacheName());
-        [$cache, $fromView] = array_map(fn(CollectionInterface $result): CollectionInterface => $result->map(fn(PhotosAlbum $album): PhotosAlbum => $album->set('photos')), [$cache, $this->viewVariable('albums')]);
-        $this->assertEquals($fromView->toArray(), $cache->toArray());
+        $cache = sprintf('albums_limit_%s_page_%s', getConfigOrFail('MeCms/Photos.default.albums'), 1);
+        [$albumsFromCache, $pagingFromCache] = array_values(Cache::readMany(
+            [$cache, sprintf('%s_paging', $cache)],
+            $this->Table->getCacheName()
+        ));
+        $this->assertEquals($this->viewVariable('albums')->toArray(), $albumsFromCache->toArray());
+        $this->assertNotEmpty($pagingFromCache['PhotosAlbums']);
+
+        //GET request again. Now the data is in cache
+        $this->get(['_name' => 'albums']);
+        $this->assertResponseOkAndNotEmpty();
+        $this->assertNotEmpty($this->_controller->getPaging()['PhotosAlbums']);
 
         //Deletes all albums, except the first one. Now it redirects to the first album
+        Cache::clear($this->Table->getCacheName());
         $this->Table->deleteAll(['id >' => 1]);
         $this->get(['_name' => 'albums']);
         $this->assertRedirect(['_name' => 'album', 'test-album']);

@@ -33,11 +33,39 @@ class PhotosAlbumsController extends AppController
      */
     public function index()
     {
-        $albums = $this->PhotosAlbums->find('active')
-            ->select(['id', 'title', 'slug', 'photo_count', 'created'])
-            ->contain($this->Photos->getAlias(), fn(Query $query): Query => $query->find('active')->select(['id', 'album_id', 'filename']))
-            ->orderDesc(sprintf('%s.created', $this->PhotosAlbums->getAlias()))
-            ->cache('albums_index');
+        $this->paginate['limit'] = $this->paginate['maxLimit'] = getConfigOrFail('MeCms/Photos.default.albums');
+
+        //Sets the cache name
+        $cache = sprintf(
+            'albums_limit_%s_page_%s',
+            $this->paginate['limit'],
+            trim((string)$this->getRequest()->getQuery('page', 1), '/')
+        );
+
+        //Tries to get data from the cache
+        [$albums, $paging] = array_values(Cache::readMany(
+            [$cache, sprintf('%s_paging', $cache)],
+            $this->PhotosAlbums->getCacheName()
+        ));
+
+        //If the data are not available from the cache
+        if (empty($albums) || empty($paging)) {
+            $query = $this->PhotosAlbums->find('active')
+                ->select(['id', 'title', 'slug', 'photo_count', 'created'])
+                ->contain($this->Photos->getAlias(), fn(Query $query): Query => $query->find('active')->select(['id', 'album_id', 'filename']))
+                ->orderDesc(sprintf('%s.created', $this->PhotosAlbums->getAlias()));
+
+            [$albums, $paging] = [$this->paginate($query), $this->getPaging()];
+
+            //Writes on cache
+            Cache::writeMany([
+                $cache => $albums,
+                sprintf('%s_paging', $cache) => $paging,
+            ], $this->PhotosAlbums->getCacheName());
+        //Else, sets the paging parameter
+        } else {
+            $this->setPaging($paging);
+        }
 
         //If there is only one record, redirects
         if ($albums->count() === 1) {

@@ -7,6 +7,9 @@ return ['MeCms/Photos' => [
      ],
     //Default layout
     'default' => [
+        //Number of albums to show per page.
+        //This must be a multiple of 3
+        'albums' => 15,
         //Number of photos to show per page.
         //This must be a multiple of 4
         'photos' => 20,

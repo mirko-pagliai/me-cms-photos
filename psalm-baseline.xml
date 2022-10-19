@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.x-dev@">
   <file src="src/Controller/PhotosAlbumsController.php">
-    <InvalidArgument occurrences="1"/>
+    <InvalidArgument occurrences="2"/>
   </file>
   <file src="src/Model/Table/PhotosTable.php">
     <ImplementedReturnTypeMismatch occurrences="1">
@@ -9,6 +9,6 @@
     </ImplementedReturnTypeMismatch>
   </file>
   <file src="tests/TestCase/Controller/PhotosAlbumsControllerTest.php">
-    <InvalidArgument occurrences="1"/>
+    <InvalidArgument occurrences="2"/>
   </file>
 </files>
