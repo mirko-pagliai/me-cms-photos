@@ -15,7 +15,12 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\Test\Fixture;
 
+use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
+use Tools\Exceptionist;
+use Tools\Filesystem;
+
+require_once ROOT . 'config' . DS . 'bootstrap.php';
 
 /**
  * PhotosAlbumsFixture
@@ -45,6 +50,7 @@ class PhotosAlbumsFixture extends TestFixture
      */
     public $records = [
         [
+            'id' => 1,
             'title' => 'Test album',
             'slug' => 'test-album',
             'description' => 'This is an album test',
@@ -53,6 +59,7 @@ class PhotosAlbumsFixture extends TestFixture
             'modified' => '2016-12-28 10:38:46',
         ],
         [
+            'id' => 2,
             'title' => 'Another album test',
             'slug' => 'another-album-test',
             'description' => 'This is another album test',
@@ -61,6 +68,7 @@ class PhotosAlbumsFixture extends TestFixture
             'modified' => '2016-12-28 10:39:46',
         ],
         [
+            'id' => 3,
             'title' => 'Third album test',
             'slug' => 'third-album-test',
             'description' => 'This is the third album test',
@@ -69,4 +77,24 @@ class PhotosAlbumsFixture extends TestFixture
             'modified' => '2016-12-28 10:40:46',
         ],
     ];
+
+    /**
+     * Run before each test is executed.
+     * Should insert all the records into the test database.
+     * @param \Cake\Datasource\ConnectionInterface $connection An instance of the connection into which the records will be inserted
+     * @return \Cake\Database\StatementInterface|bool on success or if there are no records to insert, or false on failure
+     * @throws \Tools\Exception\NotWritableException
+     */
+    public function insert(ConnectionInterface $connection)
+    {
+        foreach ($this->records as $record) {
+            $dir = Filesystem::instance()->concatenate(PHOTOS, (string)$record['id']);
+            if (!file_exists($dir)) {
+                Exceptionist::isWritable(dirname($dir));
+                mkdir($dir, 0777, true);
+            }
+        }
+
+        return parent::insert($connection);
+    }
 }

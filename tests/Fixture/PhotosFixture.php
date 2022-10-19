@@ -17,6 +17,7 @@ namespace MeCms\Photos\Test\Fixture;
 
 use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
+use Tools\Exceptionist;
 use Tools\Filesystem;
 
 require_once ROOT . 'config' . DS . 'bootstrap.php';
@@ -89,20 +90,21 @@ class PhotosFixture extends TestFixture
     /**
      * Run before each test is executed.
      * Should insert all the records into the test database.
-     * @param \Cake\Datasource\ConnectionInterface $connection An instance of
-     *  the connection into which the records will be inserted
-     * @return \Cake\Database\StatementInterface|bool on success or if there are
-     *  no records to insert, or false on failure
+     * @param \Cake\Datasource\ConnectionInterface $connection An instance of the connection into which the records will be inserted
+     * @return \Cake\Database\StatementInterface|bool on success or if there are no records to insert, or false on failure
+     * @throws \Tools\Exception\NotWritableException
+     * @throws \Tools\Exception\NotReadableException
      */
     public function insert(ConnectionInterface $connection)
     {
-        $Filesystem = new Filesystem();
+        $origin = WWW_ROOT . 'img' . DS . 'image.jpg';
+        Exceptionist::isReadable($origin);
 
         foreach ($this->records as $record) {
-            $file = $Filesystem->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']);
+            $file = Filesystem::instance()->concatenate(PHOTOS, (string)$record['album_id'], $record['filename']);
             if (!file_exists($file)) {
-                @mkdir(dirname($file), 0777, true);
-                @copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
+                Exceptionist::isWritable(dirname($file));
+                copy($origin, $file);
             }
         }
 
