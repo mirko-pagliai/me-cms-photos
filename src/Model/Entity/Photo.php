@@ -80,7 +80,7 @@ class Photo extends Entity
      */
     protected function _getPlainDescription(): string
     {
-        return $this->has('description') ? trim(strip_tags((new BBCode())->remove($this->get('description')))) : '';
+        return $this->hasValue('description') ? trim(strip_tags((new BBCode())->remove($this->get('description')))) : '';
     }
 
     /**
@@ -108,7 +108,7 @@ class Photo extends Entity
     protected function _getUrl(): string
     {
         $album = $this->get('album');
-        if (!$this->has('id') || !$album || !$album->has('slug')) {
+        if (!$this->hasValue('id') || !$album || !$album->hasValue('slug')) {
             return '';
         }
 
