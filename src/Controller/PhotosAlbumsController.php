@@ -47,14 +47,6 @@ class PhotosAlbumsController extends AppController
             return $this->redirect(['_name' => 'album', $album->get('slug')]);
         }
 
-        //Album photos are randomly ordered
-        $albums = $albums->all()->map(function (PhotosAlbum $album): PhotosAlbum {
-            $photos = $album->get('photos');
-            shuffle($photos);
-
-            return $album->set(compact('photos'));
-        });
-
         $this->set(compact('albums'));
     }
 
