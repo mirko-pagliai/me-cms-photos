@@ -7,7 +7,7 @@
 * on an album index, the photo shown as the album preview is no longer random, but the first one. This avoids the
   constant need to generate new thumbnails;
 * updated for me-cms 2.30.8-RC5 and me-tools 2.21.4;
-* small and numerous improvements of descriptions, tags and code suggested by PhpStorm.
+* small and numerous improvements of descriptions, tags and code suggested by PhpStorm;
 * numerous fixed suggested by phpstan.
 
 ### 1.1.0-RC1
