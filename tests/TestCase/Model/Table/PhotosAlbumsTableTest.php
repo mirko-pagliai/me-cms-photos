@@ -35,27 +35,28 @@ class PhotosAlbumsTableTest extends TableTestCase
     ];
 
     /**
-     * Called after every test method
-     * @return void
+     * This method is called after the last test of this test class is run.
      */
-    public function tearDown(): void
+    public static function tearDownAfterClass(): void
     {
-        parent::tearDown();
+        parent::tearDownAfterClass();
 
-        Filesystem::instance()->unlinkRecursive(PHOTOS, 'empty', true);
+        Filesystem::instance()->unlinkRecursive(PHOTOS, '.gitkeep', true);
     }
 
     /**
      * Test for event methods
+     * @uses \MeCms\Photos\Model\Table\PhotosAlbumsTable::afterDelete()
+     * @uses \MeCms\Photos\Model\Table\PhotosAlbumsTable::afterSave()
      * @test
      */
     public function testEventMethods(): void
     {
         $entity = $this->Table->newEntity(['title' => 'new album', 'slug' => 'new-album']);
-        $this->assertNotEmpty($this->Table->save($entity));
-        $this->assertFileExists($entity->get('path'));
+        $this->Table->save($entity);
         $this->assertIsWritable($entity->get('path'));
-        $this->assertTrue($this->Table->delete($entity));
+
+        $this->Table->delete($entity);
         $this->assertFileDoesNotExist($entity->get('path'));
     }
 

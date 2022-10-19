@@ -22,6 +22,7 @@ use Cake\ORM\RulesChecker;
 use MeCms\Model\Table\AppTable;
 use MeCms\ORM\Query;
 use MeCms\Photos\Model\Validation\PhotoValidator;
+use Tools\Exceptionist;
 
 /**
  * Photos model
@@ -53,10 +54,12 @@ class PhotosTable extends AppTable
      * @param \Cake\Event\Event $event Event object
      * @param \Cake\Datasource\EntityInterface $entity Entity object
      * @return void
+     * @throws \Tools\Exception\NotWritableException
      */
     public function afterDelete(Event $event, EntityInterface $entity): void
     {
-        @unlink($entity->get('path'));
+        Exceptionist::isWritable((string)$entity->get('path'));
+        unlink($entity->get('path'));
 
         parent::afterDelete($event, $entity);
     }

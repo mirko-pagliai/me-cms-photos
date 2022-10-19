@@ -43,6 +43,29 @@ class PhotosTableTest extends TableTestCase
     ];
 
     /**
+     * This method is called before the first test of this test class is run.
+     */
+    public static function setUpBeforeClass(): void
+    {
+        parent::setUpBeforeClass();
+
+        $dir = Filesystem::instance()->concatenate(PHOTOS, (string)self::$example['album_id']);
+        if (!file_exists($dir)) {
+            mkdir($dir);
+        }
+    }
+
+    /**
+     * This method is called after the last test of this test class is run.
+     */
+    public static function tearDownAfterClass(): void
+    {
+        parent::tearDownAfterClass();
+
+        Filesystem::instance()->unlinkRecursive(PHOTOS, '.gitkeep', true);
+    }
+
+    /**
      * Called before every test method
      * @return void
      */
@@ -51,32 +74,21 @@ class PhotosTableTest extends TableTestCase
         parent::setUp();
 
         $file = Filesystem::instance()->concatenate(PHOTOS, (string)self::$example['album_id'], self::$example['filename']);
-        @mkdir(dirname($file));
-        @copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
-    }
-
-    /**
-     * Called after every test method
-     * @return void
-     */
-    public function tearDown(): void
-    {
-        parent::tearDown();
-
-        Filesystem::instance()->unlinkRecursive(PHOTOS, 'empty', true);
+        if (!file_exists($file)) {
+            copy(WWW_ROOT . 'img' . DS . 'image.jpg', $file);
+        }
     }
 
     /**
      * Test for event methods
+     * @uses \MeCms\Photos\Model\Table\PhotosTable::afterDelete()
      * @test
      */
     public function testEventMethods(): void
     {
-        $entity = $this->Table->newEntity(self::$example);
-        $this->assertNotEmpty($this->Table->save($entity));
-        $this->assertEquals(['width' => 400, 'height' => 400], $entity->get('size'));
+        $entity = $this->Table->get(1);
         $this->assertFileExists($entity->get('path'));
-        $this->assertTrue($this->Table->delete($entity));
+        $this->Table->delete($entity);
         $this->assertFileDoesNotExist($entity->get('path'));
     }
 

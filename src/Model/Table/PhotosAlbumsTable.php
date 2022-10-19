@@ -21,6 +21,7 @@ use Cake\ORM\RulesChecker;
 use MeCms\Model\Table\AppTable;
 use MeCms\ORM\Query;
 use MeCms\Photos\Model\Validation\PhotosAlbumValidator;
+use Tools\Exceptionist;
 
 /**
  * PhotosAlbums model
@@ -41,10 +42,12 @@ class PhotosAlbumsTable extends AppTable
      * @param \Cake\Event\Event $event Event object
      * @param \Cake\Datasource\EntityInterface $entity Entity object
      * @return void
+     * @throws \Tools\Exception\NotWritableException
      */
     public function afterDelete(Event $event, EntityInterface $entity): void
     {
-        @rmdir($entity->get('path'));
+        Exceptionist::isWritable((string)$entity->get('path'));
+        rmdir($entity->get('path'));
 
         parent::afterDelete($event, $entity);
     }
@@ -54,10 +57,14 @@ class PhotosAlbumsTable extends AppTable
      * @param \Cake\Event\Event $event Event object
      * @param \Cake\Datasource\EntityInterface $entity Entity object
      * @return void
+     * @throws \Tools\Exception\NotWritableException
      */
     public function afterSave(Event $event, EntityInterface $entity): void
     {
-        @mkdir($entity->get('path'), 0777, true);
+        if (!file_exists($entity->get('path'))) {
+            Exceptionist::isWritable(dirname($entity->get('path')));
+            mkdir($entity->get('path'), 0777, true);
+        }
 
         parent::afterSave($event, $entity);
     }
