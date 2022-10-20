@@ -6,7 +6,7 @@ parameters:
 			path: src/Controller/PhotosAlbumsController.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
+			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
 			count: 2
 			path: src/Controller/PhotosAlbumsController.php
 
@@ -126,13 +126,13 @@ parameters:
 			path: templates/element/views/photo-preview.php
 
 		-
-			message: "#^Parameter \\#1 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:clear\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
+			count: 2
 			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$input of function array_values expects array, iterable given\\.$#"
-			count: 2
+			message: "#^Parameter \\#1 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:clear\\(\\) expects string, array\\|string\\|null given\\.$#"
+			count: 1
 			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
 
 		-

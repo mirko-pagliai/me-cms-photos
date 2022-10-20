@@ -8,6 +8,11 @@
       <code>\MeCms\Photos\Model\Entity\Photo|bool</code>
     </ImplementedReturnTypeMismatch>
   </file>
+  <file src="tests/TestCase/Controller/Admin/PhotosControllerTest.php">
+    <InvalidArrayOffset occurrences="1">
+      <code>[substr('album_id', 0, -3) =&gt; 1]</code>
+    </InvalidArrayOffset>
+  </file>
   <file src="tests/TestCase/Controller/PhotosAlbumsControllerTest.php">
     <InvalidArgument occurrences="2"/>
   </file>
