@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\Test\Fixture;
 
+use Cake\Database\Driver\Postgres;
 use Cake\Datasource\ConnectionInterface;
 use Cake\TestSuite\Fixture\TestFixture;
 use Tools\Exceptionist;
@@ -88,8 +89,19 @@ class PhotosAlbumsFixture extends TestFixture
      */
     public function insert(ConnectionInterface $connection)
     {
-        foreach ($this->records as $record) {
-            $dir = Filesystem::instance()->concatenate(PHOTOS, (string)$record['id']);
+        if ($connection->getDriver() instanceof Postgres) {
+            $id = range(1, count($this->records));
+            $this->records = array_map(function (array $record): array {
+                unset($record['id']);
+
+                return $record;
+            }, $this->records);
+        } else {
+            $id = array_map(fn(array $record): int => $record['id'], $this->records);
+        }
+
+        foreach ($id as $sId) {
+            $dir = Filesystem::instance()->concatenate(PHOTOS, (string)$sId);
             if (!file_exists($dir)) {
                 Exceptionist::isWritable(dirname($dir));
                 mkdir($dir, 0777, true);
