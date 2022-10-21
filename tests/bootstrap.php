@@ -62,7 +62,6 @@ Configure::write('App', [
     'cssBaseUrl' => 'css/',
     'paths' => ['templates' => [APP . 'templates' . DS]],
 ]);
-Configure::write('Error.ignoredDeprecationPaths', ['*/cakephp/cakephp/src/TestSuite/Fixture/FixtureInjector.php']);
 Configure::write('Session', ['defaults' => 'php']);
 Configure::write('Assets.target', TMP . 'assets');
 Configure::write('DatabaseBackup.target', TMP . 'backups');

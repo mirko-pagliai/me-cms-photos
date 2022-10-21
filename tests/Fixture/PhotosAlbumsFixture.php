@@ -89,6 +89,8 @@ class PhotosAlbumsFixture extends TestFixture
      */
     public function insert(ConnectionInterface $connection)
     {
+        $return = parent::insert($connection);
+
         if ($connection->getDriver() instanceof Postgres) {
             $id = range(1, count($this->records));
             $this->records = array_map(function (array $record): array {
@@ -108,6 +110,6 @@ class PhotosAlbumsFixture extends TestFixture
             }
         }
 
-        return parent::insert($connection);
+        return $return;
     }
 }
