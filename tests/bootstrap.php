@@ -16,6 +16,7 @@ declare(strict_types=1);
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
+use Migrations\TestSuite\Migrator;
 
 ini_set('intl.default_locale', 'en_US');
 date_default_timezone_set('UTC');
@@ -82,5 +83,8 @@ if (!getenv('db_dsn')) {
     }
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
+
+$migrator = new Migrator();
+$migrator->run(['plugin' => 'MeCms/Photos']);
 
 $_SERVER['PHP_SELF'] = '/';
