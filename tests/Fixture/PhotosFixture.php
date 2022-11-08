@@ -98,6 +98,8 @@ class PhotosFixture extends TestFixture
      */
     public function insert(ConnectionInterface $connection)
     {
+        $return = parent::insert($connection);
+
         $origin = WWW_ROOT . 'img' . DS . 'image.jpg';
         Exceptionist::isReadable($origin);
 
@@ -109,6 +111,6 @@ class PhotosFixture extends TestFixture
             }
         }
 
-        return parent::insert($connection);
+        return $return;
     }
 }

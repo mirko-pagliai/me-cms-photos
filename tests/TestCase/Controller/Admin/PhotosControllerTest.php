@@ -49,8 +49,9 @@ class PhotosControllerTest extends ControllerTestCase
         //Only for the `testUploadErrors()` method, it mocks the table
         if ($this->getName() == 'testUploadErrors') {
             $alias = $this->Table->getRegistryAlias();
-            $plugin = $this->getPluginName($this);
-            $this->_controller->$alias = $this->getMockForModel($plugin . '.' . $alias, ['save']);
+            /** @var \Cake\ORM\Table $table */
+            $table = $this->getMockForModel($this->getPluginName($this) . '.' . $alias, ['save']);
+            $this->_controller->getTableLocator()->set($alias, $table);
         }
     }
 

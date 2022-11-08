@@ -16,6 +16,7 @@ declare(strict_types=1);
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
+use Migrations\TestSuite\Migrator;
 
 ini_set('intl.default_locale', 'en_US');
 date_default_timezone_set('UTC');
@@ -62,7 +63,6 @@ Configure::write('App', [
     'cssBaseUrl' => 'css/',
     'paths' => ['templates' => [APP . 'templates' . DS]],
 ]);
-Configure::write('Error.ignoredDeprecationPaths', ['*/cakephp/cakephp/src/TestSuite/Fixture/FixtureInjector.php']);
 Configure::write('Session', ['defaults' => 'php']);
 Configure::write('Assets.target', TMP . 'assets');
 Configure::write('DatabaseBackup.target', TMP . 'backups');
@@ -83,5 +83,8 @@ if (!getenv('db_dsn')) {
     }
 }
 ConnectionManager::setConfig('test', ['url' => getenv('db_dsn')]);
+
+$migrator = new Migrator();
+$migrator->run(['plugin' => 'MeCms/Photos']);
 
 $_SERVER['PHP_SELF'] = '/';
