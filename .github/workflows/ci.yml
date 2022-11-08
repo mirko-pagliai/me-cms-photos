@@ -96,9 +96,6 @@ jobs:
     steps:
         - uses: actions/checkout@v3
 
-        - name: Setup Database
-          run: export db_dsn='sqlite:///:memory:'
-
         - name: Setup PHP
           uses: shivammathur/setup-php@v2
           with:
@@ -121,6 +118,8 @@ jobs:
 
         - name: Run psalm
           if: success() || failure()
+          env:
+            db_dsn: 'sqlite:///:memory:'
           run: vendor/bin/psalm.phar --output-format=github --php-version=8.0
 
         - name: Run phpstan
