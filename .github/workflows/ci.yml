@@ -97,7 +97,7 @@ jobs:
         - uses: actions/checkout@v3
 
         - name: Setup Database
-          run: export db_dsn='mysql://root:root@127.0.0.1/test?encoding=utf8&quoteIdentifiers=true'
+          run: export db_dsn='sqlite:///:memory:'
 
         - name: Setup PHP
           uses: shivammathur/setup-php@v2
