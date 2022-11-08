@@ -125,6 +125,8 @@ jobs:
 
         - name: Run phpstan
           if: success() || failure()
+          env:
+            db_dsn: 'sqlite:///:memory:'
           run: vendor/bin/phpstan.phar analyse --error-format=github
 
 
