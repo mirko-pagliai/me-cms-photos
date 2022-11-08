@@ -104,7 +104,7 @@ jobs:
             tools: cs2pr
 
         - name: Composer install
-          run: composer update --dev
+          run: composer update
 
         - name: Composer show
           run: composer show
