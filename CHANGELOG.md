@@ -1,5 +1,8 @@
 # 1.x branch
 ## 1.1 branch
+### 1.1.2
+* updated for me-cms 2.30.10.
+
 ### 1.1.1-RC2
 * `PhotosAlbumsController::index()` now uses the pagination. Added the `MeCms/Photos.default.albums` config value;
 * fixed bug for `PhotosAlbum::_getUrl()` method;
