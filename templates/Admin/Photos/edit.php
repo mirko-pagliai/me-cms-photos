@@ -27,7 +27,7 @@ $this->assign('title', $title = __d('me_cms/photos', 'Edit photo'));
         <?= $this->Form->control('active', ['label' => I18N_PUBLISHED]) ?>
         </div>
     </div>
-    <fieldset class="col-lg-9">
+    <fieldset class="col">
         <div class="mb-2">
             <strong><?= I18N_PREVIEW ?></strong>
         </div>
