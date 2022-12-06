@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\Photo $photo
+ * @var \MeCms\View\View\AdminView $this
  */
 $this->extend('MeCms./common/form');
 $this->assign('title', $title = __d('me_cms/photos', 'Edit photo'));
@@ -20,12 +21,10 @@ $this->assign('title', $title = __d('me_cms/photos', 'Edit photo'));
 
 <?= $this->Form->create($photo); ?>
 <div class="row">
-    <div class="col-lg-3 order-12">
+    <div class="col-lg-3 order-last">
         <div class="float-form">
-        <?php
-        echo $this->Form->control('album_id', ['label' => __d('me_cms/photos', 'Album')]);
-        echo $this->Form->control('active', ['label' => I18N_PUBLISHED]);
-        ?>
+        <?= $this->Form->control('album_id', ['label' => __d('me_cms/photos', 'Album')]) ?>
+        <?= $this->Form->control('active', ['label' => I18N_PUBLISHED]) ?>
         </div>
     </div>
     <fieldset class="col-lg-9">

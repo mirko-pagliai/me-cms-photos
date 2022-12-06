@@ -1,5 +1,8 @@
 # 1.x branch
 ## 1.1 branch
+### 1.1.3
+* fixed a small bug in the sorting of columns in the photo editing form.
+
 ### 1.1.2
 * updated for me-cms 2.30.10.
 
