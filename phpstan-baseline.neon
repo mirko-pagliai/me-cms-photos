@@ -37,11 +37,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 10
-			path: templates/Admin/Photos/edit.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
 			count: 17
 			path: templates/Admin/Photos/index.php
 
