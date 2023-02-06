@@ -17,25 +17,23 @@ namespace MeCms\Photos\Controller\Admin;
 
 use Cake\Http\Response;
 use MeCms\Controller\Admin\AppController;
+use MeCms\Model\Entity\User;
 
 /**
  * PhotosAlbums controller
- * @property \MeCms\Controller\Component\AuthComponent $Auth
  * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $PhotosAlbums
  */
 class PhotosAlbumsController extends AppController
 {
     /**
-     * Check if the provided user is authorized for the request
-     * @param array|\ArrayAccess|null $user The user to check the authorization
-     *  of. If empty the user in the session will be used
+     * Checks if the provided user is authorized for the request
+     * @param \MeCms\Model\Entity\User $User User entity
      * @return bool `true` if the user is authorized, otherwise `false`
-     * @uses \MeCms\Controller\Component\AuthComponent::isGroup()
      */
-    public function isAuthorized($user = null): bool
+    public function isAuthorized(User $User): bool
     {
         //Only admins and managers can delete albums
-        return !$this->getRequest()->is('delete') || $this->Auth->isGroup(['admin', 'manager']);
+        return !$this->getRequest()->is('delete') || in_array($User->get('group')->get('name'), ['admin', 'manager']);
     }
 
     /**

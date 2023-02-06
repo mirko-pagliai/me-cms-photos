@@ -16,7 +16,7 @@ declare(strict_types=1);
 namespace MeCms\Photos\Model\Table;
 
 use Cake\Datasource\EntityInterface;
-use Cake\Event\Event;
+use Cake\Event\EventInterface;
 use Cake\ORM\RulesChecker;
 use MeCms\Model\Table\AppTable;
 use MeCms\ORM\Query;
@@ -39,12 +39,12 @@ class PhotosAlbumsTable extends AppTable
 
     /**
      * Called after an entity has been deleted
-     * @param \Cake\Event\Event $event Event object
+     * @param \Cake\Event\EventInterface $event Event object
      * @param \Cake\Datasource\EntityInterface $entity Entity object
      * @return void
      * @throws \Tools\Exception\NotWritableException
      */
-    public function afterDelete(Event $event, EntityInterface $entity): void
+    public function afterDelete(EventInterface $event, EntityInterface $entity): void
     {
         Exceptionist::isWritable((string)$entity->get('path'));
         rmdir($entity->get('path'));
@@ -54,12 +54,12 @@ class PhotosAlbumsTable extends AppTable
 
     /**
      * Called after an entity is saved
-     * @param \Cake\Event\Event $event Event object
+     * @param \Cake\Event\EventInterface $event Event object
      * @param \Cake\Datasource\EntityInterface $entity Entity object
      * @return void
      * @throws \Tools\Exception\NotWritableException
      */
-    public function afterSave(Event $event, EntityInterface $entity): void
+    public function afterSave(EventInterface $event, EntityInterface $entity): void
     {
         if (!file_exists($entity->get('path'))) {
             Exceptionist::isWritable(dirname($entity->get('path')));
@@ -70,8 +70,7 @@ class PhotosAlbumsTable extends AppTable
     }
 
     /**
-     * Returns a rules checker object that will be used for validating
-     *  application integrity
+     * Returns a rules checker object that will be used for validating application integrity
      * @param \Cake\ORM\RulesChecker $rules The rules object to be modified
      * @return \Cake\ORM\RulesChecker
      */
