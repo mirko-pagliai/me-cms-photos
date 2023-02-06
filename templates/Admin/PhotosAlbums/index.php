@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\PhotosAlbum[] $albums
+ * @var \MeCms\View\View\Admin\AppView $this
  */
 $this->extend('MeCms./Admin/common/index');
 $this->assign('title', __d('me_cms/photos', 'Albums'));
@@ -54,7 +55,7 @@ $this->append('actions', $this->Html->button(
                     ];
 
                     //Only admins and managers can delete albums
-                    if ($this->Auth->isGroup(['admin', 'manager'])) {
+                    if ($this->Identity->isGroup('admin', 'manager')) {
                         $actions[] = $this->Form->postLink(I18N_DELETE, ['action' => 'delete', $album->get('id')], [
                             'class' => 'text-danger',
                             'icon' => 'trash-alt',
