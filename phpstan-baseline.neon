@@ -1,51 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot cast array\\|string\\|null to string\\.$#"
-			count: 1
-			path: src/Controller/PhotosAlbumsController.php
-
-		-
-			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
-			count: 2
-			path: src/Controller/PhotosAlbumsController.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:readMany\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 2
-			path: src/Controller/PhotosAlbumsController.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:writeMany\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 2
-			path: src/Controller/PhotosAlbumsController.php
-
-		-
-			message: "#^Parameter \\#4 \\.\\.\\.\\$values of function sprintf expects bool\\|float\\|int\\|string\\|null, array\\|string\\|null given\\.$#"
-			count: 1
-			path: src/Controller/PhotosAlbumsController.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: src/Utility/Sitemap/Sitemap.php
-
-		-
-			message: "#^Parameter \\#3 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:write\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: src/Utility/Sitemap/Sitemap.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 17
-			path: templates/Admin/Photos/index.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 12
-			path: templates/Admin/Photos/index_as_grid.php
-
-		-
 			message: "#^Variable \\$this might not be defined\\.$#"
 			count: 10
 			path: templates/Admin/Photos/upload.php
@@ -59,11 +14,6 @@ parameters:
 			message: "#^Variable \\$this might not be defined\\.$#"
 			count: 9
 			path: templates/Admin/PhotosAlbums/edit.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 19
-			path: templates/Admin/PhotosAlbums/index.php
 
 		-
 			message: "#^Variable \\$this might not be defined\\.$#"
@@ -124,34 +74,4 @@ parameters:
 			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
 			count: 2
 			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:clear\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:readMany\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 2
-			path: tests/TestCase/Controller/PhotosAlbumsControllerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: tests/TestCase/Controller/PhotosControllerTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 1
-			path: tests/TestCase/Utility/Sitemap/SitemapTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$config of static method Cake\\\\Cache\\\\Cache\\:\\:read\\(\\) expects string, array\\|string\\|null given\\.$#"
-			count: 5
-			path: tests/TestCase/View/Cell/PhotosWidgetsCellTest.php
 

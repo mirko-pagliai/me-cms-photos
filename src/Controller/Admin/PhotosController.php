@@ -32,7 +32,7 @@ class PhotosController extends AppController
     /**
      * Called before the controller action
      * @param \Cake\Event\EventInterface $event An Event instance
-     * @return \Cake\Http\Response|void
+     * @return \Cake\Http\Response|null|void
      * @uses \MeCms\Photos\Model\Table\PhotosAlbums::getList()
      */
     public function beforeFilter(EventInterface $event)

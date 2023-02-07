@@ -27,7 +27,7 @@ use Tools\Exceptionist;
  * PhotosAlbums model
  * @method findActiveBySlug($slug)
  * @method findById($id)
- * @property \Cake\ORM\Association\HasMany $Photos
+ * @property \MeCms\Photos\Model\Table\PhotosTable&\Cake\ORM\Association\HasMany $Photos
  */
 class PhotosAlbumsTable extends AppTable
 {
