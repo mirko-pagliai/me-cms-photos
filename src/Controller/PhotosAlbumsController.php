@@ -33,12 +33,8 @@ class PhotosAlbumsController extends AppController
     {
         $this->paginate['limit'] = $this->paginate['maxLimit'] = getConfigOrFail('MeCms/Photos.default.albums');
 
-        //Sets the cache name
-        /** @var string $queryPage */
-        $queryPage = $this->getRequest()->getQuery('page', '1');
-        $cache = sprintf('albums_limit_%s_page_%s', $this->paginate['limit'], trim($queryPage, '/'));
-
         //Tries to get data from the cache
+        $cache = sprintf('albums_limit_%s_page_%s', $this->paginate['limit'], $this->getQueryPage());
         $albums = Cache::read($cache, $this->PhotosAlbums->getCacheName());
         $paging = Cache::read($cache . '_paging', $this->PhotosAlbums->getCacheName());
 
@@ -84,13 +80,10 @@ class PhotosAlbumsController extends AppController
             ->cache('album_' . md5($slug))
             ->firstOrFail();
 
-        /** @var string $queryPage */
-        $queryPage = $this->getRequest()->getQuery('page', '1');
         $this->paginate['limit'] = $this->paginate['maxLimit'] = getConfigOrFail('MeCms/Photos.default.photos');
 
-        //Sets the cache name
-        $cache = sprintf('album_%s_limit_%s_page_%s', md5($slug), $this->paginate['limit'], $queryPage);
         //Tries to get data from the cache
+        $cache = sprintf('album_%s_limit_%s_page_%s', md5($slug), $this->paginate['limit'], $this->getQueryPage());
         $photos = Cache::read($cache, $this->PhotosAlbums->getCacheName());
         $paging = Cache::read($cache . '_paging', $this->PhotosAlbums->getCacheName());
 
