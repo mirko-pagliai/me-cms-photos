@@ -19,33 +19,30 @@ use Cake\Event\EventInterface;
 use Cake\Http\Cookie\Cookie;
 use Cake\Http\Response;
 use MeCms\Controller\Admin\AppController;
+use MeCms\Model\Entity\User;
 
 /**
  * Photos controller
- * @property \MeCms\Controller\Component\AuthComponent $Auth
  * @property \MeTools\Controller\Component\FlashComponent $Flash
- * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Albums
  * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  * @property \MeTools\Controller\Component\UploaderComponent $Uploader
  */
 class PhotosController extends AppController
 {
     /**
-     * Called before the controller action.
-     * You can use this method to perform logic that needs to happen before
-     *   each controller action
+     * Called before the controller action
      * @param \Cake\Event\EventInterface $event An Event instance
-     * @return \Cake\Http\Response|null|void
+     * @return \Cake\Http\Response|void
      * @uses \MeCms\Photos\Model\Table\PhotosAlbums::getList()
      */
     public function beforeFilter(EventInterface $event)
     {
-        $result = parent::beforeFilter($event);
-        if ($result) {
-            return $result;
+        $parent = parent::beforeFilter($event);
+        if ($parent instanceof Response) {
+            return $parent;
         }
 
-        $albums = $this->Albums->getList()->all();
+        $albums = $this->Photos->Albums->getList()->all();
         if ($albums->isEmpty()) {
             $this->Flash->alert(__d('me_cms/photos', 'You must first create an album'));
 
@@ -53,21 +50,17 @@ class PhotosController extends AppController
         }
 
         $this->set(compact('albums'));
-
-        return null;
     }
 
     /**
-     * Check if the provided user is authorized for the request
-     * @param array|\ArrayAccess|null $user The user to check the authorization
-     *  of. If empty the user in the session will be used
+     * Checks if the provided user is authorized for the request
+     * @param \MeCms\Model\Entity\User $User User entity
      * @return bool `true` if the user is authorized, otherwise `false`
-     * @uses \MeCms\Controller\Component\AuthComponent::isGroup()
      */
-    public function isAuthorized($user = null): bool
+    public function isAuthorized(User $User): bool
     {
         //Only admins and managers can delete photos
-        return !$this->getRequest()->is('delete') || $this->Auth->isGroup(['admin', 'manager']);
+        return !$this->getRequest()->is('delete') || in_array($User->get('group')->get('name'), ['admin', 'manager']);
     }
 
     /**
