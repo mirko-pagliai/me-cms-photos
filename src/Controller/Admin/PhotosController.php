@@ -23,7 +23,6 @@ use MeCms\Model\Entity\User;
 
 /**
  * Photos controller
- * @property \MeTools\Controller\Component\FlashComponent $Flash
  * @property \MeCms\Photos\Model\Table\PhotosTable $Photos
  * @property \MeTools\Controller\Component\UploaderComponent $Uploader
  */
@@ -33,7 +32,6 @@ class PhotosController extends AppController
      * Called before the controller action
      * @param \Cake\Event\EventInterface $event An Event instance
      * @return \Cake\Http\Response|null|void
-     * @uses \MeCms\Photos\Model\Table\PhotosAlbums::getList()
      */
     public function beforeFilter(EventInterface $event)
     {
@@ -68,7 +66,6 @@ class PhotosController extends AppController
      *
      * This action can use the `index_as_grid` template.
      * @return void
-     * @uses \MeCms\Photos\Model\Table\PhotosTable::queryFromFilter()
      */
     public function index(): void
     {
@@ -80,7 +77,7 @@ class PhotosController extends AppController
         $this->paginate['order'] = ['Photos.created' => 'DESC'];
 
         //Sets paginate limit and the maximum paginate limit
-        //See http://book.cakephp.org/3.0/en/controllers/components/pagination.html#limit-the-maximum-number-of-rows-that-can-be-fetched
+        //See https://book.cakephp.org/4/en/controllers/components/pagination.html#limit-the-maximum-number-of-rows-per-page
         if ($render === 'grid') {
             $this->paginate['limit'] = $this->paginate['maxLimit'] = getConfigOrFail('MeCms/Photos.admin.photos');
             $this->viewBuilder()->setTemplate('index_as_grid');

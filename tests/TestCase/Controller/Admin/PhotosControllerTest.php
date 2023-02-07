@@ -18,6 +18,7 @@ namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
+use Cake\Http\Response;
 use MeCms\Photos\Model\Entity\Photo;
 use MeCms\TestSuite\Admin\ControllerTestCase;
 
@@ -65,6 +66,15 @@ class PhotosControllerTest extends ControllerTestCase
         $this->Table->Albums->deleteAll(['id IS NOT' => null]);
         $this->get($this->url + ['action' => 'index']);
         $this->assertRedirect(['controller' => 'PhotosAlbums', 'action' => 'index']);
+
+        /**
+         * This tests that the parent `beforeFilter()` method is being executed correctly
+         */
+        /** @var \MeCms\Photos\Controller\Admin\PhotosController&\PHPUnit\Framework\MockObject\MockObject $Controller */
+        $Controller = $this->getMockBuilder($this->originClassName)->onlyMethods(['initialize', 'isSpammer'])->getMock();
+        $Controller->expects($this->once())->method('isSpammer')->willReturn(true);
+        $result = $Controller->dispatchEvent('Controller.initialize')->getResult();
+        $this->assertInstanceOf(Response::class, $result);
     }
 
     /**
