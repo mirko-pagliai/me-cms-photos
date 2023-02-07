@@ -15,19 +15,15 @@ declare(strict_types=1);
  */
 namespace MeCms\Photos\Test\TestCase\Command\Install;
 
-use MeTools\TestSuite\ConsoleIntegrationTestTrait;
-use MeTools\TestSuite\TestCase;
+use MeTools\TestSuite\CommandTestCase;
 use Tools\Filesystem;
 
 /**
  * CopyConfigCommandTest class
  */
-class CopyConfigCommandTest extends TestCase
+class CopyConfigCommandTest extends CommandTestCase
 {
-    use ConsoleIntegrationTestTrait;
-
     /**
-     * Tests for `execute()` method
      * @uses \MeCms\Command\Install\CopyConfigCommand::execute()
      * @test
      */

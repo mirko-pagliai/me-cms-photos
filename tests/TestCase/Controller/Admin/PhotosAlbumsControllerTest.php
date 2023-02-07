@@ -16,11 +16,12 @@ declare(strict_types=1);
 namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 
 use MeCms\Photos\Model\Entity\PhotosAlbum;
-use MeCms\TestSuite\ControllerTestCase;
+use MeCms\TestSuite\Admin\ControllerTestCase;
 
 /**
  * PhotosAlbumsControllerTest class
  * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable $Table
+ * @group admin-controller
  */
 class PhotosAlbumsControllerTest extends ControllerTestCase
 {
@@ -33,28 +34,22 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
     ];
 
     /**
-     * Tests for `isAuthorized()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosAlbumsController::isAuthorized()
      */
     public function testIsAuthorized(): void
     {
-        $this->assertGroupsAreAuthorized([
-            'admin' => true,
-            'manager' => true,
-            'user' => true,
-        ]);
+        $this->assertAllGroupsAreAuthorized('index');
+        $this->assertAllGroupsAreAuthorized('upload');
 
-        //With `delete` action
-        $this->assertGroupsAreAuthorized([
-            'admin' => true,
-            'manager' => true,
-            'user' => false,
-        ], 'delete');
+        $this->assertGroupIsAuthorized('delete', 'admin');
+        $this->assertGroupIsAuthorized('delete', 'manager');
+        $this->assertGroupIsNotAuthorized('delete', 'user');
     }
 
     /**
-     * Tests for `index()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosAlbumsController::index()
      */
     public function testIndex(): void
     {
@@ -65,8 +60,8 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `add()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosAlbumsController::add()
      */
     public function testAdd(): void
     {
@@ -90,8 +85,8 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `edit()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosAlbumsController::edit()
      */
     public function testEdit(): void
     {
@@ -115,8 +110,8 @@ class PhotosAlbumsControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `delete()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosAlbumsController::delete()
      */
     public function testDelete(): void
     {

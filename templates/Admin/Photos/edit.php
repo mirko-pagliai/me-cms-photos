@@ -13,7 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\Photo $photo
- * @var \MeCms\View\View\AdminView $this
+ * @var \MeCms\View\View\Admin\AppView $this
  */
 $this->extend('MeCms./common/form');
 $this->assign('title', $title = __d('me_cms/photos', 'Edit photo'));

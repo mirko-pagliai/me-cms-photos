@@ -18,12 +18,14 @@ namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
+use Cake\Http\Response;
 use MeCms\Photos\Model\Entity\Photo;
-use MeCms\TestSuite\ControllerTestCase;
+use MeCms\TestSuite\Admin\ControllerTestCase;
 
 /**
  * PhotosControllerTest class
  * @property \MeCms\Photos\Model\Table\PhotosTable $Table
+ * @group admin-controller
  */
 class PhotosControllerTest extends ControllerTestCase
 {
@@ -49,24 +51,30 @@ class PhotosControllerTest extends ControllerTestCase
         //Only for the `testUploadErrors()` method, it mocks the table
         if ($this->getName() == 'testUploadErrors') {
             $alias = $this->Table->getRegistryAlias();
-            /** @var \Cake\ORM\Table $table */
-            $table = $this->getMockForModel($this->getPluginName($this) . '.' . $alias, ['save']);
-            $this->_controller->getTableLocator()->set($alias, $table);
+            /** @var \MeCms\Photos\Model\Table\PhotosTable&\PHPUnit\Framework\MockObject\MockObject $PhotosTable */
+            $PhotosTable = $this->getMockForModel($alias, ['save']);
+            $this->_controller->getTableLocator()->set($alias, $PhotosTable);
         }
     }
 
     /**
-     * Tests for `beforeFilter()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::beforeFilter()
      */
     public function testBeforeFilter(): void
     {
-        parent::testBeforeFilter();
-
         $this->Table->Albums->deleteAll(['id IS NOT' => null]);
         $this->get($this->url + ['action' => 'index']);
         $this->assertRedirect(['controller' => 'PhotosAlbums', 'action' => 'index']);
+
+        /**
+         * This tests that the parent `beforeFilter()` method is being executed correctly
+         */
+        /** @var \MeCms\Photos\Controller\Admin\PhotosController&\PHPUnit\Framework\MockObject\MockObject $Controller */
+        $Controller = $this->getMockBuilder($this->originClassName)->onlyMethods(['initialize', 'isSpammer'])->getMock();
+        $Controller->expects($this->once())->method('isSpammer')->willReturn(true);
+        $result = $Controller->dispatchEvent('Controller.initialize')->getResult();
+        $this->assertInstanceOf(Response::class, $result);
     }
 
     /**
@@ -132,8 +140,7 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertFileExists($record->get('path'));
         $this->Table->delete($record);
 
-        //POST request. This works without the parent ID on the query string,
-        //  because there is only one record from the associated table
+        //POST request. This works without the parent ID on query string, because there is only one record from the associated table
         $this->Table->Albums->deleteAll(['id >' => 1]);
         $this->post($this->url + ['action' => 'upload', '_ext' => 'json'], compact('file'));
         $this->assertRedirect($url);
@@ -233,24 +240,16 @@ class PhotosControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `isAuthorized()` method
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::isAuthorized()
      */
     public function testIsAuthorized(): void
     {
-        parent::testIsAuthorized();
+        $this->assertAllGroupsAreAuthorized('index');
+        $this->assertAllGroupsAreAuthorized('upload');
 
-        $this->assertGroupsAreAuthorized([
-            'admin' => true,
-            'manager' => true,
-            'user' => true,
-        ]);
-
-        //With `delete` action
-        $this->assertGroupsAreAuthorized([
-            'admin' => true,
-            'manager' => true,
-            'user' => false,
-        ], 'delete');
+        $this->assertGroupIsAuthorized('delete', 'admin');
+        $this->assertGroupIsAuthorized('delete', 'manager');
+        $this->assertGroupIsNotAuthorized('delete', 'user');
     }
 }

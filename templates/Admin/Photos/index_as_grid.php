@@ -13,6 +13,7 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\Photo[] $photos
+ * @var \MeCms\View\View\Admin\AppView $this
  */
 $this->extend('MeCms/Photos./Admin/common/Photos/index');
 ?>
@@ -68,7 +69,7 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
                 ]);
 
                 //Only admins and managers can delete photos
-                if ($this->Auth->isGroup(['admin', 'manager'])) {
+                if ($this->Identity->isGroup('admin', 'manager')) {
                     $actions[] = $this->Form->postButton('', ['action' => 'delete', (string)$photo->get('id')], [
                         'class' => 'btn-link text-danger',
                         'icon' => 'trash-alt',

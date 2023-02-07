@@ -36,7 +36,6 @@ class PhotosWidgetsCellTest extends CellTestCase
     ];
 
     /**
-     * Test for `albums()` method
      * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::albums()
      * @test
      */
@@ -45,7 +44,7 @@ class PhotosWidgetsCellTest extends CellTestCase
         $widget = 'MeCms/Photos.Photos::albums';
 
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Albums',
             '/h4',
@@ -72,7 +71,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
         //Renders as list
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Albums',
             '/h4',
@@ -117,7 +116,6 @@ class PhotosWidgetsCellTest extends CellTestCase
     }
 
     /**
-     * Test for `latest()` method
      * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::latest()
      * @test
      */
@@ -126,7 +124,7 @@ class PhotosWidgetsCellTest extends CellTestCase
         $widget = 'MeCms/Photos.Photos::latest';
 
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Latest photo',
             '/h4',
@@ -142,7 +140,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
         //Tries another limit
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Latest 2 photos',
             '/h4',
@@ -177,7 +175,6 @@ class PhotosWidgetsCellTest extends CellTestCase
     }
 
     /**
-     * Test for `random()` method
      * @uses \MeCms\Photos\View\Cell\PhotosWidgetsCell::random()
      * @test
      */
@@ -186,7 +183,7 @@ class PhotosWidgetsCellTest extends CellTestCase
         $widget = 'MeCms/Photos.Photos::random';
 
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Random photo',
             '/h4',
@@ -202,7 +199,7 @@ class PhotosWidgetsCellTest extends CellTestCase
 
         //Tries another limit
         $expected = [
-            ['div' => ['class' => 'widget mb-4']],
+            ['div' => ['class' => 'widget mb-5']],
             'h4' => ['class' => 'widget-title'],
             'Random 2 photos',
             '/h4',

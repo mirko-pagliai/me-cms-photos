@@ -30,7 +30,7 @@ class TopbarTest extends TestCase
     public function testTopbar(): void
     {
         $result = (new AppView())->element('MeCms.topbar');
-        $this->assertStringContainsString('<a href="/" class="nav-link" title="Home"><i class="fas fa-home"> </i> Home</a>', $result);
+        $this->assertStringContainsString('<a href="/" class="nav-link" title="Home">Home</a>', $result);
         $this->assertStringContainsString('<a href="/albums" class="nav-link" title="Photos">Photos</a>', $result);
     }
 }
