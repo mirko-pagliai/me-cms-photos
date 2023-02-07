@@ -13,7 +13,7 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "mirko-pagliai/me-cms": "~2.31"
+        "mirko-pagliai/me-cms": "~2.31.1"
     },
     "require-dev": {
         "cakephp/cakephp-codesniffer": "^4.0",
