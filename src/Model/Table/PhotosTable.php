@@ -26,7 +26,7 @@ use Tools\Exceptionist;
 
 /**
  * Photos model
- * @property PhotosAlbumsTable&\Cake\ORM\Association\BelongsTo $Albums
+ * @property \MeCms\Photos\Model\Table\PhotosAlbumsTable&\Cake\ORM\Association\BelongsTo $Albums
  * @method \MeCms\Photos\Model\Entity\Photo get($primaryKey, $options = [])
  * @method \MeCms\Photos\Model\Entity\Photo newEntity($data = null, array $options = [])
  * @method \MeCms\Photos\Model\Entity\Photo[] newEntities(array $data, array $options = [])
