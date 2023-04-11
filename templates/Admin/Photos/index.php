@@ -31,14 +31,13 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
     <tbody>
         <?php foreach ($photos as $photo) : ?>
             <tr>
-                <td class="text-nowrap text-center">
+                <td class="text-nowrap text-center align-middle">
                     <code><?= $photo->get('id') ?></code>
                 </td>
                 <td>
-                    <strong>
-                        <?= $this->Html->link($photo->get('filename'), ['action' => 'edit', $photo->get('id')]) ?>
-                    </strong>
                     <?php
+                    echo $this->Html->link($photo->get('filename'), ['action' => 'edit', $photo->get('id')], ['class' => 'fw-bold']);
+
                     //If the photo is not active (not published)
                     if (!$photo->get('active')) {
                         echo $this->Html->span(I18N_NOT_PUBLISHED, ['class' => 'record-badge badge badge-warning']);
@@ -85,17 +84,17 @@ $this->extend('MeCms/Photos./Admin/common/Photos/index');
                     echo $this->Html->ul($actions, ['class' => 'actions']);
                     ?>
                 </td>
-                <td class="text-center">
+                <td class="text-center align-middle">
                     <?= $this->Html->link(
                         $photo->get('album')->get('title'),
                         ['?' => ['album' => $photo->get('album')->get('id')]],
                         ['title' => I18N_BELONG_ELEMENT]
                     ) ?>
                 </td>
-                <td class="text-center">
+                <td class="text-center align-middle">
                     <?= $photo->get('description') ?>
                 </td>
-                <td class="text-nowrap text-center">
+                <td class="text-nowrap text-center align-middle">
                     <div class="d-none d-lg-block">
                         <?= $photo->get('created')->i18nFormat() ?>
                     </div>
