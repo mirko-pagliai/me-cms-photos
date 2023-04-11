@@ -13,31 +13,16 @@ declare(strict_types=1);
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
  * @var \MeCms\Photos\Model\Entity\PhotosAlbum $album
- * @var \MeCms\Photos\Model\Entity\Photo[] $photos
+ * @var \Cake\ORM\ResultSet<\MeCms\Photos\Model\Entity\Photo> $photos
+ * @var \MeCms\View\View\AppView $this
  */
+
 $this->extend('MeCms./common/view');
 $this->assign('title', $album->get('title'));
 
 if (getConfig('default.fancybox')) {
     $this->Library->fancybox();
 }
-
-/**
- * Userbar
- */
-if (!$album->get('active')) {
-    $this->addToUserbar($this->Html->span(I18N_NOT_PUBLISHED, ['class' => 'badge badge-warning']));
-}
-$this->addToUserbar($this->Html->link(
-    __d('me_cms/photos', 'Edit album'),
-    ['action' => 'edit', $album->get('id'), 'prefix' => ADMIN_PREFIX],
-    ['class' => 'nav-link', 'icon' => 'pencil-alt', 'target' => '_blank']
-));
-$this->addToUserbar($this->Form->postLink(
-    __d('me_cms/photos', 'Delete album'),
-    ['action' => 'delete', $album->get('id'), 'prefix' => ADMIN_PREFIX],
-    ['class' => 'nav-link text-danger', 'icon' => 'trash-alt', 'confirm' => I18N_SURE_TO_DELETE, 'target' => '_blank']
-));
 
 /**
  * Breadcrumb
