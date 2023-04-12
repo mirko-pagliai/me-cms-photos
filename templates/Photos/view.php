@@ -29,7 +29,7 @@ $this->Breadcrumbs->add($photo->get('filename'), $photo->get('url'));
 /**
  * Meta tags
  */
-if ($this->getRequest()->isAction('view', 'Photos')) {
+if ($this->getRequest()->is('action', 'view', 'Photos')) {
     if ($photo->has('modified')) {
         $this->Html->meta(['content' => $photo->get('modified')->toUnixString(), 'property' => 'og:updated_time']);
     }
