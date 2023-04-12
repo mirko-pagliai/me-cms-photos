@@ -12,9 +12,10 @@ declare(strict_types=1);
  * @link        https://github.com/mirko-pagliai/me-cms-photos
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  *
- * @var \MeCms\Photos\Model\Entity\PhotosAlbum[] $albums
+ * @var \Cake\ORM\ResultSet<\MeCms\Photos\Model\Entity\PhotosAlbum> $albums
  * @var \MeCms\View\View\AppView $this
  */
+
 $this->extend('MeCms./common/index');
 $this->assign('title', I18N_PHOTOS);
 

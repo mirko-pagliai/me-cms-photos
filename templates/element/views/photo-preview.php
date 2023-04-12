@@ -11,7 +11,14 @@ declare(strict_types=1);
  * @copyright   Copyright (c) Mirko Pagliai
  * @link        https://github.com/mirko-pagliai/me-cms-photos
  * @license     https://opensource.org/licenses/mit-license.php MIT License
+ *
+ * @var string $link
+ * @var ?array $linkOptions
+ * @var string $path
+ * @var \MeCms\View\View\AppView $this
+ * @var string $title
  */
+
 if (is_array($link)) {
     $link = $this->Url->build($link);
 }

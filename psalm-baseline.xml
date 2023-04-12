@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="4.x-dev@">
-  <file src="src/Controller/PhotosAlbumsController.php">
-    <InvalidArgument occurrences="2"/>
-  </file>
   <file src="src/Model/Table/PhotosTable.php">
     <ImplementedReturnTypeMismatch occurrences="1">
       <code>\MeCms\Photos\Model\Entity\Photo|bool</code>
     </ImplementedReturnTypeMismatch>
+  </file>
+  <file src="templates/PhotosAlbums/index.php">
+    <TooManyTemplateParams occurrences="1">
+      <code>$this-&gt;extend('MeCms./common/index');</code>
+    </TooManyTemplateParams>
+  </file>
+  <file src="templates/PhotosAlbums/view.php">
+    <TooManyTemplateParams occurrences="1">
+      <code>$this-&gt;extend('MeCms./common/view');</code>
+    </TooManyTemplateParams>
   </file>
   <file src="tests/TestCase/Controller/Admin/PhotosControllerTest.php">
     <InvalidArrayOffset occurrences="1">

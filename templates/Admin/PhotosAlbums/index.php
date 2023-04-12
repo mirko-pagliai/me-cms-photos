@@ -15,6 +15,7 @@ declare(strict_types=1);
  * @var \MeCms\Photos\Model\Entity\PhotosAlbum[] $albums
  * @var \MeCms\View\View\Admin\AppView $this
  */
+
 $this->extend('MeCms./Admin/common/index');
 $this->assign('title', __d('me_cms/photos', 'Albums'));
 $this->append('actions', $this->Html->button(
@@ -42,14 +43,13 @@ $this->append('actions', $this->Html->button(
     <tbody>
         <?php foreach ($albums as $album) : ?>
             <tr>
-                <td class="text-nowrap text-center">
+                <td class="text-nowrap text-center align-middle">
                     <code><?= $album->get('id') ?></code>
                 </td>
                 <td>
-                    <strong>
-                        <?= $this->Html->link($album->get('title'), ['action' => 'edit', $album->get('id')]) ?>
-                    </strong>
                     <?php
+                    echo $this->Html->link($album->get('title'), ['action' => 'edit', $album->get('id')], ['class' => 'fw-bold']);
+
                     $actions = [
                         $this->Html->link(I18N_EDIT, ['action' => 'edit', $album->get('id')], ['icon' => 'pencil-alt']),
                     ];
@@ -80,10 +80,10 @@ $this->append('actions', $this->Html->button(
                     echo $this->Html->ul($actions, ['class' => 'actions']);
                     ?>
                 </td>
-                <td class="text-center">
+                <td class="text-center align-middle">
                     <?= $album->get('description') ?>
                 </td>
-                <td class="text-nowrap text-center">
+                <td class="text-nowrap text-center align-middle">
                     <div class="d-none d-lg-block">
                         <?= $album->get('created')->i18nFormat() ?>
                     </div>
@@ -92,7 +92,7 @@ $this->append('actions', $this->Html->button(
                         <div><?= $album->get('created')->i18nFormat(getConfigOrFail('main.time.short')) ?></div>
                     </div>
                 </td>
-                <td class="text-nowrap text-center">
+                <td class="text-nowrap text-center align-middle">
                     <?php
                     if ($album->hasValue('photo_count')) {
                         echo $this->Html->link(
