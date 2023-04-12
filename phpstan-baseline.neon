@@ -22,16 +22,6 @@ parameters:
 
 		-
 			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 20
-			path: templates/Photos/view.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 15
-			path: templates/PhotosAlbums/view.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
 			count: 5
 			path: templates/cell/PhotosWidgets/albums_as_form.php
 
@@ -54,21 +44,6 @@ parameters:
 			message: "#^Variable \\$this might not be defined\\.$#"
 			count: 3
 			path: templates/cell/PhotosWidgets/random.php
-
-		-
-			message: "#^Variable \\$link might not be defined\\.$#"
-			count: 1
-			path: templates/element/views/photo-preview.php
-
-		-
-			message: "#^Variable \\$path might not be defined\\.$#"
-			count: 1
-			path: templates/element/views/photo-preview.php
-
-		-
-			message: "#^Variable \\$this might not be defined\\.$#"
-			count: 3
-			path: templates/element/views/photo-preview.php
 
 		-
 			message: "#^Parameter \\#1 \\$array of function array_values expects array, iterable given\\.$#"
