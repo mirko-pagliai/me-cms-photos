@@ -19,6 +19,7 @@ namespace MeCms\Photos\Test\TestCase\Controller\Admin;
 use Cake\Controller\Controller;
 use Cake\Event\EventInterface;
 use Cake\Http\Response;
+use Laminas\Diactoros\UploadedFile;
 use MeCms\Photos\Model\Entity\Photo;
 use MeCms\TestSuite\Admin\ControllerTestCase;
 
@@ -78,9 +79,8 @@ class PhotosControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `index()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::index()
      */
     public function testIndex(): void
     {
@@ -93,8 +93,8 @@ class PhotosControllerTest extends ControllerTestCase
 
     /**
      * Tests for `index()` method, render as `grid`
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::index()
      */
     public function testIndexAsGrid(): void
     {
@@ -113,9 +113,8 @@ class PhotosControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `upload()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::upload()
      */
     public function testUpload(): void
     {
@@ -135,8 +134,8 @@ class PhotosControllerTest extends ControllerTestCase
         $this->post($url + ['_ext' => 'json'], compact('file'));
         $this->assertResponseOk();
         $record = $this->Table->find()->all()->last();
-        $this->assertEquals(1, $record->get('album_id'));
-        $this->assertEquals($file['name'], $record->get('filename'));
+        $this->assertSame(1, $record->get('album_id'));
+        $this->assertSame($file->getClientFilename(), $record->get('filename'));
         $this->assertFileExists($record->get('path'));
         $this->Table->delete($record);
 
@@ -149,9 +148,7 @@ class PhotosControllerTest extends ControllerTestCase
     /**
      * Tests for `upload()` method, with some errors.
      *
-     * The table `save()` method returns `false` for this test.
-     * See the `controllerSpy()` method.
-     * @return void
+     * The table `save()` method returns `false` for this test. See the `controllerSpy()` method.
      * @uses \MeCms\Photos\Controller\Admin\PhotosController::upload()
      * @test
      */
@@ -172,22 +169,23 @@ class PhotosControllerTest extends ControllerTestCase
         $this->assertTemplate('Admin' . DS . 'Photos' . DS . 'json' . DS . 'upload.php');
 
         //Error during the upload
-        $this->post($url, ['file' => ['error' => UPLOAD_ERR_NO_FILE] + $this->createImageToUpload()]);
+        $file = new UploadedFile('', 0, UPLOAD_ERR_NO_FILE);
+        $this->post($url, compact('file'));
         $this->assertResponseFailure();
         $this->assertResponseEquals('{"error":"No file was uploaded"}');
         $this->assertTemplate('Admin' . DS . 'Photos' . DS . 'json' . DS . 'upload.php');
 
         //Error on entity
-        $this->post($url, ['file' => ['name' => 'a.pdf'] + $this->createImageToUpload()]);
+        $file = new UploadedFile(fopen('php://memory', 'r+') ?: '', 0, UPLOAD_ERR_OK);
+        $this->post($url, compact('file'));
         $this->assertResponseFailure();
-        $this->assertResponseEquals('{"error":"Valid extensions: gif, jpg, jpeg, png"}');
+        $this->assertResponseEquals('{"error":"The mimetype  is not accepted"}');
         $this->assertTemplate('Admin' . DS . 'Photos' . DS . 'json' . DS . 'upload.php');
     }
 
     /**
-     * Tests for `edit()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::edit()
      */
     public function testEdit(): void
     {
@@ -211,9 +209,8 @@ class PhotosControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `download()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::download()
      */
     public function testDownload(): void
     {
@@ -223,9 +220,8 @@ class PhotosControllerTest extends ControllerTestCase
     }
 
     /**
-     * Tests for `delete()` method
-     * @return void
      * @test
+     * @uses \MeCms\Photos\Controller\Admin\PhotosController::delete()
      */
     public function testDelete(): void
     {
