@@ -15,15 +15,13 @@ declare(strict_types=1);
 
 namespace MeCms\Photos\View\Helper;
 
-use Cake\View\Helper;
+use MeCms\View\Helper\AbstractMenuHelper;
 
 /**
  * Menu Helper.
  *
- * This helper contains methods that will be called automatically to generate
- *  menus for the admin layout.
- * You don't need to call these methods manually, use instead the
- *  `MenuBuilderHelper` helper.
+ * This helper contains methods that will be called automatically to generate menus for the admin layout.
+ * You don't need to call these methods manually, use instead the `MenuBuilderHelper` helper.
  *
  * Each method must return an array with four values:
  *  - the menu links, as an array of parameters;
@@ -31,10 +29,9 @@ use Cake\View\Helper;
  *  - the options for the menu title;
  *  - the controllers handled by this menu, as an array.
  *
- * See the `\MeCms\View\Helper\MenuBuilderHelper::generate()` method for more
- *  information.
+ * @see \MeCms\View\Helper\MenuBuilderHelper::generate() for more information
  */
-class MenuHelper extends Helper
+class MenuHelper extends AbstractMenuHelper
 {
     /**
      * Internal function to generate the menu for "photos" actions
