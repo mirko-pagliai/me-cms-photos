@@ -1,5 +1,8 @@
 # 1.x branch
 ## 1.1 branch
+### 1.1.6
+* updated for me-cms 2.31.9.
+
 ### 1.1.5
 * updated for me-cms 2.31.8;
 * vertical alignment is used for admin interface tables.
