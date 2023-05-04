@@ -15,18 +15,27 @@ declare(strict_types=1);
 
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
+use MeCms\Photos\View\Helper\PhotosMenuHelper;
 
 //Sets the default photos directory
 if (!defined('PHOTOS')) {
     define('PHOTOS', WWW_ROOT . 'img' . DS . 'photos');
 }
 
-//Loads the MeCms/Photos configuration and merges with the configuration from
-//  application, if exists
+//Loads the MeCms/Photos configuration and merges with the configuration from application, if exists
 Configure::load('MeCms/Photos.me_cms_photos');
 if (is_readable(CONFIG . 'me_cms_photos.php')) {
     Configure::load('me_cms_photos');
 }
+
+//Sets files to be copied
+Configure::write('MeCms/Photos.ConfigFiles', ['MeCms/Photos.me_cms_photos']);
+
+//Sets the menu helpers that will be used
+Configure::write('MeCms/Photos.MenuHelpers', [PhotosMenuHelper::class]);
+
+//Sets the directories to be created and which must be writable
+Configure::write('MeCms/Photos.WritableDirs', [PHOTOS]);
 
 //Sets the cache
 if (!Cache::getConfig('photos')) {
@@ -37,18 +46,6 @@ if (!Cache::getConfig('photos')) {
         'mask' => 0777,
         'path' => CACHE . 'me_cms',
     ]);
-}
-
-//Sets directories to be created and must be writable
-$writableDirs = Configure::read('WRITABLE_DIRS', []);
-if (!in_array(PHOTOS, $writableDirs)) {
-    Configure::write('WRITABLE_DIRS', [...$writableDirs, PHOTOS]);
-}
-
-//Sets files to be copied
-$configFiles = Configure::read('CONFIG_FILES', []);
-if (!in_array('MeCms/Photos.me_cms_photos', $configFiles)) {
-    Configure::write('CONFIG_FILES', [...$configFiles, 'MeCms/Photos.me_cms_photos']);
 }
 
 if (!defined('I18N_PHOTOS')) {

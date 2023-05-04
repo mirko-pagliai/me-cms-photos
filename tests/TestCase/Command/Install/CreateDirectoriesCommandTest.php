@@ -15,6 +15,7 @@ declare(strict_types=1);
  */
 namespace MeCms\Photos\Test\TestCase\Command\Install;
 
+use Cake\Core\Configure;
 use MeTools\TestSuite\CommandTestCase;
 use Tools\Filesystem;
 
@@ -24,15 +25,18 @@ use Tools\Filesystem;
 class CreateDirectoriesCommandTest extends CommandTestCase
 {
     /**
-     * @uses \MeTools\Command\Install\CreateDirectoriesCommand::execute()
      * @test
+     * @uses \MeTools\Command\Install\CreateDirectoriesCommand::execute()
      */
     public function testExecute(): void
     {
-        if (!file_exists(PHOTOS)) {
-            mkdir(PHOTOS, 0755, true);
+        $this->exec('me_cms.create_directories -v');
+        $this->assertExitSuccess();
+        $this->assertErrorEmpty();
+        $expectedDirs = Configure::read('MeCms/Photos.WritableDirs');
+        $this->assertIsArrayNotEmpty($expectedDirs);
+        foreach ($expectedDirs as $expectedDir) {
+            $this->assertOutputContains('File or directory `' . Filesystem::instance()->rtr($expectedDir) . '` already exists');
         }
-        $this->exec('me_tools.create_directories -v');
-        $this->assertOutputContains('File or directory `' . Filesystem::instance()->rtr(PHOTOS) . '` already exists');
     }
 }

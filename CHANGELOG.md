@@ -1,4 +1,11 @@
 # 1.x branch
+## 1.2 branch
+### 1.2.0
+* the old `MenuHelper` class has been removed and replaced with `PhotosMenuHelper`. The helper is set in the bootstrap,
+    with the `MeCms/Photos.MenuHelpers` config key, as requested by `me-cms` 2.32.0;
+* as for `me-cms` 2.32.0 and `me-tools` 2.24.0, it uses `Configure::readFromPlugins()` with `ConfigFiles` and 
+  `WritableDirs` keys instead of the old `CONFIG_FILES` and `WRITABLE_DIRS` keys.
+
 ## 1.1 branch
 ### 1.1.6
 * updated for me-cms 2.31.9.
