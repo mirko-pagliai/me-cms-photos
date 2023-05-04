@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
+use MeCms\Photos\View\Helper\PhotosMenuHelper;
 
 //Sets the default photos directory
 if (!defined('PHOTOS')) {
@@ -28,16 +29,8 @@ if (is_readable(CONFIG . 'me_cms_photos.php')) {
     Configure::load('me_cms_photos');
 }
 
-//Sets the cache
-if (!Cache::getConfig('photos')) {
-    Cache::setConfig('photos', [
-        'className' => 'File',
-        'duration' => '+999 days',
-        'prefix' => 'me_cms_photos',
-        'mask' => 0777,
-        'path' => CACHE . 'me_cms',
-    ]);
-}
+//Sets the menu helpers that will be used
+Configure::write('MeCms/Photos.MenuHelpers', [PhotosMenuHelper::class]);
 
 //Sets directories to be created and must be writable
 $writableDirs = Configure::read('WRITABLE_DIRS', []);
@@ -49,6 +42,17 @@ if (!in_array(PHOTOS, $writableDirs)) {
 $configFiles = Configure::read('CONFIG_FILES', []);
 if (!in_array('MeCms/Photos.me_cms_photos', $configFiles)) {
     Configure::write('CONFIG_FILES', [...$configFiles, 'MeCms/Photos.me_cms_photos']);
+}
+
+//Sets the cache
+if (!Cache::getConfig('photos')) {
+    Cache::setConfig('photos', [
+        'className' => 'File',
+        'duration' => '+999 days',
+        'prefix' => 'me_cms_photos',
+        'mask' => 0777,
+        'path' => CACHE . 'me_cms',
+    ]);
 }
 
 if (!defined('I18N_PHOTOS')) {
