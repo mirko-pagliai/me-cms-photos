@@ -15,6 +15,7 @@ declare(strict_types=1);
  */
 namespace MeCms\Photos\Test\TestCase\Command\Install;
 
+use Cake\Core\Configure;
 use MeTools\TestSuite\CommandTestCase;
 use Tools\Filesystem;
 
@@ -24,12 +25,18 @@ use Tools\Filesystem;
 class SetPermissionsCommandTest extends CommandTestCase
 {
     /**
-     * @uses \MeTools\Command\Install\SetPermissionsCommand::execute()
      * @test
+     * @uses \MeTools\Command\Install\SetPermissionsCommand::execute()
      */
     public function testExecute(): void
     {
-        $this->exec('me_tools.set_permissions -v');
-        $this->assertOutputContains('Set permissions on `' . Filesystem::instance()->rtr(PHOTOS) . '`');
+        $this->exec('me_cms.set_permissions -v');
+        $this->assertExitSuccess();
+        $this->assertErrorEmpty();
+        $expectedDirs = Configure::read('MeCms/Photos.WritableDirs');
+        $this->assertIsArrayNotEmpty($expectedDirs);
+        foreach ($expectedDirs as $expectedDir) {
+            $this->assertOutputContains('Set permissions on `' . Filesystem::instance()->rtr($expectedDir) . '`');
+        }
     }
 }
